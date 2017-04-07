@@ -1,0 +1,7 @@
+<p>
+  portfolio works!
+  <a *ngFor="let pageNumber of [1,2,3,4,5,6]" [routerLink]="['/me/portfolio', pageNumber]" routerLinkActive="active">
+    Portfolio Item {{pageNumber}}
+    <br>
+  </a>
+</p>
