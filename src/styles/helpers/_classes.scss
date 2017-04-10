@@ -1,0 +1,22 @@
+@import "../helpers/mixins";
+
+%ab-layer-block {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+%ab-layer-flex {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+%magic-link {
+  text-decoration: none;
+  background-image: linear-gradient(to bottom, white 50%, white 50%);
+  background-repeat: repeat-x;
+  background-size: 2px .1em;
+  background-position: 0 1.04em;
+}

@@ -9,6 +9,7 @@
     "dev": "ng serve --target=development --hmr --open --sourcemaps",
     "prod-serve": "ng serve --target=production --open",
     "prod": "ng build --target=production --base-href=./",
+    "publish": "npm run prod && now ./dist",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor"
@@ -27,6 +28,7 @@
     "@angular/router": "^4.0.1",
     "@ngtools/webpack": "^1.2.9",
     "angularfire2": "^2.0.0-beta.8",
+    "compass-mixins": "^0.12.10",
     "core-js": "^2.4.1",
     "firebase": "^3.7.5",
     "normalize.css": "^6.0.0",

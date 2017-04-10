@@ -1,9 +1,10 @@
 import {
   Component, OnInit, ViewChild, Input, ElementRef, Output, EventEmitter,
-  Renderer2
+  Renderer2, OnDestroy, PLATFORM_ID, Inject
 } from '@angular/core';
-import { Subject } from "rxjs";
+import { Subject, Subscription } from "rxjs";
 import { AbImageModel } from "./ab-image.model";
+import { isPlatformBrowser, isPlatformServer } from "@angular/common";
 
 const IMAGE_LOADING_TIMEOUT_MS = 500;
 
@@ -12,7 +13,7 @@ const IMAGE_LOADING_TIMEOUT_MS = 500;
   templateUrl: './ab-image.component.html',
   styleUrls: ['./ab-image.component.scss']
 })
-export class AbImageComponent implements OnInit {
+export class AbImageComponent implements OnInit, OnDestroy {
 
   @ViewChild('sourceWrapper') sourceWrapper: ElementRef;
   @ViewChild('prerenderWrapper') prerenderWrapper: ElementRef;
@@ -20,6 +21,7 @@ export class AbImageComponent implements OnInit {
   @ViewChild('thumbnail') thumbnail: ElementRef;
 
   loadedImage: Subject<HTMLImageElement | any> = new Subject();
+  loadEvent: Subscription;
 
   @Input() abImageModel: AbImageModel;
   @Input() abImageSrc: string;
@@ -29,7 +31,8 @@ export class AbImageComponent implements OnInit {
 
   constructor(
     private elementRef: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    @Inject(PLATFORM_ID) private platformId: string
   ) { }
 
   ngOnInit() {
@@ -40,8 +43,10 @@ export class AbImageComponent implements OnInit {
       );
     }
     this.setThumbnail();
-    this.loadImage();
-    this.subscribeEvents();
+    if (this.getPlatformType().isBrowser) {
+      this.loadImage();
+      this.subscribeEvents();
+    }
   }
 
   setThumbnail() {
@@ -59,7 +64,7 @@ export class AbImageComponent implements OnInit {
   }
 
   subscribeEvents(): void {
-    this.loadedImage.subscribe(_ => {
+    this.loadEvent = this.loadedImage.subscribe(_ => {
       this.renderer.setAttribute(this.image.nativeElement, 'src', _.src);
 
       setTimeout(() => {
@@ -69,5 +74,18 @@ export class AbImageComponent implements OnInit {
         });
       }, IMAGE_LOADING_TIMEOUT_MS);
     });
+  }
+
+  getPlatformType(): {isBrowser: boolean, isServer: boolean} {
+    return {
+      isBrowser: isPlatformBrowser(this.platformId),
+      isServer: isPlatformServer(this.platformId)
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.loadEvent) {
+      this.loadEvent.unsubscribe();
+    }
   }
 }

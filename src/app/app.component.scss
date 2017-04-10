@@ -2,19 +2,13 @@
 
 :host {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  @extend %ab-layer-block;
 }
 
-@include bem-block(block) {
-  background: #faf;
-  @include bem-element(element) {
-    color: #8496F3;
-    &:hover {
-      background: #555;
-    }
-    @include bem-modifier(modifier) {
-      border: 1px solid #f4f;
-    }
-  }
+@include bem-block(page) {
+  @extend %ab-layer-flex;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
 }

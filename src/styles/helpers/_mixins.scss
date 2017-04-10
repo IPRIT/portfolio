@@ -1,3 +1,4 @@
+@import "~compass-mixins";
 @import "variables";
 @import "functions";
 
@@ -143,22 +144,22 @@
  * ----------------
  *
  * xs
- * lr-xs
+ * lt-xs
  * gt-xs
  * sm
- * lr-sm
+ * lt-sm
  * gt-sm
  * md
- * lr-md
+ * lt-md
  * gt-md
  * lg
- * lr-lg
+ * lt-lg
  * gt-lg
  * xl
  * gt-xl
  */
 @mixin media-query($media, $orientation: null) {
-  @if $media == xs or $media == lr-xs {
+  @if $media == xs or $media == lt-xs {
     @if ($orientation) {
       @media screen and (max-width: $layout-breakpoint-xs - 1) and (orientation: $orientation) { @content; }
     }
@@ -182,7 +183,7 @@
       @media screen and (min-width: $layout-breakpoint-xs) and (max-width: $layout-breakpoint-sm - 1) { @content; }
     }
   }
-  @else if $media == lr-sm {
+  @else if $media == lt-sm {
     @if ($orientation) {
       @media screen and (max-width: $layout-breakpoint-sm - 1) and (orientation: $orientation) { @content; }
     }
@@ -206,7 +207,7 @@
       @media screen and (min-width: $layout-breakpoint-sm) and (max-width: $layout-breakpoint-md - 1) { @content; }
     }
   }
-  @else if $media == lr-md {
+  @else if $media == lt-md {
     @if ($orientation) {
       @media screen and (max-width: $layout-breakpoint-md - 1) and (orientation: $orientation) { @content; }
     }
@@ -230,7 +231,7 @@
       @media screen and (min-width: $layout-breakpoint-md) and (max-width: $layout-breakpoint-lg - 1) { @content; }
     }
   }
-  @else if $media == lr-lg or $media == lr-xl {
+  @else if $media == lt-lg or $media == lt-xl {
     @if ($orientation) {
       @media screen and (max-width: $layout-breakpoint-lg - 1) and (orientation: $orientation) { @content; }
     }
@@ -262,4 +263,12 @@
       @media screen { @content; }
     }
   }
+}
+
+@mixin magic-link($color: white, $line-offset: 1.19em) {
+  text-decoration: none;
+  background-image: linear-gradient(to bottom, $color 50%, $color 50%);
+  background-repeat: repeat-x;
+  background-size: 2px .1em;
+  background-position: 0 $line-offset;
 }

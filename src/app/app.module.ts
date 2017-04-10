@@ -19,13 +19,16 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     AppComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({appId: 'AbPortfolio'}),
+    BrowserModule.withServerTransition({ appId: 'AbPortfolio' }),
     BrowserAnimationsModule,
+
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
     HttpModule,
     SharedModule,
+
     AppRoutingModule,
+
     MeModule,
     MainModule,
     NotFoundModule
@@ -33,6 +36,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+  exports: [
+    BrowserAnimationsModule
+  ]
 })
 export class AppModule { }

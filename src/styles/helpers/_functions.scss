@@ -11,3 +11,7 @@
 @function unwrap-scope($scope) {
   @return str_slice(quote($scope), 1 + (str-last-index(quote($scope), unquote(' ')) or 0));
 }
+
+@function merge-fonts-stack($first-stack, $second-stack) {
+  @return append($first-stack, $second-stack, comma);
+}

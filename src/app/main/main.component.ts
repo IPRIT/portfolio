@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { routerTransition } from "../routing/app.routing.animations";
+//import { routerTransition } from "../routing/app.routing.animations";
 
 @Component({
-  selector: 'main',
+  selector: 'ab-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
-  animations: [routerTransition()],
-  host: {'[@routerTransition]': ''}
+  //animations: [routerTransition()],
+  //host: {'[@routerTransition]': ''}
 })
 export class MainComponent implements OnInit {
 
@@ -14,5 +14,4 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
