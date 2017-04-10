@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { FirebaseListObservable, AngularFire } from "angularfire2";
-import { AbImageModel } from "./shared/components/ab-image/ab-image.model";
 
 @Component({
   selector: 'ab-root',

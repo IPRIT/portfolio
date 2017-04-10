@@ -4,7 +4,7 @@ export function routerTransition() {
   return opacity();
 }
 
-function opacity() {
+export function opacity() {
   return trigger('routerTransition', [
     //state('void', style({ position: 'absolute', width: '100%' }) ),
     //state('*', style({ position: 'absolute', width: '100%' }) ),
