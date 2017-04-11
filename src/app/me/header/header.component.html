@@ -1,0 +1,21 @@
+<div class="ab-header">
+  <div class="ab-header__inner">
+
+    <a class="ab-header__section-logo" routerLink="/">
+      <img class="image ab-header__logo" src="/assets/ui/images/logo-pink.png" i18n-alt alt="Alex Belov Logo Pink">
+    </a>
+
+    <div class="ab-header__section-links">
+      <a class="link ab-header__link" routerLink="/me/about" routerLinkActive="ab-header__link_active" i18n>About me</a>
+      <a class="link ab-header__link" routerLink="/me/portfolio" routerLinkActive="ab-header__link_active" i18n>Portfolio</a>
+      <a class="link ab-header__link" routerLink="/me/portfolio/1" routerLinkActive="ab-header__link_active" i18n>Contact</a>
+    </div>
+
+    <div class="ab-header__menu">
+      <div class="ab-header__menu-button" (click)="mobileMenuClick($event)">
+        <i class="material-icons md-36">menu</i>
+      </div>
+    </div>
+
+  </div>
+</div>

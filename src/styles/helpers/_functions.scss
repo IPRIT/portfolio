@@ -1,3 +1,6 @@
+//todo: add copyrights
+@import "variables";
+
 @function str-last-index($string, $substr) {
   $index: null;
   $length: str-length($string);
@@ -12,6 +15,51 @@
   @return str_slice(quote($scope), 1 + (str-last-index(quote($scope), unquote(' ')) or 0));
 }
 
+@function unwrap-scope-from-start($scope) {
+  @return str_slice(quote($scope), 1, -1 + (str-index(quote($scope), unquote(' ')) or -1));
+}
+
 @function merge-fonts-stack($first-stack, $second-stack) {
   @return append($first-stack, $second-stack, comma);
+}
+
+@function build-element($block, $element) {
+  @return #{$block}#{$bem-element-prefix}#{$element};
+}
+
+@function build-modifier($block, $element, $modifier) {
+  @return #{$block}#{$bem-element-prefix}#{$element}#{$bem-modifier-prefix}#{$modifier};
+}
+
+@function get-bem-block() {
+  $scope: unwrap-scope-from-start(&);
+  $is-block: str-index($scope, $bem-element-prefix);
+  @if ($is-block) {
+    @return $scope;
+  } @else {
+    $block: str-slice($scope, 1, $is-block or -1);
+    @return $block;
+  }
+}
+
+@function get-bem-element($element) {
+  $scope: unwrap-scope-from-start(&);
+  $is-block: str-index($scope, $bem-element-prefix);
+  @if ($is-block) {
+    @return build-element($scope, $element);
+  } @else {
+    $block: str-slice($scope, 1, $is-block or -1);
+    @return build-element($block, $element);
+  }
+}
+
+@function get-bem-modifier($element, $modifier) {
+  $scope: unwrap-scope-from-start(&);
+  $is-block: str-index($scope, $bem-element-prefix);
+  @if ($is-block) {
+    @return build-modifier($scope, $element, $modifier);
+  } @else {
+    $block: str-slice($scope, 1, $is-block or -1);
+    @return build-modifier($block, $element, $modifier);
+  }
 }

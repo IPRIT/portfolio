@@ -81,8 +81,10 @@
     @for $index from 1 through length($stop-colors) {
       &:nth-of-type(#{$index}) {
         #{$block-scope}__link {
-          &:active > span {
-            color: nth($stop-colors, $index);
+          &:active {
+            & > span {
+              color: nth($stop-colors, $index);
+            }
           }
         }
       }
@@ -107,8 +109,12 @@
 
     &:active {
       opacity: .8;
-      background: white;
+      background-color: white;
+      background-image: linear-gradient(to right, lighten($gradient-left-color, 45%) 0%, lighten($gradient-right-color, 60%) 100%);
       border-radius: 50px;
+      & > span {
+        @extend %reset-magic-link;
+      }
     }
   }
 

@@ -1,8 +1,5 @@
-<div>
-  <p>me works!</p>
-  <nav>
-    <a routerLink="/me/about" routerLinkActive="active">About me</a>
-    <a routerLink="/me/portfolio" routerLinkActive="active">Portfolio</a>
-  </nav>
+<div class="ab-me">
+  <ab-mobile-menu [stateOpen]="isMobileMenuOpen" (onMobileMenuClosed)="onMobileMenuClosed($event)" [class.ab-mobile-menu_state_closed]="!isMobileMenuOpen"></ab-mobile-menu>
+  <ab-header (onMobileMenuClicked)="onMobileMenuClicked($event)"></ab-header>
   <router-outlet></router-outlet>
 </div>

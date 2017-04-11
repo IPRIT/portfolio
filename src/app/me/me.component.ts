@@ -10,9 +10,18 @@ import { routerTransition } from "../routing/app.routing.animations";
 })
 export class MeComponent implements OnInit {
 
+  isMobileMenuOpen: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  onMobileMenuClicked(state) {
+    this.isMobileMenuOpen = state;
+  }
+
+  onMobileMenuClosed(state) {
+    this.isMobileMenuOpen = state;
+  }
 }

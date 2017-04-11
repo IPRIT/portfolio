@@ -1,0 +1,28 @@
+<div class="ab-mobile-menu">
+  <div class="ab-mobile-menu__inner">
+
+    <div class="ab-mobile-menu__header">
+      <div class="ab-mobile-menu__header-inner">
+        <div class="ab-mobile-menu__close">
+          <div class="ab-mobile-menu__close-button" (click)="closeMobileMenu($event)">
+            <i class="material-icons md-36">close</i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ab-mobile-menu__content">
+
+      <a class="ab-mobile-menu__section-logo" (click)="closeMobileMenu($event)" routerLink="/">
+        <img class="image ab-mobile-menu__logo" src="/assets/ui/images/logo-pink.png" i18n-alt alt="Alex Belov Logo Pink">
+      </a>
+
+      <div class="ab-mobile-menu__links">
+        <a class="link ab-mobile-menu__link" (click)="closeMobileMenu($event)" routerLink="/me/about" routerLinkActive="ab-mobile-menu__link_active" i18n>About me</a>
+        <a class="link ab-mobile-menu__link" (click)="closeMobileMenu($event)" routerLink="/me/portfolio" routerLinkActive="ab-mobile-menu__link_active" i18n>Portfolio</a>
+        <a class="link ab-mobile-menu__link" (click)="closeMobileMenu($event)" routerLink="/me/portfolio/1" routerLinkActive="ab-mobile-menu__link_active" i18n>Contact</a>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -33,15 +33,10 @@ export class AboutComponent implements OnInit {
       new AbImageModel(
         '/assets/test2.png',
         '/assets/test2_thumbnail.png'
-      )/*,
-       new AbImageModel(
-       'http://img.phombo.com/img1/photocombo/1729797/Wallpaper_Wizard_Lite-199___WallpaperWizard-3934707219.jpg',
-       'http://img8.sputnik.ru/?key=48cb5bbca4d9b19b54c81c59a0608b926cc6c93f'
-       )*/
+      )
     ];
   }
 
   ngOnInit() {
   }
-
 }

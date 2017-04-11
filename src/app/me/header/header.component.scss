@@ -1,0 +1,113 @@
+@import "../../../styles/helpers/all";
+@import "../../../styles/components/fonts/ubuntu";
+@import "../../../styles/components/fonts/material-icons";
+
+:host {
+  @extend %ab-layer-block;
+  height: $header-height;
+  max-height: $header-height;
+}
+
+@include bem(header) {
+  @extend %ab-layer-block;
+  background: $header-background-color;
+  @if $header-has-shadow {
+    box-shadow: $header-shadow;
+  }
+
+  @include bem-element(inner) {
+    @extend %ab-layer-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include bem-element(section-logo) {
+    flex: 2;
+    display: block;
+    margin-left: $header-right-left-margin;
+  }
+
+  @include bem-element(logo) {
+    max-width: 80px;
+    display: block;
+  }
+
+  @include bem-element(section-links) {
+    @extend %ab-layer-flex;
+    flex: 1;
+    text-align: right;
+    margin-right: $header-right-left-margin;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    @include media-query(lt-md) {
+      flex: 2;
+    }
+
+    @include media-query(lt-xs) {
+      display: none;
+    }
+  }
+
+  @include bem-element(link) {
+    text-align: center;
+    padding: 9px 20px;
+    color: $header-links-color;
+    text-decoration: none;
+    font-size: 1.1em;
+    white-space: nowrap;
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+    box-shadow: none;
+    @include transition-only-for(.1s, (all));
+
+    &:hover, &:focus {
+      color: $header-links-background-color;
+    }
+
+    &:active:not(#{get-bem-modifier(link, active)}) {
+      background: $header-links-background-color;
+      color: white;
+      border-radius: 50px;
+    }
+
+    @include bem-modifier(active) {
+      box-shadow: inset 0 0 0px 2px $header-links-background-color;
+      color: $header-links-background-color;
+      border-radius: 50px;
+    }
+
+    @include media-query(lt-sm) {
+      font-size: 1em;
+    }
+  }
+
+  @include bem-element(menu) {
+    @extend %ab-layer-flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    margin-right: $header-right-left-margin;
+
+    @include media-query(gt-xs) {
+      display: none;
+    }
+  }
+
+  @include bem-element(menu-button) {
+    color: $header-links-background-color;
+    padding: 8px 12px;
+    text-align: center;
+    cursor: default;
+    user-select: none;
+
+    & > i {
+      position: relative;
+      top: 3px;
+      font-size: 40px;
+      display: inline-block;
+    }
+  }
+}

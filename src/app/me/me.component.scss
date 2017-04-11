@@ -1,0 +1,13 @@
+@import "../../styles/helpers/all";
+@import "../../styles/components/fonts/ubuntu";
+
+:host {
+  @extend %ab-layer-block;
+  background: #F9FAFA;
+  position: relative;
+}
+
+@include bem(me) {
+  $block-scope: unwrap-scope(&);
+  @extend %ab-layer-block;
+}
