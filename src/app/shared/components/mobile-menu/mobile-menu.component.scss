@@ -84,8 +84,6 @@
 
   @include bem-element(content) {
     @extend %ab-layer-flex;
-    margin-top: 5%;
-    margin-top: 5vh;
     flex: 1;
     justify-content: flex-start;
     align-items: center;
@@ -129,14 +127,14 @@
   @include bem-element(section-logo) {
     display: inline-block;
     padding: 20px;
-    margin-bottom: 5%;
-    margin-bottom: 5vh;
+    margin-bottom: 2%;
+    margin-bottom: 2vh;
     text-decoration: none;
     border: 0;
   }
 
   @include bem-element(logo) {
-    max-width: 150px;
+    max-width: 120px;
     display: block;
   }
 }

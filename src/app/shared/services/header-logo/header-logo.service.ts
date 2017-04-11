@@ -5,7 +5,7 @@ import { AbImage } from "../../components/ab-image/ab-image.model";
 @Injectable()
 export class HeaderLogoService {
 
-  logo: ReplaySubject<AbImage> = new ReplaySubject<AbImage>(1);
+  public logo: ReplaySubject<AbImage> = new ReplaySubject<AbImage>(1);
 
   constructor() { }
 

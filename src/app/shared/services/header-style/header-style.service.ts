@@ -5,8 +5,8 @@ import { HeaderLogoService } from "../header-logo/header-logo.service";
 @Injectable()
 export class HeaderStyleService {
 
-  linkStyle: ReplaySubject<any> = new ReplaySubject<any>(1);
-  classes: ReplaySubject<string> = new ReplaySubject<string>(1);
+  public linkStyle: ReplaySubject<any> = new ReplaySubject<any>(1);
+  public classes: ReplaySubject<string> = new ReplaySubject<string>(1);
 
   constructor(
     public logoService: HeaderLogoService

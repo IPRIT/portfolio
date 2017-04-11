@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   @Output() onMobileMenuClicked = new EventEmitter<boolean>();
 
   constructor(
-    private styleService: HeaderStyleService
+    public styleService: HeaderStyleService
   ) {
   }
 
