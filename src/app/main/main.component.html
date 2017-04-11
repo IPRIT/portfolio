@@ -1,5 +1,14 @@
 <div class="ab-main">
+
+  <ab-mobile-menu [stateOpen]="isMobileMenuOpen" (onMobileMenuClosed)="setMobileMenuState($event)" [class.ab-mobile-menu_state_closed]="!isMobileMenuOpen"></ab-mobile-menu>
+
   <div class="ab-main__inner">
+
+    <div class="ab-main__mobile-menu">
+      <div class="ab-main__mobile-menu-button" (click)="setMobileMenuState($event)">
+        <i class="material-icons md-36">menu</i>
+      </div>
+    </div>
 
     <div class="ab-main__centered-content">
       <div class="ab-main__ab-logo">

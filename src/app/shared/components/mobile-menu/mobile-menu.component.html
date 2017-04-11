@@ -1,4 +1,4 @@
-<div class="ab-mobile-menu">
+<div class="ab-mobile-menu {{classes | async}}">
   <div class="ab-mobile-menu__inner">
 
     <div class="ab-mobile-menu__header">
@@ -14,7 +14,7 @@
     <div class="ab-mobile-menu__content">
 
       <a class="ab-mobile-menu__section-logo" (click)="closeMobileMenu($event)" routerLink="/">
-        <img class="image ab-mobile-menu__logo" src="/assets/ui/images/logo-pink.png" i18n-alt alt="Alex Belov Logo Pink">
+        <img class="image ab-mobile-menu__logo" src="{{(logo | async)?.originalSrc}}" i18n-alt alt="Alex Belov Logo Pink">
       </a>
 
       <div class="ab-mobile-menu__links">

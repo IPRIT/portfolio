@@ -1,0 +1,21 @@
+<div class="ab-header {{styleService.classes | async}}">
+  <div class="ab-header__inner">
+
+    <div class="ab-header__section-logo">
+      <a class="ab-header__logo" [style.background-image]="'url(' + (styleService.logoService.logo | async)?.originalSrc + ')'" routerLink="/"></a>
+    </div>
+
+    <div class="ab-header__section-links">
+      <a class="link ab-header__link" [ngStyle]="styleService.linkStyle | async" routerLink="/me/about" routerLinkActive="ab-header__link_active" i18n>About me</a>
+      <a class="link ab-header__link" [ngStyle]="styleService.linkStyle | async" routerLink="/me/portfolio" routerLinkActive="ab-header__link_active" i18n>Portfolio</a>
+      <a class="link ab-header__link" [ngStyle]="styleService.linkStyle | async" routerLink="/me/portfolio/1" routerLinkActive="ab-header__link_active" i18n>Contact</a>
+    </div>
+
+    <div class="ab-header__menu">
+      <div class="ab-header__menu-button" (click)="mobileMenuClick($event)">
+        <i class="material-icons md-36">menu</i>
+      </div>
+    </div>
+
+  </div>
+</div>

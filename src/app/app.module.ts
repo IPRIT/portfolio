@@ -14,7 +14,6 @@ import { NotFoundModule } from "./not-found/not-found.module";
 import { AppRoutingModule } from "./routing/app.routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { MobileMenuComponent } from "./shared/components/mobile-menu/mobile-menu.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +36,7 @@ import { MobileMenuComponent } from "./shared/components/mobile-menu/mobile-menu
     NotFoundModule
   ],
   providers: [
-    { provide: APP_BASE_HREF, useValue: '/' },
+    //{ provide: APP_BASE_HREF, useValue: '/' },
   ],
   bootstrap: [ AppComponent ],
   exports: [

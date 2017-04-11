@@ -1,6 +1,4 @@
 @import "../../../../styles/helpers/all";
-@import "../../../../styles/components/fonts/ubuntu";
-@import "../../../../styles/components/fonts/material-icons";
 
 :host {
   @extend %ab-layer-block;
@@ -62,11 +60,19 @@
   }
 
   @include bem-element(close-button) {
-    color: $header-links-background-color;
+    color: $header-links-background-color-default;
     padding: 8px 12px;
     text-align: center;
     cursor: default;
     user-select: none;
+
+    .portfolio & {
+      color: $header-links-background-color-default;
+    }
+
+    .about & {
+      color: $header-links-background-color-about;
+    }
 
     & > i {
       position: relative;
@@ -101,14 +107,22 @@
     text-decoration: none;
     white-space: nowrap;
     font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
-    @include transition-only-for(.1s, (all));
+    @include transition-only-for(.2s, (all));
 
     &:not(:first-of-type) {
       border-top: 1px solid transparentize(#000, .9);
     }
 
     @include bem-modifier(active) {
-      color: $header-links-background-color;
+      color: $header-links-background-color-default;
+
+      .portfolio & {
+        color: $header-links-background-color-default;
+      }
+
+      .about & {
+        color: $header-links-background-color-about;
+      }
     }
   }
 

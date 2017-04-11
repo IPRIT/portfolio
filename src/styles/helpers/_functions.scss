@@ -63,3 +63,8 @@
     @return build-modifier($block, $element, $modifier);
   }
 }
+
+@function get-bem-modifier-full($block, $element, $modifier) {
+  $block: unquote('.')#{$bem-block-prefix}#{$block};
+  @return build-modifier($block, $element, $modifier);
+}

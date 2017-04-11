@@ -1,0 +1,168 @@
+@import "../../../../styles/helpers/all";
+
+:host {
+  @extend %ab-layer-block;
+  height: $header-height;
+  max-height: $header-height;
+}
+
+@include bem(header) {
+  @extend %ab-layer-block;
+  background: $header-background-color;
+  @if $header-has-shadow {
+    box-shadow: $header-shadow;
+  }
+
+  @include bem-element(inner) {
+    @extend %ab-layer-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include bem-element(section-logo) {
+    flex: 2;
+    display: block;
+    margin-left: $header-right-left-margin;
+  }
+
+  @include bem-element(logo) {
+    width: 80px;
+    height: 70px;
+    position: relative;
+    top: 3px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    @include transition-only-for(.2s, (background));
+  }
+
+  @include bem-element(section-links) {
+    @extend %ab-layer-flex;
+    flex: 1;
+    text-align: right;
+    margin-right: $header-right-left-margin;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    @include media-query(lt-md) {
+      flex: 2;
+    }
+
+    @include media-query(lt-xs) {
+      display: none;
+    }
+  }
+
+  @include bem-element(link) {
+    text-align: center;
+    padding: 9px 20px;
+    color: $header-links-color-default;
+    text-decoration: none;
+    font-size: 1.1em;
+    white-space: nowrap;
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+    box-shadow: none;
+    border-radius: 50px;
+    @include transition(all .1s $transitionDefaultTimingFunction, color .2s $transitionDefaultTimingFunction, box-shadow .2s $transitionDefaultTimingFunction);
+
+    .portfolio & {
+      color: $header-links-color-default;
+
+      &:hover, &:focus {
+        color: $header-links-background-color-default;
+      }
+
+      &:active:not(#{get-bem-modifier-full(header, link, active)}) {
+        background: $header-links-background-color-default;
+        color: $header-links-color-active-default;
+        border-radius: 50px;
+      }
+    }
+
+    .about & {
+      color: $header-links-color-about;
+
+      &:hover, &:focus {
+        color: $header-links-background-color-about;
+      }
+
+      &:active:not(#{get-bem-modifier-full(header, link, active)}) {
+        background: $header-links-background-color-about;
+        color: $header-links-color-active-about;
+        border-radius: 50px;
+      }
+    }
+
+    /*.contact & {
+      color: $header-links-color-contact;
+
+      &:hover, &:focus {
+        color: $header-links-background-color-contact;
+      }
+
+      &:active:not(#{get-bem-modifier(link, active)}) {
+        background: $header-links-background-color-contact;
+        color: $header-links-color-active-contact;
+        border-radius: 50px;
+      }
+    }*/
+
+    @include bem-modifier(active) {
+      box-shadow: inset 0 0 0 2px $header-links-background-color-default;
+      color: $header-links-background-color-default;
+
+      .portfolio & {
+        box-shadow: inset 0 0 0 2px $header-links-background-color-default;
+        color: $header-links-background-color-default;
+      }
+
+      .about & {
+        box-shadow: inset 0 0 0 2px $header-links-background-color-about;
+        color: $header-links-background-color-about;
+      }
+    }
+
+    @include media-query(lt-sm) {
+      font-size: 1em;
+    }
+  }
+
+  @include bem-element(menu) {
+    @extend %ab-layer-flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    margin-right: $header-right-left-margin;
+
+    @include media-query(gt-xs) {
+      display: none;
+    }
+  }
+
+  @include bem-element(menu-button) {
+    color: $header-links-background-color-default;
+    padding: 8px 12px;
+    text-align: center;
+    cursor: default;
+    user-select: none;
+
+    .portfolio & {
+      color: $header-links-background-color-default;
+    }
+
+    .about & {
+      color: $header-links-background-color-about;
+    }
+
+    & > i {
+      position: relative;
+      top: 3px;
+      font-size: 40px;
+      display: inline-block;
+    }
+  }
+}

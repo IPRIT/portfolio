@@ -5,9 +5,7 @@ import { AboutComponent } from './about/about.component';
 import { MeRoutingModule } from "./me.routing.module";
 import { PortfolioModule } from "./portfolio/portfolio.module";
 import { RouterModule } from "@angular/router";
-import { HeaderComponent } from './header/header.component';
 import { SharedModule } from "../shared/shared.module";
-import { MobileMenuComponent } from "../shared/components/mobile-menu/mobile-menu.component";
 
 @NgModule({
   imports: [
@@ -19,7 +17,6 @@ import { MobileMenuComponent } from "../shared/components/mobile-menu/mobile-men
   ],
   declarations: [
     MeComponent,
-    HeaderComponent,
     AboutComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

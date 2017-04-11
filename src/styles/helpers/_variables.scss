@@ -58,10 +58,18 @@ $fonts-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubu
 $header-has-shadow: true;
 $header-shadow: 0 2px 2px 2px transparentize(#000, .9);
 $header-background-color: white;
-$header-links-color: #F15F41;
-$header-links-background-color: #ef4b5b;
 $header-right-left-margin: 5vw;
 $header-height: 90px;
+
+/* Header Portfolio | Default */
+$header-links-color-default: #F15F41;
+$header-links-color-active-default: white;
+$header-links-background-color-default: #ef4b5b;
+
+/* Header About | Default */
+$header-links-color-about: #14988d;
+$header-links-color-active-about: white;
+$header-links-background-color-about: #14988d;
 
 /* Mobile Menu */
 $mobile-menu-z-index: 100;
