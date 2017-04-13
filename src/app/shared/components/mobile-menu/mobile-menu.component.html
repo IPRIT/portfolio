@@ -21,7 +21,7 @@
         <a class="link ab-mobile-menu__link" (click)="closeMobileMenu($event)" routerLink="/me/about" routerLinkActive="ab-mobile-menu__link_active" i18n>About me</a>
         <a class="link ab-mobile-menu__link" (click)="closeMobileMenu($event)" routerLink="/me/portfolio" routerLinkActive="ab-mobile-menu__link_active" i18n>Portfolio</a>
         <a class="link ab-mobile-menu__link" (click)="closeMobileMenu($event)" routerLink="/me/portfolio/1" routerLinkActive="ab-mobile-menu__link_active" i18n>Contact</a>
-        <a class="link ab-mobile-menu__link" *ngIf="(authState | async) === 1" (click)="closeMobileMenu($event)" routerLink="/admin" routerLinkActive="ab-mobile-menu__link_active" i18n>Admin</a>
+        <a class="link ab-mobile-menu__link" (click)="closeMobileMenu($event)" routerLink="/admin" routerLinkActive="ab-mobile-menu__link_active" i18n>Admin</a>
       </div>
     </div>
 

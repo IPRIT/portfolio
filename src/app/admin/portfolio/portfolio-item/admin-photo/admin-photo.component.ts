@@ -16,9 +16,9 @@ export class AdminPhotoComponent implements OnInit {
   imagesPath: string = 'images';
 
   constructor(
-    @Inject(FirebaseApp) public firebaseApp: firebase.app.App
+    @Inject(FirebaseApp) public firebaseApp: any
   ) {
-    this.storageRef = firebaseApp.storage().ref();
+    this.storageRef = (firebaseApp as firebase.app.App).storage().ref();
   }
 
   ngOnInit() {
