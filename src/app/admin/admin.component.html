@@ -1,0 +1,7 @@
+<div class="ab-admin">
+  <ab-mobile-menu [stateOpen]="isMobileMenuOpen" (onMobileMenuClosed)="onMobileMenuClosed($event)" [class.closed]="!isMobileMenuOpen"></ab-mobile-menu>
+  <ab-header (onMobileMenuClicked)="onMobileMenuClicked($event)"></ab-header>
+  <ab-auth></ab-auth>
+  <ab-admin-menu *ngIf="(authState | async) === 1"></ab-admin-menu>
+  <router-outlet></router-outlet>
+</div>

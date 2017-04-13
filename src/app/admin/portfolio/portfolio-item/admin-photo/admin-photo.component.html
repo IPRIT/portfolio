@@ -1,0 +1,13 @@
+<div class="ab-admin-photo-uploader">
+
+  <div *ngIf="photo && photo.originalSrc">
+    <div class="ab-admin-photo-uploader__remove" (click)="removePhoto()">
+      <i class="material-icons md-24">delete</i>
+    </div>
+    <img class="ab-admin-photo-uploader__original-photo" src="{{photo.originalSrc}}" [attr.alt]="photo.title">
+  </div>
+
+  <div *ngIf="!photo || !photo.originalSrc">
+    <input (change)="handleFileSelect($event)" type="file" id="file" name="file" accept="image/*"/>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+@import "../../../styles/helpers/all";
+
+$bem-block-prefix: 'ab-admin-';
+
+:host {
+  @extend %ab-layer-block;
+  background: white;
+  height: 60px;
+  position: relative;
+  border-bottom: 1px solid transparentize(black, .8);
+}
+
+@include bem(menu) {
+  @extend %ab-layer-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 20px;
+  font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+
+
+  @include bem-element(link) {
+    display: inline-block;
+    text-decoration: none;
+
+    &:not(:first-of-type) {
+      margin-left: 20px;
+    }
+
+    @include bem-modifier(active) {
+      color: $header-links-color-default;
+      border-bottom: 2px solid $header-links-color-default;
+    }
+  }
+}

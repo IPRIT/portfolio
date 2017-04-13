@@ -2,11 +2,10 @@
 
 :host {
   @extend %ab-layer-block;
-  background: #F9FAFA;
+  background: $page-background-color;
   position: relative;
 }
 
 @include bem(me) {
-  $block-scope: unwrap-scope(&);
   @extend %ab-layer-block;
 }

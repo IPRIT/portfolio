@@ -1,0 +1,4 @@
+<div *ngIf="authState" class="ab-auth-state">
+  <button class="ab-auth-state__toggle-button" (click)="toggleAuth()">{{ authState === 1 ? 'Log Out' : 'Sign In' }}</button>
+  <div class="ab-auth-state__message">{{ authState === 1 ? ('Connected to ' + displayName) : 'You have no permissions' }}</div>
+</div>

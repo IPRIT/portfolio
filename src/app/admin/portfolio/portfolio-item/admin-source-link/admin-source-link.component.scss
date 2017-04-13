@@ -1,0 +1,8 @@
+@import "../../../../../styles/helpers/all";
+
+$bem-block-prefix: 'ab-admin-';
+
+@include bem(source-link) {
+  padding: 10px;
+  border: 1px solid #777;
+}

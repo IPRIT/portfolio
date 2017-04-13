@@ -1,0 +1,21 @@
+@import "../../../styles/helpers/all";
+
+$bem-block-prefix: 'ab-admin-';
+
+
+:host {
+  @extend %ab-layer-block;
+  background: $page-background-color;
+  position: relative;
+}
+
+@include bem(portfolio) {
+  padding: 20px;
+
+  @include bem-element(items) {
+    @extend %ab-layer-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px 0;
+  }
+}

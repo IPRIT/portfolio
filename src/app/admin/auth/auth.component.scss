@@ -1,0 +1,38 @@
+@import "../../../styles/helpers/all";
+
+:host {
+  @extend %ab-layer-block;
+  @include filter-gradient($header-links-background-color-default, $header-links-background-color-default, horizontal); // IE6-9
+  @include background-image(linear-gradient(to right, $header-links-background-color-default 0%, darken($header-links-background-color-default, 20%) 100%));
+  height: 50px;
+  position: relative;
+}
+
+@include bem(auth-state) {
+  @extend %ab-layer-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 20px;
+  font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+  color: white;
+
+  @include bem-element(toggle-button) {
+    color: white;
+    cursor: pointer;
+    padding: 6px 15px;
+    background: $header-links-background-color-default;
+    border: 0;
+    box-shadow: 0 1px 3px 0px transparentize(black, .8);
+    outline: none;
+    border-radius: 2px;
+
+    &:active {
+      box-shadow: inset 0 1px 3px 0px transparentize(black, .8);
+    }
+  }
+
+  @include bem-element(message) {
+    margin-left: 20px;
+  }
+}

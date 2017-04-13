@@ -1,0 +1,11 @@
+<div class="ab-admin-portfolio">
+  <div class="ab-admin-portfolio__tools">
+    <button (click)="createNew()">+Create new project</button>
+  </div>
+  <div class="ab-admin-portfolio__items">
+    <ab-admin-portfolio-item *ngFor="let item of portfolioItems | async" [item]="item"
+                             (itemUpdated)="updateItem($event)"
+                             (itemDeleted)="deleteItem($event)"
+                             (itemCopied)="copyItem($event)"></ab-admin-portfolio-item>
+  </div>
+</div>

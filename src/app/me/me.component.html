@@ -1,5 +1,5 @@
 <div class="ab-me">
-  <ab-mobile-menu [stateOpen]="isMobileMenuOpen" (onMobileMenuClosed)="onMobileMenuClosed($event)" [class.ab-mobile-menu_state_closed]="!isMobileMenuOpen"></ab-mobile-menu>
+  <ab-mobile-menu [stateOpen]="isMobileMenuOpen" (onMobileMenuClosed)="onMobileMenuClosed($event)" [class.closed]="!isMobileMenuOpen"></ab-mobile-menu>
   <ab-header (onMobileMenuClicked)="onMobileMenuClicked($event)"></ab-header>
   <router-outlet></router-outlet>
 </div>

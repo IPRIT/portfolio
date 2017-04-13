@@ -9,6 +9,7 @@
       <a class="link ab-header__link" [ngStyle]="styleService.linkStyle | async" routerLink="/me/about" routerLinkActive="ab-header__link_active" i18n>About me</a>
       <a class="link ab-header__link" [ngStyle]="styleService.linkStyle | async" routerLink="/me/portfolio" routerLinkActive="ab-header__link_active" i18n>Portfolio</a>
       <a class="link ab-header__link" [ngStyle]="styleService.linkStyle | async" routerLink="/me/portfolio/1" routerLinkActive="ab-header__link_active" i18n>Contact</a>
+      <a class="link ab-header__link" *ngIf="(authState | async) === 1" [ngStyle]="styleService.linkStyle | async" routerLink="/admin" routerLinkActive="ab-header__link_active" i18n>Admin</a>
     </div>
 
     <div class="ab-header__menu">

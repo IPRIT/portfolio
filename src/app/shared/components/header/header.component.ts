@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { HeaderLogoService } from "../../services/header-logo/header-logo.service";
 import { HeaderStyleService } from "../../services/header-style/header-style.service";
+import { AuthService, AuthState } from "../../../admin/auth/auth.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'ab-header',
@@ -11,12 +12,16 @@ export class HeaderComponent implements OnInit {
 
   @Output() onMobileMenuClicked = new EventEmitter<boolean>();
 
+  authState: Observable<AuthState>;
+
   constructor(
-    public styleService: HeaderStyleService
+    public styleService: HeaderStyleService,
+    public authService: AuthService
   ) {
   }
 
   ngOnInit() {
+    this.authState = this.authService.authState.asObservable();
   }
 
   mobileMenuClick(event) {

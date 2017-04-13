@@ -1,0 +1,7 @@
+@import "../../styles/helpers/all";
+
+:host {
+  @extend %ab-layer-block;
+  background: $page-background-color;
+  position: relative;
+}

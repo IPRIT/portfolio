@@ -1,0 +1,33 @@
+<div *ngIf="style">
+  <div class="form-group">
+    <label for="styleColor">Text Color:</label>
+    <input type="color" id="styleColor" class="form-control" required [(ngModel)]="style.color" name="styleColor">
+    <input type="text" id="styleColor2" class="form-control" required [(ngModel)]="style.color" name="styleColor2">
+  </div>
+
+  <div class="form-group">
+    <label for="backgroundOverlayGradient">Background Overlay Gradient:</label>
+    <input type="text" id="backgroundOverlayGradient" class="form-control" required [(ngModel)]="style.backgroundOverlayGradient" name="backgroundOverlayGradient">
+  </div>
+
+  <div class="form-group">
+    <label for="backgroundOverlayColor">Background Overlay Color:</label>
+    <input type="color" id="backgroundOverlayColor" class="form-control" required [(ngModel)]="style.backgroundOverlayColor" name="backgroundOverlayColor">
+    <input type="text" id="backgroundOverlayColor2" class="form-control" required [(ngModel)]="style.backgroundOverlayColor" name="backgroundOverlayColor2">
+  </div>
+
+  <div class="form-group">
+    <label for="styleColor">Background Photo:</label>
+    <ab-admin-photo [photo]="style.backgroundPhoto"></ab-admin-photo>
+  </div>
+
+  <div class="form-group">
+    <label for="backgroundPhotoPosition">Background Photo Position:</label>
+    <input type="text" id="backgroundPhotoPosition" class="form-control" required [(ngModel)]="style.backgroundPhotoPosition" name="backgroundPhotoPosition">
+  </div>
+
+  <div class="form-group">
+    <label for="backgroundPhotoSize">Background Photo Size:</label>
+    <input type="text" id="backgroundPhotoSize" class="form-control" required [(ngModel)]="style.backgroundPhotoSize" name="backgroundPhotoSize">
+  </div>
+</div>

@@ -14,6 +14,10 @@ import { NotFoundModule } from "./not-found/not-found.module";
 import { AppRoutingModule } from "./routing/app.routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { AdminModule } from "./admin/admin.module";
+import { firebaseConfig, firebaseAuthConfig } from "../environments/firebase.config";
+import { NoSanitizationService } from "./shared/services/no-sanitization/no-sanitization";
+import { DomSanitizer } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     BrowserModule.withServerTransition({ appId: 'AbPortfolio' }),
     BrowserAnimationsModule,
 
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     FormsModule,
     HttpModule,
     FlexLayoutModule,
@@ -33,10 +37,12 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 
     MeModule,
     MainModule,
+    AdminModule,
     NotFoundModule
   ],
   providers: [
     //{ provide: APP_BASE_HREF, useValue: '/' },
+    { provide: DomSanitizer, useClass: NoSanitizationService }
   ],
   bootstrap: [ AppComponent ],
   exports: [

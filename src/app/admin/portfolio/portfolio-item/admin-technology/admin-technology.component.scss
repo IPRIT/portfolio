@@ -1,0 +1,17 @@
+@import "../../../../../styles/helpers/all";
+
+$bem-block-prefix: 'ab-admin-';
+
+@include bem(technology) {
+
+  @include bem-element(remove) {
+    display: inline-block;
+    position: relative;
+    top: 7px;
+    cursor: pointer;
+  }
+
+  @include bem-element(select) {
+    display: inline-block;
+  }
+}

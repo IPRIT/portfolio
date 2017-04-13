@@ -1,0 +1,30 @@
+<div class="ab-admin-technology">
+
+  <div *ngIf="!creation">
+
+    <div class="form-group ab-admin-technology__select">
+      <label for="name">Select Technology:</label>
+      <select [(ngModel)]="technologyUid" (change)="setTechnology(technologyUid)">
+        <option *ngFor="let _technology of technologies | async" [value]="_technology.uid">{{_technology.name}}</option>
+      </select>
+    </div>
+
+    <div class="ab-admin-technology__remove" (click)="removeFromTheList()">
+      <i class="material-icons md-24">delete</i>
+    </div>
+
+  </div>
+
+  <div *ngIf="creation">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" class="form-control" required [(ngModel)]="technology.name" name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" class="form-control" required [(ngModel)]="technology.description" name="description"></textarea>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+@import "../../../../../styles/helpers/all";
+
+$bem-block-prefix: 'ab-admin-';
+
+@include bem(photo-uploader) {
+  display: inline-block;
+  position: relative;
+
+  @include bem-element(original-photo) {
+    position: relative;
+    max-width: 100%;
+    width: 64px;
+    height: 48px;
+  }
+
+  @include bem-element(remove) {
+    color: white;
+    text-shadow: 0 1px 19px black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    cursor: pointer;
+  }
+}

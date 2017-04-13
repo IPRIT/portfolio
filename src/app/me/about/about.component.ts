@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from "../../routing/app.routing.animations";
 import { AbImageModel } from "../../shared/components/ab-image/ab-image.model";
 import { FirebaseListObservable, AngularFire } from "angularfire2";
-import { HeaderStyleService } from "../../shared/services/header-style/header-style.service";
-
-const INITIAL_LOGO: string = './assets/ui/images/logo-blue.png';
+import { HeaderStyleService, HeaderStyleClass } from "../../shared/services/header-style/header-style.service";
+import { HeaderLogos } from "../../shared/services/header-logo/header-logo.service";
 
 @Component({
   selector: 'ab-about',
@@ -22,8 +21,8 @@ export class AboutComponent implements OnInit {
     private angularFire: AngularFire,
     private headerStyle: HeaderStyleService
   ) {
-    headerStyle.logoService.setLogoUrl(INITIAL_LOGO);
-    headerStyle.setClass('about');
+    headerStyle.logoService.setLogoUrl(HeaderLogos.blue);
+    headerStyle.setClass(HeaderStyleClass.about);
 
     this.items = angularFire.database.list('/users', {
       query: {
