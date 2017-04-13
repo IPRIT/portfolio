@@ -76,4 +76,11 @@ export class PortfolioItemComponent implements OnInit {
       this.item.technologies.findIndex(p => p.uid === technology.uid), 1
     );
   }
+
+  removeSourceLink(link: PortfolioSourceLink) {
+    console.log(link);
+    this.item.sourceLinks.splice(
+      this.item.sourceLinks.findIndex(p => p.href === link.href), 1
+    );
+  }
 }

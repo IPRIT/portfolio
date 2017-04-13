@@ -31,6 +31,7 @@ export class PortfolioComponent implements OnInit {
       subTitle: 'subTitle',
       shortDescription: 'shortDescription',
       description: 'description',
+      demoUrl: 'http://',
       createdAtMs: Date.now(),
       photos: [],
       technologies: [],
@@ -43,9 +44,17 @@ export class PortfolioComponent implements OnInit {
           imageName: '',
           title: 'Name',
         },
+        backgroundPhotoForPage: {
+          originalSrc: '',
+          thumbnailSrc: '',
+          imageName: '',
+          title: 'Name',
+        },
         backgroundOverlayGradient: '-',
         backgroundPhotoPosition: '-',
+        backgroundPhotoPositionForPage: '-',
         backgroundPhotoSize: '-',
+        backgroundPhotoSizeForPage: '-',
         backgroundOverlayColor: '-'
       }
     };

@@ -27,6 +27,11 @@
         <textarea id="description" class="form-control" required [(ngModel)]="item.description" name="description"></textarea>
       </div>
 
+      <div class="form-group">
+        <label for="demoUrl">Demo Url:</label>
+        <input type="text" id="demoUrl" class="form-control" [(ngModel)]="item.demoUrl" name="demoUrl">
+      </div>
+
       <div class="form-area">
         <label><b>Style:</b></label>
         <ab-admin-style [style]="item.style"></ab-admin-style>
@@ -34,13 +39,19 @@
 
       <div class="form-area">
         <label><b>Photos:</b></label>
-        <ab-admin-photo *ngFor="let photo of item.photos; let i = index" [photo]="photo" (photoDeleted)="removeEmptyPhoto(photo)"></ab-admin-photo>
+        <ab-admin-photo *ngFor="let photo of item.photos; let i = index"
+                        [photo]="photo"
+                        (photoDeleted)="removeEmptyPhoto(photo)"
+        ></ab-admin-photo>
         <a class="link" href="#" (click)="appendEmptyPhoto($event)">+Add</a>
       </div>
 
       <div class="form-area">
         <label><b>Links:</b></label>
-        <ab-admin-source-link *ngFor="let link of item.sourceLinks; let i = index" [sourceLink]="link"></ab-admin-source-link>
+        <ab-admin-source-link *ngFor="let link of item.sourceLinks; let i = index"
+                              [sourceLink]="link"
+                              (sourceLinkDeleted)="removeSourceLink(link)"
+        ></ab-admin-source-link>
         <a class="link" href="#" (click)="appendEmptySourceLink($event)">+Add link</a>
       </div>
 

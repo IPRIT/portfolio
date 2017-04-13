@@ -6,6 +6,7 @@ export interface PortfolioItem {
   subTitle?: string,
   shortDescription?: string,
   description?: string,
+  demoUrl: string,
   photos?: PortfolioItemPhoto[],
   technologies?: Technology[],
   sourceLinks?: PortfolioSourceLink[],
@@ -36,8 +37,11 @@ export interface PortfolioSourceLink {
 export interface PortfolioItemStyle {
   color: string,
   backgroundPhoto: PortfolioItemPhoto,
+  backgroundPhotoForPage: PortfolioItemPhoto,
   backgroundOverlayGradient?: string,
   backgroundPhotoPosition?: string,
+  backgroundPhotoPositionForPage?: string,
   backgroundPhotoSize?: string,
+  backgroundPhotoSizeForPage?: string,
   backgroundOverlayColor?: string
 }

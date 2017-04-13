@@ -22,12 +22,28 @@
   </div>
 
   <div class="form-group">
+    <label for="styleColor">Background Photo For Page:</label>
+    <ab-admin-photo [photo]="style.backgroundPhotoForPage"></ab-admin-photo>
+  </div>
+
+  <div class="form-group">
     <label for="backgroundPhotoPosition">Background Photo Position:</label>
     <input type="text" id="backgroundPhotoPosition" class="form-control" required [(ngModel)]="style.backgroundPhotoPosition" name="backgroundPhotoPosition">
+  </div>
+
+  <div class="form-group">
+    <label for="backgroundPhotoPositionForPage">Background Photo Position For Page:</label>
+    <input type="text" id="backgroundPhotoPositionForPage" class="form-control" required [(ngModel)]="style.backgroundPhotoPositionForPage" name="backgroundPhotoPositionForPage">
   </div>
 
   <div class="form-group">
     <label for="backgroundPhotoSize">Background Photo Size:</label>
     <input type="text" id="backgroundPhotoSize" class="form-control" required [(ngModel)]="style.backgroundPhotoSize" name="backgroundPhotoSize">
   </div>
+
+  <div class="form-group">
+    <label for="backgroundPhotoSizeForPage">Background Photo Size For Page:</label>
+    <input type="text" id="backgroundPhotoSizeForPage" class="form-control" required [(ngModel)]="style.backgroundPhotoSizeForPage" name="backgroundPhotoSizeForPage">
+  </div>
+
 </div>

@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { PortfolioItemStyle } from "../../../../me/portfolio/portfolio-item/portfolio-item.interface";
-import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: 'ab-admin-style',
