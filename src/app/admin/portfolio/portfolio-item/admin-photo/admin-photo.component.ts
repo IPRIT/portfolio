@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject, EventEmitter, Output } from '@angular/core';
-import { PortfolioItemPhoto } from "../../../../me/portfolio/portfolio-item/portfolio-item.interface";
+import { PortfolioItemPhoto } from "../../../../shared/components/portfolio-item/portfolio-item.interface";
 import { FirebaseApp } from "angularfire2";
 
 @Component({

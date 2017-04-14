@@ -7,6 +7,7 @@ import { RouterModule } from "@angular/router";
 import { HeaderComponent } from "./components/header/header.component";
 import { HeaderLogoService } from "./services/header-logo/header-logo.service";
 import { HeaderStyleService } from "./services/header-style/header-style.service";
+import { PortfolioItemComponent } from './components/portfolio-item/portfolio-item.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { HeaderStyleService } from "./services/header-style/header-style.service
     AbImageComponent,
     AbBackgroundComponent,
     MobileMenuComponent,
-    HeaderComponent
+    HeaderComponent,
+    PortfolioItemComponent
   ],
   providers: [
     HeaderLogoService,
@@ -27,7 +29,8 @@ import { HeaderStyleService } from "./services/header-style/header-style.service
     AbImageComponent,
     AbBackgroundComponent,
     MobileMenuComponent,
-    HeaderComponent
+    HeaderComponent,
+    PortfolioItemComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

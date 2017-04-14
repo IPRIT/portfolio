@@ -8,6 +8,7 @@
 
 @include bem(header) {
   @extend %ab-layer-block;
+  width: 100vw;
   background: $header-background-color;
   @if $header-has-shadow {
     box-shadow: $header-shadow;

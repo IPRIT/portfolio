@@ -11,7 +11,7 @@
   $block-scope: unwrap-scope(&);
 
   @extend %ab-layer-block;
-  @include filter-gradient(#18a76f, #13708f, horizontal); // IE6-9
+  @include filter-gradient($gradient-left-color, $gradient-right-color, horizontal); // IE6-9
   @include background-image(linear-gradient(to right, $gradient-left-color 0%, $gradient-right-color 100%));
 
   @include bem-element(inner) {

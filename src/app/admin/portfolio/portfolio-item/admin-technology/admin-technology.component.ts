@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Technology } from "../../../../me/portfolio/portfolio-item/portfolio-item.interface";
+import { Technology } from "../../../../shared/components/portfolio-item/portfolio-item.interface";
 import { AngularFire, FirebaseListObservable } from "angularfire2";
 import { Observable, Subject } from "rxjs";
 

@@ -69,6 +69,19 @@ $header-links-color-default: #F15F41;
 $header-links-color-active-default: white;
 $header-links-background-color-default: #ef4b5b;
 
+/* Portfolio Section */
+$portfolio-main-color-1: #ef4b5b;
+$portfolio-main-color-1-darken: darken(#ef4b5b, 20%);
+$portfolio-main-color-2: #ff6348;
+
+$portfolio-item-max-width: 400px;
+$portfolio-item-min-width: 300px;
+$portfolio-item-width-height-ratio: 1.25;
+$portfolio-item-title-font-size: 2em;
+$portfolio-item-subtitle-font-size: 1.1em;
+$portfolio-item-short-description-font-size: .9em;
+
+
 /* Header About | Default */
 $header-links-color-about: #14988d;
 $header-links-color-active-about: white;

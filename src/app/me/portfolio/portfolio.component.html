@@ -1,7 +1,16 @@
-<p>
-  portfolio works!
-  <a *ngFor="let pageNumber of [1,2,3,4,5,6]" [routerLink]="['/me/portfolio', pageNumber]" routerLinkActive="active">
-    Portfolio Item {{pageNumber}}
-    <br>
-  </a>
-</p>
+<div class="ab-portfolio">
+  <div class="ab-portfolio__inner">
+
+    <div class="ab-portfolio__title">
+      <h3 class="ab-portfolio__title-text" i18n>My Projects</h3>
+      <div class="ab-portfolio__title-line"></div>
+    </div>
+
+    <div class="ab-portfolio__items" ab-grid-listener [abGridItemMin]="320" [abGridItemMax]="320">
+
+      <ab-portfolio-item *ngFor="let item of portfolioItems | async" [item]="item"></ab-portfolio-item>
+
+    </div>
+
+  </div>
+</div>

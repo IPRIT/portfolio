@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {
   PortfolioItem, PortfolioItemPhoto,
   PortfolioItemStyle, PortfolioSourceLink, Technology
-} from "../../../me/portfolio/portfolio-item/portfolio-item.interface";
+} from "../../../shared/components/portfolio-item/portfolio-item.interface";
 
 @Component({
   selector: 'ab-admin-portfolio-item',

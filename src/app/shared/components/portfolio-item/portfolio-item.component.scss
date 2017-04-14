@@ -1,0 +1,105 @@
+@import "../../../../styles/helpers/all";
+
+:host {
+  contain: content;
+  display: inline-block;
+  position: relative;
+  min-height: $portfolio-item-max-width / $portfolio-item-width-height-ratio - 30px;
+  //min-width: $portfolio-item-min-width;
+  margin: 16px 16px 0 0;
+  overflow: hidden;
+  border-radius: 2px;
+  background-color: #CCC5CA;
+  box-shadow: 0 0 0 1px transparentize(black, .88);
+  cursor: pointer;
+
+  @include transition-only-for(.28s, (box-shadow), .0s, cubic-bezier(0.4, 0, 0.2, 1));
+
+  &:hover {
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+      0 1px 10px 0 rgba(0, 0, 0, 0.12),
+      0 2px 4px -1px rgba(0, 0, 0, 0.4);
+  }
+
+  @for $i from 1 through 100 {
+    [grid-columns="#{$i}"] & {
+      width: calc((100% - (32px * (#{$i} - 1))) / #{$i});
+    }
+  }
+}
+
+@include bem(portfolio-item) {
+  @extend %ab-layer-block;
+
+  @include bem-element(inner) {
+    @extend %ab-layer-block;
+    background: white;
+  }
+
+  @include bem-element(background-protector) {
+    @extend %ab-layer-absolute-fill;
+  }
+
+  @include bem-element(text-layout) {
+    @extend %ab-layer-absolute-fill;
+    width: calc(100% - 88px);
+    padding: 24px 0 24px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+
+    @include media-query(lt-xs) {
+      width: calc(100% - 20px);
+      font-size: .8em;
+    }
+  }
+
+  @include bem-element(title) {
+    display: inline-block;
+    font-size: $portfolio-item-title-font-size;
+    color: inherit;
+    font-weight: 500;
+    padding-bottom: 6px;
+    line-height: 1.1em;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @include bem-element(subtitle) {
+    font-size: $portfolio-item-subtitle-font-size;
+    color: inherit;
+    opacity: .9;
+    padding: 0 0 10px 2px;
+    font-style: italic;
+  }
+
+  @include bem-element(title-delimiter) {
+    width: 90px;
+    height: 4px;
+    min-height: 4px;
+    background: white;
+  }
+
+  @include bem-element(short-description) {
+    font-size: $portfolio-item-short-description-font-size;
+    opacity: .9;
+    margin-top: 10px;
+  }
+
+  @include bem-element(image) {
+    height: 100%;
+    /deep/ {
+      div, img {
+        height: 100%;
+      }
+      img {
+        object-fit: cover;
+      }
+    }
+  }
+}

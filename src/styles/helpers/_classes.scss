@@ -13,6 +13,15 @@
   flex-direction: column;
 }
 
+%ab-layer-absolute-fill {
+  position: absolute;
+  @extend %ab-layer-block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
 %magic-link {
   text-decoration: none;
   background-image: linear-gradient(to bottom, white 50%, white 50%);

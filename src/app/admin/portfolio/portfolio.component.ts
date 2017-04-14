@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseListObservable, AngularFire } from "angularfire2";
-import { PortfolioItem } from "../../me/portfolio/portfolio-item/portfolio-item.interface";
+import { PortfolioItem } from "../../shared/components/portfolio-item/portfolio-item.interface";
 
 @Component({
   selector: 'ab-portfolio',

@@ -1,17 +1,22 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortfolioComponent } from './portfolio.component';
-import { PortfolioItemComponent } from './portfolio-item/portfolio-item.component';
+import { PortfolioItemPageComponent } from './portfolio-item-page/portfolio-item-page.component';
 import { RouterModule } from "@angular/router";
+import { SharedModule } from "../../shared/shared.module";
+import { GridListenerDirective } from "./grid-listener.directive";
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     PortfolioComponent,
-    PortfolioItemComponent
-  ]
+    PortfolioItemPageComponent,
+    GridListenerDirective
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class PortfolioModule { }

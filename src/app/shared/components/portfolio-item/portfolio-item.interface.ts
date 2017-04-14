@@ -1,4 +1,4 @@
-import { AbImage } from "../../../shared/components/ab-image/ab-image.model";
+import { AbImage } from "../ab-image/ab-image.model";
 
 export interface PortfolioItem {
   uid?: string,

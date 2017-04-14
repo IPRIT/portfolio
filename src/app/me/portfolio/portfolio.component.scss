@@ -1,0 +1,49 @@
+@import "../../../styles/helpers/all";
+
+:host {
+  @extend %ab-layer-block;
+  height: auto;
+  position: relative;
+}
+
+@include bem(portfolio) {
+  @extend %ab-layer-block;
+  height: auto;
+
+  @include bem-element(inner) {
+    padding: 30px 5%;
+  }
+
+  @include bem-element(title) {
+  }
+
+  @include bem-element(title-text) {
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+    font-weight: 500;
+    font-size: 1.9em;
+    line-height: 1.04;
+    letter-spacing: -.028em;
+    margin: 31px 0 0;
+
+    @include media-query(lt-sm) {
+      font-size: 1.6em;
+      margin: 15px 0 0;
+      font-weight: 400;
+    }
+  }
+
+  @include bem-element(title-line) {
+    margin-top: 20px;
+    height: 4px;
+    width: 90px;
+    @include filter-gradient($portfolio-main-color-1, $portfolio-main-color-2, horizontal); // IE6-9
+    @include background-image(linear-gradient(to right, $portfolio-main-color-1 0%, $portfolio-main-color-2 100%));
+  }
+
+  @include bem-element(items) {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

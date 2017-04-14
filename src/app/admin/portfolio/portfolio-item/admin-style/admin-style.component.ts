@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { PortfolioItemStyle } from "../../../../me/portfolio/portfolio-item/portfolio-item.interface";
+import { PortfolioItemStyle } from "../../../../shared/components/portfolio-item/portfolio-item.interface";
 
 @Component({
   selector: 'ab-admin-style',

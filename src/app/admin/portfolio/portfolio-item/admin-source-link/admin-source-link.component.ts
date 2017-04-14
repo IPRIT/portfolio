@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { PortfolioSourceLink } from "../../../../me/portfolio/portfolio-item/portfolio-item.interface";
+import { PortfolioSourceLink } from "../../../../shared/components/portfolio-item/portfolio-item.interface";
 
 @Component({
   selector: 'ab-admin-source-link',
