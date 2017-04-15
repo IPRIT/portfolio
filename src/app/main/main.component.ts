@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from "../routing/app.routing.animations";
 import { HeaderStyleService, HeaderStyleClass } from "../shared/services/header-style/header-style.service";
 import { HeaderLogos } from "../shared/services/header-logo/header-logo.service";
+import { LanguageProviderService, AvailableLanguages } from "../shared/services/language/language-provider.service";
 
 @Component({
   selector: 'ab-main',
@@ -13,12 +14,18 @@ import { HeaderLogos } from "../shared/services/header-logo/header-logo.service"
 export class MainComponent implements OnInit {
 
   isMobileMenuOpen: boolean = false;
+  currentLanguage: string;
 
   constructor(
-    private headerStyle: HeaderStyleService
+    private headerStyle: HeaderStyleService,
+    private languageService: LanguageProviderService
   ) {
     headerStyle.logoService.setLogoUrl(HeaderLogos.blue);
     headerStyle.setClass(HeaderStyleClass.about);
+
+    this.languageService.getLanguage().subscribe(language => {
+      this.currentLanguage = language;
+    });
   }
 
   ngOnInit() {
@@ -26,5 +33,9 @@ export class MainComponent implements OnInit {
 
   setMobileMenuState(state) {
     this.isMobileMenuOpen = state;
+  }
+
+  setLanguage(language) {
+    this.languageService.saveLanguage( language );
   }
 }

@@ -26,8 +26,9 @@ export class PortfolioComponent implements OnInit {
     headerStyle.logoService.setLogoUrl(HeaderLogos.pink);
     headerStyle.setClass(HeaderStyleClass.portfolio);
 
-    console.log(`${this.portfolioItemsNs}/${languageProvider.obtainContentLanguage()}`);
-    this.portfolioItems = angularFire.database.list(`${this.portfolioItemsNs}/${languageProvider.obtainContentLanguage()}`);
+    this.languageProvider.getLanguage().subscribe(language => {
+      this.portfolioItems = angularFire.database.list(`${this.portfolioItemsNs}/${language}`);
+    });
   }
 
   ngOnInit() {

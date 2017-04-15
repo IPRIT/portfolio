@@ -1,6 +1,8 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { LocalStorageService } from "angular-2-local-storage";
 import { isPlatformServer, isPlatformBrowser } from "@angular/common";
+import { BehaviorSubject, Subject, Observable } from "rxjs";
+import 'rxjs/add/operator/publishReplay';
 
 export class LanguageType {
   static EN: string[] = [ 'en', 'us', 'en-us', 'en-uk' ];
@@ -11,7 +13,7 @@ declare type NavigatorExtended = Navigator & {
   languages: string[]
 };
 
-declare type AvailableLanguages = 'en' | 'ru';
+export declare type AvailableLanguages = 'en' | 'ru';
 
 @Injectable()
 export class LanguageProviderService {
@@ -20,17 +22,26 @@ export class LanguageProviderService {
   private defaultLanguageType: string[] = LanguageType.EN;
   private storageLanguageKey: string = 'language';
 
+  private language$: Subject<AvailableLanguages>;
+
   constructor(
     private storageService: LocalStorageService,
     @Inject(PLATFORM_ID) private platformId: string
-  ) { }
+  ) {
+    this.language$ = new BehaviorSubject(this.obtainContentLanguage());
+  }
 
   obtainContentLanguage(): AvailableLanguages {
     return <AvailableLanguages>(this.getSavedLanguage() || this.findOutUserLanguage());
   }
 
   saveLanguage(languageString: AvailableLanguages) {
+    this.language$.next( languageString );
     this.storageService.set(this.storageLanguageKey, languageString);
+  }
+
+  getLanguage(): Observable<AvailableLanguages> {
+    return this.language$;
   }
 
   private getSavedLanguage(): string {

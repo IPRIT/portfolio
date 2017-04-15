@@ -4,12 +4,14 @@ import { environment } from './environments/environment';
 import { AppModule } from './app/app.module';
 
 import { hmrBootstrap } from './hmr';
+import { getTranslationProviders } from "./i18n";
 
 if (environment.production) {
   enableProdMode();
 }
 const bootstrap = () => {
-  return platformBrowserDynamic().bootstrapModule(AppModule);
+  const options = { providers: getTranslationProviders() };
+  return platformBrowserDynamic().bootstrapModule(AppModule, options);
 };
 
 if (environment.hmr) {
