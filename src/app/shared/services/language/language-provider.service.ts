@@ -5,12 +5,12 @@ import { BehaviorSubject, Subject, Observable } from "rxjs";
 import 'rxjs/add/operator/publishReplay';
 
 export class LanguageType {
-  static EN: string[] = [ 'en', 'us', 'en-us', 'en-uk' ];
-  static RU: string[] = [ 'ru', 'ru-ru' ];
+  static EN: any[] = [ 'en', 'us', 'en-us', 'en-uk' ];
+  static RU: any[] = [ 'ru', 'ru-ru' ];
 }
 
 declare type NavigatorExtended = Navigator & {
-  languages: string[]
+  languages: any[]
 };
 
 export declare type AvailableLanguages = 'en' | 'ru';
@@ -19,14 +19,14 @@ export declare type AvailableLanguages = 'en' | 'ru';
 export class LanguageProviderService {
 
   public availableLanguages = [ 'en', 'ru' ];
-  private defaultLanguageType: string[] = LanguageType.EN;
-  private storageLanguageKey: string = 'language';
+  private defaultLanguageType = LanguageType.EN;
+  private storageLanguageKey = 'language';
 
   private language$: Subject<AvailableLanguages>;
 
   constructor(
     private storageService: LocalStorageService,
-    @Inject(PLATFORM_ID) private platformId: string
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
     this.language$ = new BehaviorSubject(this.obtainContentLanguage());
   }
@@ -44,7 +44,7 @@ export class LanguageProviderService {
     return this.language$;
   }
 
-  private getSavedLanguage(): string {
+  private getSavedLanguage(): AvailableLanguages | any {
     if (this.getPlatformType().isBrowser) {
       let language = this.storageService.get(this.storageLanguageKey);
       return typeof language === 'string' ? language : null; // Storage fix workaround

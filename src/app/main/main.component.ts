@@ -13,18 +13,21 @@ import { LanguageProviderService, AvailableLanguages } from "../shared/services/
 })
 export class MainComponent implements OnInit {
 
-  isMobileMenuOpen: boolean = false;
+  isMobileMenuOpen = false;
   currentLanguage: string;
 
   constructor(
     private headerStyle: HeaderStyleService,
-    private languageService: LanguageProviderService
+    public languageService: LanguageProviderService
   ) {
     headerStyle.logoService.setLogoUrl(HeaderLogos.blue);
     headerStyle.setClass(HeaderStyleClass.about);
 
     this.languageService.getLanguage().subscribe(language => {
       this.currentLanguage = language;
+    });
+    this.languageService.getLanguage().skip(1).subscribe(language => {
+      location.href = location.href;
     });
   }
 
