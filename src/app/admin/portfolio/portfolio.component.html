@@ -1,11 +1,16 @@
 <div class="ab-admin-portfolio">
   <div class="ab-admin-portfolio__tools">
     <button (click)="createNew()">+Create new project</button>
+    <select [(ngModel)]="currentLanguage" (change)="setLanguage($event, currentLanguage)">
+      <option *ngFor="let language of availableLanguages" [value]="language">{{language}}</option>
+    </select>
   </div>
   <div class="ab-admin-portfolio__items">
     <ab-admin-portfolio-item *ngFor="let item of portfolioItems | async" [item]="item"
                              (itemUpdated)="updateItem($event)"
                              (itemDeleted)="deleteItem($event)"
-                             (itemCopied)="copyItem($event)"></ab-admin-portfolio-item>
+                             (itemCopied)="copyItem($event)"
+                             (itemCopiedForOtherLanguages)="copyItemToOtherLanguages($event)"
+    ></ab-admin-portfolio-item>
   </div>
 </div>

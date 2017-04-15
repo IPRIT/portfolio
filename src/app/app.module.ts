@@ -6,7 +6,6 @@ import { AngularFireModule } from "angularfire2";
 
 import { AppComponent } from './app.component';
 import { APP_BASE_HREF } from "@angular/common";
-import { environment } from "../environments/environment";
 import { SharedModule } from "./shared/shared.module";
 import { MeModule } from "./me/me.module";
 import { MainModule } from "./main/main.module";
@@ -18,15 +17,22 @@ import { AdminModule } from "./admin/admin.module";
 import { firebaseConfig, firebaseAuthConfig } from "../environments/firebase.config";
 import { NoSanitizationService } from "./shared/services/no-sanitization/no-sanitization";
 import { DomSanitizer } from '@angular/platform-browser';
+import { LocalStorageModule } from "angular-2-local-storage";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'AbPortfolio' }),
+    BrowserModule.withServerTransition({
+      appId: 'AbPortfolio'
+    }),
     BrowserAnimationsModule,
 
+    LocalStorageModule.withConfig({
+      prefix: 'ab',
+      storageType: 'localStorage'
+    }),
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     FormsModule,
     HttpModule,

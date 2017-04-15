@@ -4,6 +4,7 @@ import { HeaderStyleService, HeaderStyleClass } from "../../shared/services/head
 import { HeaderLogos } from "../../shared/services/header-logo/header-logo.service";
 import { FirebaseListObservable, AngularFire } from "angularfire2";
 import { PortfolioItem } from "../../shared/components/portfolio-item/portfolio-item.interface";
+import { LanguageProviderService } from "../../shared/services/language/language-provider.service";
 
 @Component({
   selector: 'ab-portfolio',
@@ -19,12 +20,14 @@ export class PortfolioComponent implements OnInit {
 
   constructor(
     private headerStyle: HeaderStyleService,
-    private angularFire: AngularFire
+    private angularFire: AngularFire,
+    private languageProvider: LanguageProviderService
   ) {
     headerStyle.logoService.setLogoUrl(HeaderLogos.pink);
     headerStyle.setClass(HeaderStyleClass.portfolio);
 
-    this.portfolioItems = angularFire.database.list(this.portfolioItemsNs);
+    console.log(`${this.portfolioItemsNs}/${languageProvider.obtainContentLanguage()}`);
+    this.portfolioItems = angularFire.database.list(`${this.portfolioItemsNs}/${languageProvider.obtainContentLanguage()}`);
   }
 
   ngOnInit() {

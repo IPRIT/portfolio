@@ -15,6 +15,7 @@ export class PortfolioItemComponent implements OnInit {
   @Output() itemUpdated = new EventEmitter<PortfolioItem>();
   @Output() itemDeleted = new EventEmitter<PortfolioItem>();
   @Output() itemCopied = new EventEmitter<PortfolioItem>();
+  @Output() itemCopiedForOtherLanguages = new EventEmitter<PortfolioItem>();
 
   constructor() { }
 
@@ -33,6 +34,11 @@ export class PortfolioItemComponent implements OnInit {
   copyItem(event) {
     event.preventDefault();
     this.itemCopied.emit( this.item );
+  }
+
+  copyItemToOtherLanguages(event) {
+    event.preventDefault();
+    this.itemCopiedForOtherLanguages.emit( this.item );
   }
 
   appendEmptyPhoto(event) {

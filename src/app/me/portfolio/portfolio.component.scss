@@ -11,7 +11,11 @@
   height: auto;
 
   @include bem-element(inner) {
-    padding: 30px 5%;
+    padding: 30px calc(5% - 16px) 30px 5%;
+
+    @include media-query(lt-xs) {
+      padding: 30px 5%;
+    }
   }
 
   @include bem-element(title) {

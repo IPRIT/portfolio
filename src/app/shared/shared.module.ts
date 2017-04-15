@@ -8,6 +8,7 @@ import { HeaderComponent } from "./components/header/header.component";
 import { HeaderLogoService } from "./services/header-logo/header-logo.service";
 import { HeaderStyleService } from "./services/header-style/header-style.service";
 import { PortfolioItemComponent } from './components/portfolio-item/portfolio-item.component';
+import { LanguageProviderService } from "./services/language/language-provider.service";
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { PortfolioItemComponent } from './components/portfolio-item/portfolio-it
   ],
   providers: [
     HeaderLogoService,
-    HeaderStyleService
+    HeaderStyleService,
+    LanguageProviderService
   ],
   exports: [
     AbImageComponent,
