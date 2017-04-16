@@ -9,6 +9,8 @@
 .ab-background {
   $scope: &;
   background-color: #f1f1f1;
+  background-size: inherit;
+  background-position: inherit;
   height: 100%;
   width: 100%;
 
@@ -19,6 +21,9 @@
     background-size: cover;
     background-clip: border-box;
     background-repeat: no-repeat;
+
+    background-size: inherit;
+    background-position: inherit;
   }
 
   &__original {

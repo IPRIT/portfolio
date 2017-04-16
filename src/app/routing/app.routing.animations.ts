@@ -10,7 +10,7 @@ export function opacity() {
     state('*', style({ position: 'absolute', width: '100%' }) ),
     transition(':enter', [
       style({ opacity: 0 }),
-      animate('0.5s .2s ease-in-out', style({ opacity: 1 }))
+      animate('0.5s .1s ease-in-out', style({ opacity: 1 }))
     ])
   ]);
 }

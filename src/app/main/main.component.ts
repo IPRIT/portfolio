@@ -27,7 +27,11 @@ export class MainComponent implements OnInit {
       this.currentLanguage = language;
     });
     this.languageService.getLanguage().skip(1).subscribe(language => {
-      location.href = location.href;
+      if (window && (<any>window).reload) {
+        (<any>window).reload(true);
+      } else {
+        location.href = location.href;
+      }
     });
   }
 

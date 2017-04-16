@@ -62,10 +62,10 @@ export class AbBackgroundComponent implements OnInit, OnDestroy {
 
   subscribeEvents(): void {
     this.loadEvent = this.loadedImage.subscribe(_ => {
-      this.renderer.setStyle(this.originalWrapper.nativeElement, 'background-image', `url(${this.abImageModel.originalSrc})`);
 
       setTimeout(() => {
         requestAnimationFrame(() => {
+          this.renderer.setStyle(this.originalWrapper.nativeElement, 'background-image', `url(${this.abImageModel.originalSrc})`);
           this.renderer.addClass(this.templateRoot.nativeElement, 'ab-background_loaded');
         });
       }, IMAGE_LOADING_TIMEOUT_MS);

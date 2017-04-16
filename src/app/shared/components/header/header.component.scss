@@ -4,6 +4,8 @@
   @extend %ab-layer-block;
   height: $header-height;
   max-height: $header-height;
+  z-index: $header-z-index;
+  position: relative;
 }
 
 @include bem(header) {

@@ -22,7 +22,7 @@ export class PortfolioItemComponent {
 
   imageLoaded(image: AbImage) {
     Observable.of(this.backgroundProtector.nativeElement)
-      .delay(400)
+      .delay(200)
       .subscribe(element => this.renderer.addClass(element, 'loaded'));
   }
 }

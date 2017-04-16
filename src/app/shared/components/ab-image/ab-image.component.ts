@@ -6,7 +6,7 @@ import { Subject, Subscription } from "rxjs";
 import { AbImageModel } from "./ab-image.model";
 import { isPlatformBrowser, isPlatformServer } from "@angular/common";
 
-const IMAGE_LOADING_TIMEOUT_MS = 500;
+const IMAGE_LOADING_TIMEOUT_MS = 100;
 
 @Component({
   selector: 'ab-image,[ab-image]',

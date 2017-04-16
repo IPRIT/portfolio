@@ -6,7 +6,7 @@
       <div class="ab-portfolio__title-line"></div>
     </div>
 
-    <div class="ab-portfolio__items" ab-grid-listener [abGridItemMin]="320" [abGridItemMax]="320">
+    <div *ngIf="(portfolioItems | async)?.length > 0" class="ab-portfolio__items" ab-grid-listener [abGridItemMin]="320" [abGridItemMax]="320">
 
       <ab-portfolio-item *ngFor="let item of portfolioItems | async" [item]="item"></ab-portfolio-item>
 

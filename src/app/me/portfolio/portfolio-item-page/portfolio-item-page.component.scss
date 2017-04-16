@@ -1,0 +1,84 @@
+@import "../../../../styles/helpers/all";
+@import "../../../../styles/components/fonts/ubuntu";
+
+:host {
+  @extend %ab-layer-block;
+  height: auto;
+  background: white;
+  position: relative;
+}
+
+@include bem(portfolio-item-page) {
+
+  @include bem-element(inner) {
+
+  }
+
+  @include bem-element(header) {
+    height: 200px;
+  }
+
+  @include bem-element(image) {
+    @extend %ab-layer-absolute-fill;
+    z-index: 1;
+  }
+
+  @include bem-element(background-protector) {
+    @extend %ab-layer-absolute-fill;
+    z-index: 2;
+    opacity: 0;
+    @include transition-only-for(.5s, (opacity), .3s);
+
+    &.loaded {
+      opacity: 1;
+    }
+  }
+
+  @include bem-element(text-layout) {
+    @extend %ab-layer-absolute-fill;
+    z-index: 3;
+    max-width: 100%;
+    max-width: calc(10% + 400px);
+    padding: 24px 5%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+
+    @include media-query(lt-xs) {
+      font-size: .8em;
+    }
+  }
+
+  @include bem-element(title) {
+    display: inline-block;
+    font-size: $portfolio-item-title-font-size;
+    color: inherit;
+    font-weight: 500;
+    padding-bottom: 6px;
+    line-height: 1.1em;
+  }
+
+  @include bem-element(subtitle) {
+    font-size: $portfolio-item-subtitle-font-size;
+    color: inherit;
+    opacity: .9;
+    padding: 0 0 10px 2px;
+    font-style: italic;
+  }
+
+  @include bem-element(title-delimiter) {
+    width: 90px;
+    height: 4px;
+    min-height: 4px;
+    background: white;
+  }
+
+  @include bem-element(short-description) {
+    font-size: $portfolio-item-short-description-font-size;
+    opacity: .9;
+    margin-top: 10px;
+  }
+}

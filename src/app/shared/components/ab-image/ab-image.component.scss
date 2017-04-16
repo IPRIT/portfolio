@@ -18,6 +18,7 @@ $transition-rule: opacity .3s ease-in-out;
   &__source-image {
     opacity: 1;
     transition: $transition-rule;
+
     &_hidden {
       opacity: 0;
     }

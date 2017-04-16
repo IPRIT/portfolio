@@ -5,11 +5,9 @@
   display: inline-block;
   position: relative;
   min-height: $portfolio-item-max-width / $portfolio-item-width-height-ratio - 30px;
-  //min-width: $portfolio-item-min-width;
   margin: 16px 16px 0 0;
   overflow: hidden;
   border-radius: 2px;
-  background-color: #CCC5CA;
   box-shadow: 0 0 0 1px transparentize(black, .88);
   cursor: pointer;
 
@@ -34,11 +32,6 @@
 
 @include bem(portfolio-item) {
   @extend %ab-layer-block;
-
-  @include bem-element(mock-inner) {
-    @extend %ab-layer-block;
-    background: white;
-  }
 
   @include bem-element(inner) {
     @extend %ab-layer-block;
@@ -118,6 +111,12 @@
   }
 
   /* Mock Item */
+  @include bem-element(mock-inner) {
+    @extend %ab-layer-block;
+    overflow: hidden;
+    background: white;
+  }
+
   @include bem-element(mock-text-layout) {
     @extend %ab-layer-absolute-fill;
     width: calc(100% - 88px);

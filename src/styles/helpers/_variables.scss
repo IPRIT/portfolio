@@ -58,6 +58,7 @@ $fonts-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Can
 $page-background-color: #F9FAFA;
 
 /* Header section */
+$header-z-index: 99;
 $header-has-shadow: true;
 $header-shadow: 0 2px 2px 2px transparentize(#000, .9);
 $header-background-color: white;
