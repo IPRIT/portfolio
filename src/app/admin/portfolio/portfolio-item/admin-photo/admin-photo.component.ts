@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, Inject, EventEmitter, Output } from '@angular/core';
 import { PortfolioItemPhoto } from "../../../../shared/components/portfolio-item/portfolio-item.interface";
 import { FirebaseApp } from "angularfire2";
+import { Observable } from "rxjs";
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 
 @Component({
   selector: 'ab-admin-photo',
@@ -40,6 +43,20 @@ export class AdminPhotoComponent implements OnInit {
       let url = snapshot.downloadURL;
       this.photo.originalSrc = url;
       this.photo.imageName = snapshot.metadata.name;
+
+      let ref: firebase.storage.Reference = this.storageRef.child(
+        this.buildChildImagePath(`thumbnail${this.photo.imageName}`)
+      );
+
+      let thumbnailSpy = Observable.interval(1000)
+        .switchMap(function () {
+          return Observable.fromPromise(<Promise<any>>ref.getDownloadURL());
+        })
+        .retry(30)
+        .take(1)
+        .subscribe(url => {
+          this.photo.thumbnailSrc = url;
+        });
       console.log('File available at', url, snapshot.metadata);
     }).catch(function(error) {
       console.error('Upload failed:', error);

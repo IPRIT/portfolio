@@ -35,6 +35,11 @@
 @include bem(portfolio-item) {
   @extend %ab-layer-block;
 
+  @include bem-element(mock-inner) {
+    @extend %ab-layer-block;
+    background: white;
+  }
+
   @include bem-element(inner) {
     @extend %ab-layer-block;
     background: white;
@@ -42,6 +47,12 @@
 
   @include bem-element(background-protector) {
     @extend %ab-layer-absolute-fill;
+    opacity: 0;
+    @include transition-only-for(1s, (opacity));
+
+    &.loaded {
+      opacity: 1;
+    }
   }
 
   @include bem-element(text-layout) {
@@ -57,7 +68,6 @@
 
     @include media-query(lt-xs) {
       width: calc(100% - 20px);
-      font-size: .8em;
     }
   }
 
@@ -104,6 +114,74 @@
       img {
         object-fit: cover;
       }
+    }
+  }
+
+  /* Mock Item */
+  @include bem-element(mock-text-layout) {
+    @extend %ab-layer-absolute-fill;
+    width: calc(100% - 88px);
+    padding: 24px 0 24px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    @include media-query(lt-xs) {
+      width: calc(100% - 20px);
+    }
+  }
+
+  @include bem-element(mock-title) {
+    display: inline-block;
+    margin-bottom: 26px;
+    line-height: 1.1em;
+
+    @include mock-text($portfolio-mock-item-color, $portfolio-item-title-font-size / 1.1, 40%);
+  }
+
+  @include bem-element(mock-subtitle) {
+    margin: 0 0 20px;
+    @include mock-text($portfolio-mock-item-color, $portfolio-item-subtitle-font-size / 1.2, 70%);
+  }
+
+  @include bem-element(mock-title-delimiter) {
+    width: 90px;
+    height: 4px;
+    min-height: 4px;
+    background: $portfolio-mock-item-color;
+  }
+
+  @include bem-element(mock-short-description) {
+    margin-top: 10px;
+    @include mock-text($portfolio-mock-item-color, $portfolio-item-short-description-font-size / 2);
+
+    &:nth-of-type(4) {
+      width: 100%;
+      margin-top: 20px;
+    }
+    &:nth-of-type(5) {
+      width: 80%;
+    }
+    &:last-of-type {
+      width: 60%;
+    }
+  }
+
+  @include bem-element(mock-animation-mask) {
+    @extend %ab-layer-absolute-fill;
+    z-index: 101;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, .0) 0%, rgba(255, 255, 255, .4) 20%, rgba(255, 255, 255, .6) 40%, rgba(255, 255, 255, .0) 100%);
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+
+    @keyframes placeHolderShimmer {
+      0% { transform: translateX(-468px) }
+      100%{ transform:translateX(468px) }
     }
   }
 }

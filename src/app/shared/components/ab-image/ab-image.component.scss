@@ -8,7 +8,7 @@
 }
 
 $background-color: white;
-$transition-rule: opacity .2s ease-in-out;
+$transition-rule: opacity .3s ease-in-out;
 
 .ab-image {
   width: 100%;
@@ -17,6 +17,7 @@ $transition-rule: opacity .2s ease-in-out;
 
   &__source-image {
     opacity: 1;
+    transition: $transition-rule;
     &_hidden {
       opacity: 0;
     }

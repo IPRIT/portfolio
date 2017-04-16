@@ -12,5 +12,11 @@
 
     </div>
 
+    <div *ngIf="(portfolioItems | async) === null" class="ab-portfolio__items" ab-grid-listener [abGridItemMin]="320" [abGridItemMax]="320">
+
+      <ab-portfolio-item *ngFor="let item of [1, 2]" [item]="false"></ab-portfolio-item>
+
+    </div>
+
   </div>
 </div>

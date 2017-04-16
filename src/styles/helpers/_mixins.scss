@@ -1,6 +1,7 @@
 @import "~compass-mixins";
 @import "variables";
 @import "functions";
+@import "classes";
 
 @mixin bem-block($block, $at-root: true) {
   $scope: unwrap-scope(&);
@@ -271,4 +272,11 @@
   background-repeat: repeat-x;
   background-size: 2px .1em;
   background-position: 0 $line-offset;
+}
+
+@mixin mock-text($color: gray, $height: 1em, $width: 100%) {
+  @extend %ab-layer-block;
+  height: $height;
+  width: $width;
+  background: $color;
 }

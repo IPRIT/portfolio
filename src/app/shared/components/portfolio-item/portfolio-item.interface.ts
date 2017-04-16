@@ -39,9 +39,7 @@ export interface PortfolioItemStyle {
   backgroundPhoto: PortfolioItemPhoto,
   backgroundPhotoForPage: PortfolioItemPhoto,
   backgroundOverlayGradient?: string,
-  backgroundPhotoPosition?: string,
   backgroundPhotoPositionForPage?: string,
-  backgroundPhotoSize?: string,
   backgroundPhotoSizeForPage?: string,
-  backgroundOverlayColor?: string
+  titleLineColor?: string
 }

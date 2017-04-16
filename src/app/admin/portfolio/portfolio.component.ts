@@ -45,20 +45,18 @@ export class PortfolioComponent implements OnInit {
           originalSrc: '',
           thumbnailSrc: '',
           imageName: '',
-          title: 'Name',
+          title: '',
         },
         backgroundPhotoForPage: {
           originalSrc: '',
           thumbnailSrc: '',
           imageName: '',
-          title: 'Name',
+          title: '',
         },
         backgroundOverlayGradient: '-',
-        backgroundPhotoPosition: '-',
         backgroundPhotoPositionForPage: '-',
-        backgroundPhotoSize: '-',
         backgroundPhotoSizeForPage: '-',
-        backgroundOverlayColor: '-'
+        titleLineColor: '-'
       }
     };
     let ref = this.portfolioItems.push(newItem);

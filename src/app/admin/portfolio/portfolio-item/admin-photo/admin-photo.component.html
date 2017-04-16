@@ -5,6 +5,7 @@
       <i class="material-icons md-24">delete</i>
     </div>
     <img class="ab-admin-photo-uploader__original-photo" src="{{photo.originalSrc}}" [attr.alt]="photo.title">
+    <img class="ab-admin-photo-uploader__original-photo" src="{{photo.thumbnailSrc}}" [attr.alt]="photo.title">
   </div>
 
   <div *ngIf="!photo || !photo.originalSrc">

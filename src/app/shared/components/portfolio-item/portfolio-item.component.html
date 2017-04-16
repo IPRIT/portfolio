@@ -1,19 +1,24 @@
 <div class="ab-portfolio-item">
 
   <div *ngIf="!item" class="ab-portfolio-item__mock-inner">
-    Mock
+    <div class="ab-portfolio-item__mock-animation-mask"></div>
+    <div class="ab-portfolio-item__mock-text-layout">
+      <div class="ab-portfolio-item__mock-title"></div>
+      <div class="ab-portfolio-item__mock-subtitle"></div>
+      <div class="ab-portfolio-item__mock-title-delimiter"></div>
+      <div class="ab-portfolio-item__mock-short-description"></div>
+      <div class="ab-portfolio-item__mock-short-description"></div>
+      <div class="ab-portfolio-item__mock-short-description"></div>
+    </div>
   </div>
 
-  <a *ngIf="item" class="ab-portfolio-item__inner" [routerLink]="['/me/portfolio', item.uid]" [style.background-color]="item.style.backgroundOverlayColor">
-    <ab-image class="ab-portfolio-item__image"
-              [abImageSrc]="item.style.backgroundPhoto.originalSrc"
-              [abImageThumbnailSrc]="item.style.backgroundPhoto.originalSrc"
-    ></ab-image>
-    <div class="ab-portfolio-item__background-protector" style="{{item.style.backgroundOverlayGradient}}"></div>
+  <a *ngIf="item" class="ab-portfolio-item__inner" [routerLink]="['/me/portfolio', item.uid]" [style.background-color]="item.style.titleLineColor">
+    <ab-image class="ab-portfolio-item__image" [abImageModel]="item.style.backgroundPhoto" (imageLoaded)="imageLoaded($event)"></ab-image>
+    <div #backgroundProtector class="ab-portfolio-item__background-protector" style="{{item.style.backgroundOverlayGradient}}"></div>
     <div class="ab-portfolio-item__text-layout" [style.color]="item.style.color">
       <div class="ab-portfolio-item__title">{{item.title}}</div>
       <div class="ab-portfolio-item__subtitle">{{item.subTitle}}</div>
-      <div class="ab-portfolio-item__title-delimiter" [style.background-color]="item.style.backgroundOverlayColor"></div>
+      <div class="ab-portfolio-item__title-delimiter" [style.background-color]="item.style.titleLineColor"></div>
       <div class="ab-portfolio-item__short-description">{{item.shortDescription}}</div>
     </div>
   </a>
