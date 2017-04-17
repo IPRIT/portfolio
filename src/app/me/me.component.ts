@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from "../routing/app.routing.animations";
+import { PhotoViewerService } from "../shared/components/photo-viewer/photo-viewer.service";
 
 @Component({
   selector: 'ab-me',
@@ -12,7 +13,9 @@ export class MeComponent implements OnInit {
 
   isMobileMenuOpen: boolean = false;
 
-  constructor() { }
+  constructor(
+    public photoViewerService: PhotoViewerService
+  ) { }
 
   ngOnInit() {
   }

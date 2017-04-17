@@ -9,6 +9,8 @@ import { HeaderLogoService } from "./services/header-logo/header-logo.service";
 import { HeaderStyleService } from "./services/header-style/header-style.service";
 import { PortfolioItemComponent } from './components/portfolio-item/portfolio-item.component';
 import { LanguageProviderService } from "./services/language/language-provider.service";
+import { PhotoViewerComponent } from "./components/photo-viewer/photo-viewer.component";
+import { PhotoViewerService } from "./components/photo-viewer/photo-viewer.service";
 
 @NgModule({
   imports: [
@@ -20,19 +22,22 @@ import { LanguageProviderService } from "./services/language/language-provider.s
     AbBackgroundComponent,
     MobileMenuComponent,
     HeaderComponent,
-    PortfolioItemComponent
+    PortfolioItemComponent,
+    PhotoViewerComponent
   ],
   providers: [
     HeaderLogoService,
     HeaderStyleService,
-    LanguageProviderService
+    LanguageProviderService,
+    PhotoViewerService
   ],
   exports: [
     AbImageComponent,
     AbBackgroundComponent,
     MobileMenuComponent,
     HeaderComponent,
-    PortfolioItemComponent
+    PortfolioItemComponent,
+    PhotoViewerComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

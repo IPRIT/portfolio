@@ -11,11 +11,12 @@
 @include bem(portfolio-item-page) {
 
   @include bem-element(inner) {
-
   }
 
   @include bem-element(header) {
     height: 200px;
+    max-height: 200px;
+    position: relative;
   }
 
   @include bem-element(image) {

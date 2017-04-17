@@ -1,0 +1,41 @@
+<div class="ab-photo-viewer">
+  <div class="ab-photo-viewer__inner">
+
+    <div class="ab-photo-viewer__header">
+      <div class="ab-photo-viewer__exit">
+        <div class="ab-photo-viewer__button" (click)="close($event)">
+          <i class="material-icons md-24">arrow_back</i>
+        </div>
+      </div>
+      <div class="ab-photo-viewer__title">
+        <span>{{photoViewerService?.photoNumber$ | async}}</span>
+        &nbsp;
+        <span i18n>of</span>
+        &nbsp;
+        <span>{{(photoViewerService?.photos$ | async)?.length}}</span>
+      </div>
+    </div>
+
+    <div class="ab-photo-viewer__control ab-photo-viewer__control-left"
+         *ngIf="(photoViewerService?.photoNumber$ | async) > 1">
+      <div class="ab-photo-viewer__button" (click)="prevPhoto($event)">
+        <i class="material-icons md-36">keyboard_arrow_left</i>
+      </div>
+    </div>
+    <div class="ab-photo-viewer__control ab-photo-viewer__control-right"
+         *ngIf="(photoViewerService?.photos$ | async)?.length > (photoViewerService?.photoNumber$ | async)">
+      <div class="ab-photo-viewer__button" (click)="nextPhoto($event)">
+        <i class="material-icons md-36">keyboard_arrow_right</i>
+      </div>
+    </div>
+
+    <div #swipeContainer class="swipe ab-photo-viewer__swipe">
+      <div class="swipe-wrap ab-photo-viewer__swipe-wrap">
+        <div class="ab-photo-viewer__photo-wrap" *ngFor="let photo of photoViewerService?.photos$ | async">
+          <ab-image (dblclick)="photoClicked($event)" class="image ab-photo-viewer__photo" [abImageModel]="photo"></ab-image>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

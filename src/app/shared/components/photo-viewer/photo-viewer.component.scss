@@ -1,0 +1,191 @@
+@import "../../../../styles/helpers/all";
+
+:host(.closed) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+:host {
+  @extend %ab-layer-absolute-fill;
+  position: fixed;
+  z-index: $photo-viewer-z-index;
+  opacity: 1;
+  pointer-events: auto;
+  background-color: $photo-viewer-background-color;
+
+  @include transition-only-for(.4s, (all));
+}
+
+@include bem(photo-viewer) {
+  @extend %ab-layer-block;
+
+  @include bem-element(inner) {
+    @extend %ab-layer-block;
+  }
+
+  @include bem-element(swipe) {
+    @extend %ab-layer-block;
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
+  }
+
+  @include bem-element(swipe-wrap) {
+    @extend %ab-layer-block;
+    overflow: hidden;
+    position: relative;
+
+    > div {
+      float: left;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+  }
+
+  @include bem-element(slide) {
+    @extend %ab-layer-block;
+  }
+
+  @include bem-element(photo-wrap) {
+    @extend %ab-layer-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 100px;
+    box-sizing: border-box;
+
+    @include transition-only-for(.4s, (all));
+
+    @include media-query(lt-xs) {
+      padding: 0;
+    }
+
+    .zoomed & {
+      padding: 0;
+    }
+  }
+
+  @include bem-element(photo) {
+    max-width: 100%;
+    width: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
+    object-fit: contain;
+    user-select: none;
+  }
+
+  @include bem-element(control) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    @extend %ab-layer-flex;
+    width: 1px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: $photo-viewer-z-index + 1;
+
+    #{get-bem-element-full(photo-viewer, button)} {
+      background-color: transparentize(white, .8);
+    }
+
+    @include media-query(lt-xs) {
+      display: none;
+    }
+  }
+
+  @include bem-element(control-left) {
+    left: 0;
+
+    #{get-bem-element-full(photo-viewer, button)} {
+      position: relative;
+      right: -50px + 1px;
+    }
+
+    i {
+      right: 1px;
+    }
+  }
+
+  @include bem-element(control-right) {
+    right: 0;
+
+    #{get-bem-element-full(photo-viewer, button)} {
+      position: relative;
+      left: -50px + 1px;
+    }
+
+    i {
+      left: 1px;
+    }
+  }
+
+  @include bem-element(button) {
+    cursor: pointer;
+    border-radius: 60px;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    user-select: none;
+
+    @include transition-only-for(.2s, (all));
+
+    & > i {
+      color: transparentize(white, .1);
+      position: relative;
+      top: 13px;
+    }
+
+    &:active {
+      background-color: transparentize(white, .7) !important;
+    }
+  }
+
+  @include bem-element(header) {
+    position: absolute;
+    z-index: $photo-viewer-z-index + 2;
+    padding: 15px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+
+    #{get-bem-element-full(photo-viewer, button)} {
+      i {
+        top: 18px;
+      }
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      top: 0;
+      left: 0;
+      right: 0;
+      box-shadow: 0 2px 100px 45px black;
+    }
+  }
+
+  @include bem-element(exit) {
+    z-index: 1;
+  }
+
+  @include bem-element(title) {
+    z-index: 1;
+    flex: 1;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: -30px;
+    font-size: 1.1em;
+  }
+}

@@ -2,11 +2,12 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2, OnDestroy } from '
 import { ActivatedRoute, Params, Router, NavigationEnd } from "@angular/router";
 import { routerTransition } from "../../../routing/app.routing.animations";
 import { AbImage } from "../../../shared/components/ab-image/ab-image.model";
-import { PortfolioItem } from "../../../shared/components/portfolio-item/portfolio-item.interface";
+import { PortfolioItem, PortfolioItemPhoto } from "../../../shared/components/portfolio-item/portfolio-item.interface";
 import { AngularFire } from "angularfire2";
 import { LanguageProviderService } from "../../../shared/services/language/language-provider.service";
 import { HeaderStyleService } from "../../../shared/services/header-style/header-style.service";
 import { MetaService } from "../../../shared/services/meta/meta.service";
+import { PhotoViewerService } from "../../../shared/components/photo-viewer/photo-viewer.service";
 
 @Component({
   selector: 'ab-portfolio-item-page',
@@ -31,7 +32,8 @@ export class PortfolioItemPageComponent implements OnInit {
     private languageService: LanguageProviderService,
     private renderer: Renderer2,
     private headerStyleProvider: HeaderStyleService,
-    private metaProvider: MetaService
+    private metaProvider: MetaService,
+    public photoViewerService: PhotoViewerService
   ) {
   }
 
@@ -74,5 +76,13 @@ export class PortfolioItemPageComponent implements OnInit {
 
   backgroundImageLoaded(image: AbImage) {
     this.renderer.addClass(this.backgroundProtector.nativeElement, 'loaded');
+  }
+
+  openPhotos(photos: PortfolioItemPhoto[]) {
+    if (photos) {
+      this.photoViewerService.setPhotos(photos);
+      this.photoViewerService.setPhotoNumber(1);
+      this.photoViewerService.openPhotoViewer();
+    }
   }
 }

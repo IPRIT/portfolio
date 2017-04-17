@@ -44,6 +44,7 @@
     "firebase": "^3.7.5",
     "normalize.css": "^6.0.0",
     "rxjs": "^5.1.0",
+    "swipejs": "^2.2.5",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
