@@ -18,6 +18,8 @@ import { firebaseConfig, firebaseAuthConfig } from "../environments/firebase.con
 import { NoSanitizationService } from "./shared/services/no-sanitization/no-sanitization";
 import { DomSanitizer } from '@angular/platform-browser';
 import { LocalStorageModule } from "angular-2-local-storage";
+import { metaConfig } from "./routing/app.meta-config";
+import { MetaModule } from "./shared/services/meta/meta.module";
 
 @NgModule({
   declarations: [
@@ -33,12 +35,13 @@ import { LocalStorageModule } from "angular-2-local-storage";
       prefix: 'ab',
       storageType: 'localStorage'
     }),
+    MetaModule.forRoot(metaConfig),
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     FormsModule,
     HttpModule,
     FlexLayoutModule,
-    SharedModule,
 
+    SharedModule,
     AppRoutingModule,
 
     MeModule,

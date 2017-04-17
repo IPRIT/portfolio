@@ -7,7 +7,16 @@ import { routes as adminRoutes } from "../admin/admin.routing";
 import { AdminComponent } from "../admin/admin.component";
 
 export const routes: Routes = [
-  { path: '', component: MainComponent },
+  {
+    path: '',
+    component: MainComponent,
+    data: {
+      meta: {
+        useTitleSuffix: false,
+        titleSuffix: ''
+      }
+    }
+  },
   { path: 'me', component: MeComponent, children: meRoutes },
   { path: 'admin', component: AdminComponent, children: adminRoutes },
   { path: '**', component: NotFoundComponent }

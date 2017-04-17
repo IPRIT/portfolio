@@ -6,7 +6,7 @@
            [style.background-position]="item?.style?.backgroundPhotoPositionForPage"
            [style.background-size]="item?.style?.backgroundPhotoSizeForPage"
            [abImageModel]="item?.style?.backgroundPhotoForPage"
-           (imageLoaded)="imageLoaded($event)"
+           (imageLoaded)="backgroundImageLoaded($event)"
       ></div>
       <div #backgroundProtector class="ab-portfolio-item-page__background-protector" [style]="item?.style?.backgroundOverlayGradient"></div>
       <div class="ab-portfolio-item-page__text-layout" [style.color]="item?.style?.color">

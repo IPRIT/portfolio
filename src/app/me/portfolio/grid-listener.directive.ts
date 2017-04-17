@@ -2,6 +2,7 @@ import { Directive, ElementRef, Renderer2, AfterViewInit, PLATFORM_ID, Inject, I
 import { isPlatformServer, isPlatformBrowser } from "@angular/common";
 import { Observable, Observer } from "rxjs";
 import "rxjs/operator/throttleTime";
+import "rxjs/operator/debounceTime";
 
 const GRID_COLUMN_ATTRIBUTE = 'grid-columns';
 const GRID_CHECK_DEBOUNCE_MS = 200;

@@ -59,7 +59,9 @@ export class PortfolioComponent implements OnInit {
         backgroundOverlayGradient: '-',
         backgroundPhotoPositionForPage: '-',
         backgroundPhotoSizeForPage: '-',
-        titleLineColor: '-'
+        titleLineColor: '-',
+        headerClass: '',
+        themeColor: '#cccccc'
       }
     };
     let ref = this.portfolioItems.push(newItem);

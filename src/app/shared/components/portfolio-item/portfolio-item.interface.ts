@@ -43,5 +43,6 @@ export interface PortfolioItemStyle {
   backgroundPhotoSizeForPage?: string,
   titleLineColor?: string,
   headerImage?: PortfolioItemPhoto,
-  headerClass?: string
+  headerClass?: string,
+  themeColor: string
 }

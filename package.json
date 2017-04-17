@@ -16,13 +16,10 @@
     "i18n": "npm run i18n-ru",
     "i18n-ru": "ng xi18n -op ./src/locale -l ru -of messages.ru.xlf",
     "i18n-en": "ng xi18n -op ./src/locale -l en -of messages.en.xlf",
-
     "build-i18n:ru": "ng build --output-path=dist/ru --aot -prod --bh ./ru/ --i18n-file=src/locale/messages.ru.xlf --i18n-format=xlf --locale=ru",
     "build-i18n:en": "ng build --output-path=dist/en --aot -prod --bh ./en/ --i18n-file=src/locale/messages.en.xlf --i18n-format=xlf --locale=en",
-
     "publish-build-i18n:ru": "ng build --output-path=dist/ru --aot -prod --bh https://IPRIT.github.io/portfolio/ru/ --i18n-file=src/locale/messages.ru.xlf --i18n-format=xlf --locale=ru",
     "publish-build-i18n:en": "ng build --output-path=dist/en --aot -prod --bh https://IPRIT.github.io/portfolio/en/ --i18n-file=src/locale/messages.en.xlf --i18n-format=xlf --locale=en",
-
     "build-i18n": "npm run build-i18n:en && npm run build-i18n:ru",
     "publish-build-i18n": "ng build --target=production --aot=false --bh https://IPRIT.github.io/portfolio/ && npm run publish-build-i18n:en && npm run publish-build-i18n:ru && ngh --message 'Publish update'"
   },
