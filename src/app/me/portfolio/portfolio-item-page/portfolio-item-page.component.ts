@@ -7,7 +7,6 @@ import { AngularFire } from "angularfire2";
 import { LanguageProviderService } from "../../../shared/services/language/language-provider.service";
 import { HeaderStyleService } from "../../../shared/services/header-style/header-style.service";
 import { MetaService } from "../../../shared/services/meta/meta.service";
-import { Observable } from "rxjs";
 
 @Component({
   selector: 'ab-portfolio-item-page',
