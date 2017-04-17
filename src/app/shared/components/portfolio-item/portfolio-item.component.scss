@@ -4,7 +4,7 @@
   contain: content;
   display: inline-block;
   position: relative;
-  min-height: $portfolio-item-max-width / $portfolio-item-width-height-ratio - 30px;
+  min-height: $portfolio-item-max-width / $portfolio-item-width-height-ratio - 1px;
   margin: 16px 16px 0 0;
   overflow: hidden;
   border-radius: 2px;

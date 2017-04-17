@@ -30,16 +30,18 @@ export interface Technology {
 
 export interface PortfolioSourceLink {
   title: string,
-  description: string,
+  description?: string,
   href: string
 }
 
 export interface PortfolioItemStyle {
-  color: string,
-  backgroundPhoto: PortfolioItemPhoto,
-  backgroundPhotoForPage: PortfolioItemPhoto,
+  color?: string,
+  backgroundPhoto?: PortfolioItemPhoto,
+  backgroundPhotoForPage?: PortfolioItemPhoto,
   backgroundOverlayGradient?: string,
   backgroundPhotoPositionForPage?: string,
   backgroundPhotoSizeForPage?: string,
-  titleLineColor?: string
+  titleLineColor?: string,
+  headerImage?: PortfolioItemPhoto,
+  headerClass?: string
 }

@@ -40,6 +40,7 @@ export class GridListenerDirective implements AfterViewInit {
 
     windowChange
       .throttleTime(GRID_CHECK_DEBOUNCE_MS)
+      .debounceTime(0)
       .subscribe(event => this.recomputeColumnsNumber(element));
 
     this.recomputeColumnsNumber(element);

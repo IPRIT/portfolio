@@ -3,16 +3,16 @@
 
     <div class="ab-portfolio-item-page__header">
       <div ab-background *ngIf="item && item.style" class="ab-portfolio-item-page__image"
-           [style.background-position]="item?.style.backgroundPhotoPositionForPage"
-           [style.background-size]="item?.style.backgroundPhotoSizeForPage"
+           [style.background-position]="item?.style?.backgroundPhotoPositionForPage"
+           [style.background-size]="item?.style?.backgroundPhotoSizeForPage"
            [abImageModel]="item?.style?.backgroundPhotoForPage"
            (imageLoaded)="imageLoaded($event)"
       ></div>
       <div #backgroundProtector class="ab-portfolio-item-page__background-protector" [style]="item?.style?.backgroundOverlayGradient"></div>
-      <div class="ab-portfolio-item-page__text-layout" [style.color]="item?.style.color">
+      <div class="ab-portfolio-item-page__text-layout" [style.color]="item?.style?.color">
         <div class="ab-portfolio-item-page__title">{{item?.title}}</div>
         <div class="ab-portfolio-item-page__subtitle">{{item?.subTitle}}</div>
-        <div class="ab-portfolio-item-page__title-delimiter" [style.background-color]="item?.style.titleLineColor"></div>
+        <div class="ab-portfolio-item-page__title-delimiter" [style.background-color]="item?.style?.titleLineColor"></div>
         <div class="ab-portfolio-item-page__short-description">{{item?.shortDescription}}</div>
       </div>
     </div>

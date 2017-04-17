@@ -74,6 +74,14 @@
       color: $header-links-background-color-about;
     }
 
+    .foxy & {
+      color: $header-links-background-color-foxy;
+    }
+
+    .acm & {
+      color: $header-links-background-color-acm;
+    }
+
     & > i {
       position: relative;
       top: 3px;
@@ -120,6 +128,14 @@
 
       .about & {
         color: $header-links-background-color-about;
+      }
+
+      .foxy & {
+        color: $header-links-background-color-foxy;
+      }
+
+      .acm & {
+        color: $header-links-background-color-acm;
       }
     }
   }

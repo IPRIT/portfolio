@@ -65,11 +65,6 @@ $header-background-color: white;
 $header-right-left-margin: 5vw;
 $header-height: 90px;
 
-/* Header Portfolio | Default */
-$header-links-color-default: #F15F41;
-$header-links-color-active-default: white;
-$header-links-background-color-default: #ef4b5b;
-
 /* Portfolio Section */
 $portfolio-main-color-1: #ef4b5b;
 $portfolio-main-color-1-darken: darken(#ef4b5b, 20%);
@@ -84,11 +79,25 @@ $portfolio-item-short-description-font-size: .9em;
 
 $portfolio-mock-item-color: transparentize(black, .9);
 
+/* Header Portfolio | Default */
+$header-links-color-default: #F15F41;
+$header-links-color-active-default: white;
+$header-links-background-color-default: #ef4b5b;
 
 /* Header About | Default */
-$header-links-color-about: #14988d;
+$header-links-color-about: #039BE5;
 $header-links-color-active-about: white;
-$header-links-background-color-about: #14988d;
+$header-links-background-color-about: #039BE5;
+
+/* Tricky Foxy */
+$header-links-color-foxy: #f4bb49;
+$header-links-color-active-foxy: white;
+$header-links-background-color-foxy: #f4bb49;
+
+/* Acm */
+$header-links-color-acm: #42b4dc;
+$header-links-color-active-acm: white;
+$header-links-background-color-acm: #42b4dc;
 
 /* Mobile Menu */
 $mobile-menu-z-index: 100;

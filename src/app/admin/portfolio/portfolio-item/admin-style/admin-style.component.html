@@ -36,4 +36,14 @@
     <input type="text" id="backgroundPhotoSizeForPage" class="form-control" required [(ngModel)]="style.backgroundPhotoSizeForPage" name="backgroundPhotoSizeForPage">
   </div>
 
+  <div class="form-group">
+    <label for="styleColor">Header Image:</label>
+    <ab-admin-photo [photo]="style.headerImage"></ab-admin-photo>
+  </div>
+
+  <div class="form-group">
+    <label for="headerClass">Header Class:</label>
+    <input type="text" id="headerClass" class="form-control" required [(ngModel)]="style.headerClass" name="headerClass">
+  </div>
+
 </div>

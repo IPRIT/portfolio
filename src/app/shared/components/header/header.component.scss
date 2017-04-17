@@ -100,19 +100,33 @@
       }
     }
 
-    /*.contact & {
-      color: $header-links-color-contact;
+    .foxy & {
+      color: $header-links-color-foxy;
 
       &:hover, &:focus {
-        color: $header-links-background-color-contact;
+        color: $header-links-background-color-foxy;
       }
 
-      &:active:not(#{get-bem-modifier(link, active)}) {
-        background: $header-links-background-color-contact;
-        color: $header-links-color-active-contact;
+      &:active:not(#{get-bem-modifier-full(header, link, active)}) {
+        background: $header-links-background-color-foxy;
+        color: $header-links-color-active-foxy;
         border-radius: 50px;
       }
-    }*/
+    }
+
+    .acm & {
+      color: $header-links-color-acm;
+
+      &:hover, &:focus {
+        color: $header-links-background-color-acm;
+      }
+
+      &:active:not(#{get-bem-modifier-full(header, link, active)}) {
+        background: $header-links-background-color-acm;
+        color: $header-links-color-active-acm;
+        border-radius: 50px;
+      }
+    }
 
     @include bem-modifier(active) {
       box-shadow: inset 0 0 0 2px $header-links-background-color-default;
@@ -127,6 +141,16 @@
         box-shadow: inset 0 0 0 2px $header-links-background-color-about;
         color: $header-links-background-color-about;
       }
+
+      .foxy & {
+        box-shadow: inset 0 0 0 2px $header-links-background-color-foxy;
+        color: $header-links-background-color-foxy;
+      }
+
+      .acm & {
+         box-shadow: inset 0 0 0 2px $header-links-background-color-acm;
+         color: $header-links-background-color-acm;
+       }
     }
 
     @include media-query(lt-sm) {
@@ -160,6 +184,14 @@
 
     .about & {
       color: $header-links-background-color-about;
+    }
+
+    .foxy & {
+      color: $header-links-background-color-foxy;
+    }
+
+    .acm & {
+      color: $header-links-background-color-acm;
     }
 
     & > i {

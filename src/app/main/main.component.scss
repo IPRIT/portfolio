@@ -8,20 +8,19 @@
 }
 
 @include bem(main) {
+  @extend %ab-layer-block;
   $block-scope: unwrap-scope(&);
 
-  @extend %ab-layer-block;
-  @include filter-gradient($gradient-left-color, $gradient-right-color, horizontal); // IE6-9
-  @include background-image(linear-gradient(to right, $gradient-left-color 0%, $gradient-right-color 100%));
+  background-color: $gradient-right-color;
+  @include filter-gradient($gradient-right-color, $gradient-left-color, horizontal);
+  @include background-image(radial-gradient(ellipse, $gradient-right-color, $gradient-left-color));
 
   @include bem-element(inner) {
     @extend %ab-layer-block;
-    background: url('#{$images-path}/clouds-no-repeat-v2.png') no-repeat;
+    background: url('#{$images-path}/clouds-no-repeat-v2.png') no-repeat bottom center;
     background-size: contain;
-    background-position: bottom center;
 
     @include media-query(gt-md) {
-      //background-size: 110%;
       background-position: center 110%;
     }
     @include media-query(gt-xl) {
@@ -40,15 +39,25 @@
       background-size: 160%;
       background-position: center bottom;
     }
+    @media screen and (min-width: $layout-breakpoint-xs) and (max-height: 700px){
+      background: none;
+    }
   }
 
   @include bem-element(centered-content) {
     max-width: 700px;
     margin: 0 auto;
+    padding-top: 100px;
+    padding-top: 10vh;
+
+    @include media-query(lt-xs) {
+      padding-top: 200px;
+      padding-top: 20vh;
+    }
   }
 
   @include bem-element(ab-logo) {
-    padding: 100px 20px 20px;
+    padding: 0 20px 20px;
     text-align: center;
   }
 
@@ -77,7 +86,7 @@
   @include bem-element(link-item) {
     flex: 1;
     text-align: center;
-    $stop-colors: ($gradient-left-color, mix($gradient-left-color, $gradient-right-color), $gradient-right-color);
+    $stop-colors: ($gradient-left-color, $gradient-right-color, $gradient-left-color);
     @for $index from 1 through length($stop-colors) {
       &:nth-of-type(#{$index}) {
         #{$block-scope}__link {
@@ -109,8 +118,7 @@
 
     &:active {
       opacity: .8;
-      background-color: white;
-      background-image: linear-gradient(to right, lighten($gradient-left-color, 45%) 0%, lighten($gradient-right-color, 60%) 100%);
+      background-color: lighten($gradient-left-color, 95%);
       border-radius: 50px;
       & > span {
         @extend %reset-magic-link;
@@ -120,7 +128,8 @@
 
   @include bem-element(cv-wrapper) {
     text-align: center;
-    margin-top: 100px;
+    margin-top: 90px;
+    margin-top: 7vh;
 
     @include media-query(lt-xs) {
       margin-top: 30px;

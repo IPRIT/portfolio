@@ -44,14 +44,17 @@ export class PortfolioComponent implements OnInit {
         backgroundPhoto: {
           originalSrc: '',
           thumbnailSrc: '',
-          imageName: '',
-          title: '',
+          imageName: ''
         },
         backgroundPhotoForPage: {
           originalSrc: '',
           thumbnailSrc: '',
-          imageName: '',
-          title: '',
+          imageName: ''
+        },
+        headerImage: {
+          originalSrc: '',
+          thumbnailSrc: '',
+          imageName: ''
         },
         backgroundOverlayGradient: '-',
         backgroundPhotoPositionForPage: '-',
@@ -78,7 +81,7 @@ export class PortfolioComponent implements OnInit {
 
   copyItem(item: PortfolioItem) {
     let ref = this.portfolioItems.push({ });
-    let newItem = { ...item, uid: ref.key, createdAtMs: Date.now() };
+    let newItem: PortfolioItem = { ...item, uid: ref.key, createdAtMs: Date.now() };
     this.updateItem( newItem );
   }
 
