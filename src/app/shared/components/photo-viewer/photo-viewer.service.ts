@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PortfolioItemPhoto } from "../portfolio-item/portfolio-item.interface";
-import { Observable, ReplaySubject, BehaviorSubject, Subject } from "rxjs";
+import { Observable, BehaviorSubject, Subject } from "rxjs";
 import { Router, NavigationStart } from "@angular/router";
 
 @Injectable()

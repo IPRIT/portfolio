@@ -114,11 +114,9 @@ export class PhotoViewerComponent implements OnInit, AfterViewInit {
   }
 
   private _setZoomState(zoomed: boolean) {
-    if (zoomed) {
-      this.renderer.addClass(this.swipeContainer.nativeElement, 'zoomed')
-    } else {
-      this.renderer.removeClass(this.swipeContainer.nativeElement, 'zoomed')
-    }
+    zoomed
+      ? this.renderer.addClass(this.swipeContainer.nativeElement, 'zoomed')
+      : this.renderer.removeClass(this.swipeContainer.nativeElement, 'zoomed');
   }
 
   ngAfterViewInit() {
