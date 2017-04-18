@@ -20,9 +20,10 @@ export class PhotoViewerService {
         (photoNumber, photos) => photos[ photoNumber - 1 ]
       );
 
-    this.router.events
+    let event = this.router.events
       .filter(event => event instanceof NavigationStart)
       .subscribe(() => {
+        event.unsubscribe();
         this.closePhotoViewer();
       });
   }

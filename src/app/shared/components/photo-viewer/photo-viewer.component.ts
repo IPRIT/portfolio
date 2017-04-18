@@ -54,6 +54,19 @@ export class PhotoViewerComponent implements OnInit, AfterViewInit {
     this.zoomed$.subscribe((state: boolean) => {
       this._setZoomState(state);
     });
+
+    this.renderer.listen(document, 'keydown', (evt) => {
+      evt = evt || (window && window.event);
+      let isEscape = false;
+      if ('key' in evt) {
+        isEscape = evt.key === 'Escape' || evt.key === 'Esc';
+      } else {
+        isEscape = evt.keyCode === 27;
+      }
+      if (isEscape) {
+        this.photoViewerService.closePhotoViewer();
+      }
+    });
   }
 
   private _createNewSwipeIfExists() {
