@@ -23,6 +23,10 @@ export const TRANSLATION: string = `
         <source>Админ панель</source>
         <target/>
       </trans-unit>
+      <trans-unit id="a28f434709ac3cab36ade34cfb93fbfe04a37a5f" datatype="html">
+        <source>из</source>
+        <target/>
+      </trans-unit>
       <trans-unit id="e8685816b200ae8fa1a25f59d1a4afbf23502fe0" datatype="html">
         <source>Мои проекты</source>
         <target/>
@@ -31,8 +35,8 @@ export const TRANSLATION: string = `
         <source>Основной логотип</source>
         <target/>
       </trans-unit>
-      <trans-unit id="6bdddd1ac9bfe3b8a8dabb78bf6275728c76e1e2" datatype="html">
-        <source>Посмотреть резюме</source>
+      <trans-unit id="3083a27bbf6acf5e9e14fd53f65ae719a9f252c6" datatype="html">
+        <source>резюме</source>
         <target/>
       </trans-unit>
     </body>
