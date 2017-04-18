@@ -151,10 +151,10 @@
       top: 0;
       left: 0;
       pointer-events: none;
-      background-size: 79px;
+      background-size: 74px;
 
       @include media-query(lt-xs) {
-        background-size: 70px;
+        background-size: 68px;
       }
     }
 
@@ -162,12 +162,20 @@
       background-image: url('#{$images-path}/cv-download-button-left.png');
       background-position: left bottom;
       transform: translate(-15px, 15px);
+
+      @include media-query(lt-xs) {
+        transform: translate(-13px,13px);
+      }
     }
 
     &:after {
       background-image: url('#{$images-path}/cv-download-button-right.png');
       background-position: right bottom;
       transform: translate(15px, 15px);
+
+      @include media-query(lt-xs) {
+        transform: translate(13px,13px);
+      }
     }
 
     &:hover {
@@ -176,13 +184,13 @@
   }
 
   @include bem-element(cv-download) {
-    $color: white;
+    $color: #e5f4fb;
     display: inline-block;
     border-radius: 50px;
-    padding: 13px 40px;
+    padding: 9px 40px;
     text-transform: uppercase;
     color: $color;
-    border: 5px solid $color;
+    border: 6px solid $color;
     font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
     font-weight: 500;
     text-decoration: none;
@@ -194,7 +202,7 @@
 
     @include media-query(lt-xs) {
       font-size: .9em;
-      padding: 10px 30px;
+      padding: 8px 30px;
     }
 
     &:active {
