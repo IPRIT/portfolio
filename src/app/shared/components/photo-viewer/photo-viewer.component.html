@@ -8,11 +8,11 @@
         </div>
       </div>
       <div class="ab-photo-viewer__title">
-        <span>{{photoViewerService?.photoNumber$ | async}}</span>
-        &nbsp;
-        <span i18n>of</span>
-        &nbsp;
-        <span>{{(photoViewerService?.photos$ | async)?.length}}</span>
+        <span>
+          <span>{{photoViewerService?.photoNumber$ | async}}</span>
+          <span i18n>of</span>
+          <span>{{(photoViewerService?.photos$ | async)?.length}}</span>
+        </span>
       </div>
     </div>
 
