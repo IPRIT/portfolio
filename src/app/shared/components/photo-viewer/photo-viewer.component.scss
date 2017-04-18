@@ -168,7 +168,6 @@
       top: 0;
       left: 0;
       right: 0;
-      -webkit-box-shadow: none;
       box-shadow: none;
 
       @include filter-gradient(rgba(0,0,0,0), rgba(0,0,0,0.4), vertical); // IE6-9
@@ -191,6 +190,7 @@
     align-items: center;
     position: relative;
     font-size: 1.1em;
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
 
     > span {
       position: relative;
