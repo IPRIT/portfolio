@@ -30,7 +30,6 @@ export class AbImageService {
     let image: HTMLImageElement = renderer.createElement('img');
     renderer.listen(image, 'load', () => {
       shiftedObserver.next( image );
-      console.log('Loaded image', image);
       this.inProcess = false;
       this._tryLoadNext();
     });
