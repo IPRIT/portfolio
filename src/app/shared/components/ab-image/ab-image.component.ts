@@ -5,6 +5,7 @@ import {
 import { Subject, Subscription } from "rxjs";
 import { AbImageModel } from "./ab-image.model";
 import { isPlatformBrowser, isPlatformServer } from "@angular/common";
+import { AbImageService } from "./ab-image.service";
 
 const IMAGE_LOADING_TIMEOUT_MS = 100;
 
@@ -32,7 +33,8 @@ export class AbImageComponent implements OnInit, OnDestroy {
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: string
+    @Inject(PLATFORM_ID) private platformId: string,
+    private abImageService: AbImageService
   ) { }
 
   ngOnInit() {
@@ -55,12 +57,11 @@ export class AbImageComponent implements OnInit, OnDestroy {
   }
 
   loadImage(): void {
-    let image: HTMLImageElement = this.renderer.createElement('img');
-    this.renderer.listen(image, 'load', () => {
-      this.loadedImage.next( image );
-      this.imageLoaded.emit( this.abImageModel );
-    });
-    this.renderer.setAttribute(image, 'src', this.abImageModel.originalSrc);
+    this.abImageService.loadEnqueue( this.renderer, this.abImageModel )
+      .subscribe((image: HTMLImageElement) => {
+        this.loadedImage.next( image );
+        this.imageLoaded.emit( this.abImageModel );
+      });
   }
 
   subscribeEvents(): void {

@@ -103,6 +103,7 @@
     margin: 0 auto;
     justify-content: flex-start;
     align-items: stretch;
+    overflow-y: auto;
   }
 
   @include bem-element(link) {

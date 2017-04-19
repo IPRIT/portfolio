@@ -1,0 +1,8 @@
+<div class="ab-language-chooser">
+  <div class="ab-language-chooser__language-icon-wrap" [class.selected]="currentLanguage === 'en'" role="button" (click)="setLanguage('en')">
+    <ab-image class="image ab-language-chooser__language-icon" [abImageSrc]="'./assets/ui/images/uk-flag.png'"></ab-image>
+  </div>
+  <div class="ab-language-chooser__language-icon-wrap" [class.selected]="currentLanguage === 'ru'" role="button" (click)="setLanguage('ru')">
+    <ab-image class="image ab-language-chooser__language-icon" [abImageSrc]="'./assets/ui/images/ru-flag.png'"></ab-image>
+  </div>
+</div>

@@ -64,7 +64,9 @@ export class AdminPhotoComponent implements OnInit {
   }
 
   removePhoto() {
-    this.storageRef.child( this.buildChildImagePath(this.photo.imageName) ).delete();
+    if (this.photo.originalSrc) {
+      this.storageRef.child( this.buildChildImagePath(this.photo.imageName) ).delete();
+    }
     if (this.photo.thumbnailSrc) {
       this.storageRef.child( this.buildChildImagePath(`thumbnail${this.photo.imageName}`) ).delete();
     }

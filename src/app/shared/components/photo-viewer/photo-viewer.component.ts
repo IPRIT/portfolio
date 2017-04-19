@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import * as Swipe from 'swipejs';
 import { PhotoViewerService } from "./photo-viewer.service";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Component({
   selector: 'ab-photo-viewer',
@@ -16,7 +16,7 @@ export class PhotoViewerComponent implements OnInit, AfterViewInit {
   @ViewChild('swipeContainer') swipeContainer: ElementRef;
 
   @Input() startSlide: number = 0;
-  @Input() speed: number = 400;
+  @Input() speed: number = 300;
   @Input() auto: number = 3000;
   @Input() draggable: boolean = true;
   @Input() continuous: boolean = false;
@@ -26,7 +26,7 @@ export class PhotoViewerComponent implements OnInit, AfterViewInit {
   @Output() callback = new EventEmitter();
   @Output() transitionEnd = new EventEmitter();
 
-  private zoomed$ = new BehaviorSubject<boolean>(false);
+  private commentShowing$ = new BehaviorSubject<boolean>(true);
 
   private swipe: any;
 
@@ -37,7 +37,7 @@ export class PhotoViewerComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.photoViewerService.photoNumber$.subscribe((photoNumber: number) => {
-      this._getOrCreateSwipe().slide(photoNumber - 1);
+      this._getOrCreateSwipe().slide(photoNumber - 1, 1);
     });
     this.photoViewerService.isOpen$
       .filter((state: boolean) => state)
@@ -49,10 +49,6 @@ export class PhotoViewerComponent implements OnInit, AfterViewInit {
 
     this.transitionEnd.subscribe(([ index, element ]) => {
       this.photoViewerService.setPhotoNumber(index + 1);
-    });
-
-    this.zoomed$.subscribe((state: boolean) => {
-      this._setZoomState(state);
     });
 
     this.renderer.listen(document, 'keydown', (evt) => {
@@ -104,19 +100,13 @@ export class PhotoViewerComponent implements OnInit, AfterViewInit {
 
   close(evt) {
     this.photoViewerService.closePhotoViewer();
-    this.zoomed$.next(false);
+    this.commentShowing$.next(true);
   }
 
   photoClicked(evt) {
-    this.zoomed$.next(
-      !this.zoomed$.getValue()
+    this.commentShowing$.next(
+      !this.commentShowing$.getValue()
     );
-  }
-
-  private _setZoomState(zoomed: boolean) {
-    zoomed
-      ? this.renderer.addClass(this.swipeContainer.nativeElement, 'zoomed')
-      : this.renderer.removeClass(this.swipeContainer.nativeElement, 'zoomed');
   }
 
   ngAfterViewInit() {

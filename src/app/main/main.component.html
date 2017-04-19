@@ -10,6 +10,10 @@
       </div>
     </div>
 
+    <div class="ab-main__language-chooser">
+      <ab-language-chooser></ab-language-chooser>
+    </div>
+
     <div class="ab-main__centered-content">
       <div class="ab-main__ab-logo">
         <img class="image ab-main__logo-src" draggable="false" src="./assets/ui/images/logo-main.png" i18n-alt alt="Основной логотип">
@@ -36,10 +40,6 @@
           <a class="link ab-main__cv-download" role="button" target="_blank" href="/#" i18n>резюме</a>
         </div>
       </div>
-
-      <select [(ngModel)]="currentLanguage" (change)="setLanguage(currentLanguage)">
-        <option *ngFor="let language of languageService.availableLanguages" [value]="language">{{language}}</option>
-      </select>
 
     </div>
 

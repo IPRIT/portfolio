@@ -1,10 +1,8 @@
 @import "../../../../styles/helpers/all";
-@import "../../../../styles/components/fonts/ubuntu";
 
 :host {
   @extend %ab-layer-block;
   height: auto;
-  background: white;
   position: relative;
 }
 
@@ -81,5 +79,44 @@
     font-size: $portfolio-item-short-description-font-size;
     opacity: .9;
     margin-top: 10px;
+  }
+
+  @include bem-element(cards) {
+
+  }
+
+  @include bem-element(cards-inner) {
+    display: block;
+    margin-top: 20px;
+    padding: 0 5% 15px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  @include bem-element(block) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+
+    @include media-query(lt-sm) {
+      flex-direction: column;
+    }
+  }
+
+  @include bem-element(card) {
+    $margin: 16px;
+    flex: 1;
+    display: inline-block;
+    padding: 24px;
+    box-sizing: border-box;
+    background-color: white;
+    margin-bottom: $margin;
+
+    @include media-query(gt-sm) {
+      &:nth-of-type(2n) {
+        margin-left: 16px;
+      }
+    }
   }
 }

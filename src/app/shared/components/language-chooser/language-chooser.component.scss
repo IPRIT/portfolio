@@ -1,0 +1,46 @@
+@import "../../../../styles/helpers/all";
+
+:host {
+  display: inline-block;
+}
+
+@include bem(language-chooser) {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  @include bem-element(language-icon-wrap) {
+    cursor: pointer;
+    display: inline-block;
+    width: 32px;
+    padding: 15px;
+
+    &:first-of-type {
+      padding-right: 10px;
+    }
+
+    &:last-of-type {
+      padding-left: 10px;
+    }
+  }
+
+  @include bem-element(language-icon) {
+    background-color: white;
+    max-width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 4px transparentize(white, .8);
+
+    .selected > & {
+      box-shadow: 0 0 0 4px transparentize(white, .5);
+    }
+
+    :host-context(.theme-dark) & {
+      box-shadow: 0 0 0 4px transparentize(black, .9);
+    }
+
+    :host-context(.theme-dark) .selected > & {
+      box-shadow: 0 0 0 4px transparentize(black, .7);
+    }
+  }
+}

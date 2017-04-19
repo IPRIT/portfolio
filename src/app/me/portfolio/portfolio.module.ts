@@ -5,6 +5,9 @@ import { PortfolioItemPageComponent } from './portfolio-item-page/portfolio-item
 import { RouterModule } from "@angular/router";
 import { SharedModule } from "../../shared/shared.module";
 import { GridListenerDirective } from "./grid-listener.directive";
+import { PortfolioItemDescriptionComponent } from './portfolio-item-page/portfolio-item-description/portfolio-item-description.component';
+import { PortfolioItemCardTitleComponent } from './portfolio-item-page/portfolio-item-card-title/portfolio-item-card-title.component';
+import { PortfolioItemPhotosComponent } from './portfolio-item-page/portfolio-item-photos/portfolio-item-photos.component';
 
 @NgModule({
   imports: [
@@ -15,7 +18,10 @@ import { GridListenerDirective } from "./grid-listener.directive";
   declarations: [
     PortfolioComponent,
     PortfolioItemPageComponent,
-    GridListenerDirective
+    GridListenerDirective,
+    PortfolioItemDescriptionComponent,
+    PortfolioItemCardTitleComponent,
+    PortfolioItemPhotosComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

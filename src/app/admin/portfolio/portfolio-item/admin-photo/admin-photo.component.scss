@@ -5,12 +5,21 @@ $bem-block-prefix: 'ab-admin-';
 @include bem(photo-uploader) {
   display: inline-block;
   position: relative;
+  border: 1px solid transparentize(black, .8);
+  padding: 10px;
 
   @include bem-element(original-photo) {
     position: relative;
     max-width: 100%;
     width: 64px;
     height: 48px;
+  }
+
+  @include bem-element(thumbnail-photo) {
+    position: relative;
+    max-width: 100%;
+    width: 32px;
+    height: 24px;
   }
 
   @include bem-element(remove) {

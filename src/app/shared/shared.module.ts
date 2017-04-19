@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbImageComponent } from './components/ab-image/ab-image.component';
 import { AbBackgroundComponent } from './components/ab-background/ab-background.component';
@@ -11,6 +11,8 @@ import { PortfolioItemComponent } from './components/portfolio-item/portfolio-it
 import { LanguageProviderService } from "./services/language/language-provider.service";
 import { PhotoViewerComponent } from "./components/photo-viewer/photo-viewer.component";
 import { PhotoViewerService } from "./components/photo-viewer/photo-viewer.service";
+import { LanguageChooserComponent } from './components/language-chooser/language-chooser.component';
+import { AbImageService } from "./components/ab-image/ab-image.service";
 
 @NgModule({
   imports: [
@@ -23,13 +25,15 @@ import { PhotoViewerService } from "./components/photo-viewer/photo-viewer.servi
     MobileMenuComponent,
     HeaderComponent,
     PortfolioItemComponent,
-    PhotoViewerComponent
+    PhotoViewerComponent,
+    LanguageChooserComponent
   ],
   providers: [
     HeaderLogoService,
     HeaderStyleService,
     LanguageProviderService,
-    PhotoViewerService
+    PhotoViewerService,
+    AbImageService
   ],
   exports: [
     AbImageComponent,
@@ -37,7 +41,8 @@ import { PhotoViewerService } from "./components/photo-viewer/photo-viewer.servi
     MobileMenuComponent,
     HeaderComponent,
     PortfolioItemComponent,
-    PhotoViewerComponent
+    PhotoViewerComponent,
+    LanguageChooserComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

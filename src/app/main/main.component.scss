@@ -1,5 +1,4 @@
 @import "../../styles/helpers/all";
-@import "../../styles/components/fonts/ubuntu";
 
 :host {
   @extend %ab-layer-block;
@@ -19,6 +18,9 @@
     @extend %ab-layer-block;
     background: url('#{$images-path}/clouds-no-repeat-v2.png') no-repeat bottom center;
     background-size: contain;
+    overflow-y: auto;
+    padding-bottom: 100px;
+    box-sizing: border-box;
 
     @include media-query(gt-md) {
       background-position: center 110%;
@@ -236,6 +238,16 @@
       top: 3px;
       font-size: 40px;
       display: inline-block;
+    }
+  }
+
+  @include bem-element(language-chooser) {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @include media-query(lt-xs) {
+      display: none;
     }
   }
 }

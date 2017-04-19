@@ -39,11 +39,12 @@
 
       <div class="form-area">
         <label><b>Photos:</b></label>
-        <ab-admin-photo *ngFor="let photo of item.photos; let i = index"
-                        [photo]="photo"
-                        (photoDeleted)="removeEmptyPhoto(photo)"
-        ></ab-admin-photo>
-        <a class="link" href="#" (click)="appendEmptyPhoto($event)">+Add</a>
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+          <ab-admin-photo *ngFor="let photo of item.photos; let i = index"
+                          [photo]="photo"
+                          (photoDeleted)="removeEmptyPhoto(photo)"></ab-admin-photo>
+        </div>
+        <button class="link" (click)="appendEmptyPhoto($event)">+Add</button>
       </div>
 
       <div class="form-area">

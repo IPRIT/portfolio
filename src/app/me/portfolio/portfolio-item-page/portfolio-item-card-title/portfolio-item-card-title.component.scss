@@ -1,0 +1,39 @@
+@import "../../../../../styles/helpers/all";
+
+:host {
+  @extend %ab-layer-block;
+  height: auto;
+}
+
+@include bem(card-title) {
+
+  @include bem-element(title-text) {
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+    font-weight: 500;
+    font-size: 1.9em;
+    line-height: 1.04;
+    letter-spacing: -.028em;
+    margin: 0;
+    white-space: nowrap;
+
+    @include media-query(lt-sm) {
+      font-size: 1.6em;
+      font-weight: 400;
+    }
+  }
+
+  @include bem-element(title-line) {
+    margin-top: 20px;
+    height: 4px;
+    width: 90px;
+    background: #ccc;
+    position: relative;
+  }
+
+  @include bem-element(line-mask) {
+    @extend %ab-layer-absolute-fill;
+    @include filter-gradient(transparent, transparentize(black, .8), horizontal); // IE6-9
+    @include background-image(linear-gradient(to right, transparent 0%, transparentize(black, .8) 100%));
+    z-index: 2;
+  }
+}

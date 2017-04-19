@@ -61,8 +61,30 @@
       padding: 0;
     }
 
-    .zoomed & {
-      padding: 0;
+    .comment & {
+      #{get-bem-element-full(photo-viewer, photo-comment)} {
+        opacity: .9;
+      }
+    }
+  }
+
+  @include bem-element(photo-comment) {
+    position: absolute;
+    opacity: 0;
+    bottom: 25px;
+    max-width: 80%;
+    background: transparentize(black, .62);
+    color: white;
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+    padding: 8px 12px;
+    border-radius: 5px;
+
+    @include transition-only-for(.4s, (all));
+
+    @include media-query(lt-xs) {
+      max-height: 100px;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
   }
 

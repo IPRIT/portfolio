@@ -1,11 +1,17 @@
 <div class="ab-admin-photo-uploader">
 
+  <div class="ab-admin-photo-uploader__remove" (click)="removePhoto()">
+    <i class="material-icons md-24">delete</i>
+  </div>
+
   <div *ngIf="photo && photo.originalSrc">
-    <div class="ab-admin-photo-uploader__remove" (click)="removePhoto()">
-      <i class="material-icons md-24">delete</i>
-    </div>
     <img class="ab-admin-photo-uploader__original-photo" src="{{photo.originalSrc}}" [attr.alt]="photo.title">
-    <img class="ab-admin-photo-uploader__original-photo" src="{{photo.thumbnailSrc}}" [attr.alt]="photo.title">
+    <img class="ab-admin-photo-uploader__thumbnail-photo" src="{{photo.thumbnailSrc}}" [attr.alt]="photo.title">
+
+    <div class="form-group">
+      <label for="title">Comment:</label>
+      <textarea id="title" class="form-control" required [(ngModel)]="photo.title" name="title"></textarea>
+    </div>
   </div>
 
   <div *ngIf="!photo || !photo.originalSrc">

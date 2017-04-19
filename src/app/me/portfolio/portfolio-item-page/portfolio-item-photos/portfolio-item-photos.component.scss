@@ -1,0 +1,112 @@
+@import "../../../../../styles/helpers/all";
+
+:host {
+  @extend %ab-layer-block;
+}
+
+@include bem(portfolio-item-photos) {
+
+  @include bem-element(inner) {
+  }
+
+  @include bem-element(content) {
+    margin-top: 24px;
+  }
+
+  @include bem-element(photos) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  @include bem-element(first) {
+    flex: 1;
+    margin: 0 8px 8px 0;
+
+    @include media-query(lt-xs) {
+      margin: 0 4px 4px 0;
+    }
+  }
+
+  @include bem-element(rest) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+
+  @include bem-element(photo-block) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    flex: 1;
+  }
+
+  @include bem-element(photo-wrap) {
+    flex: 1;
+    margin: 0 8px 8px 0;
+
+    @include media-query(lt-xs) {
+      margin: 0 4px 4px 0;
+    }
+  }
+
+  @include bem-element(photo) {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+    border-radius: 1px;
+    cursor: pointer;
+    max-height: 100%;
+    height: 100%;
+
+    @include transition-only-for(.28s, (box-shadow), .0s, cubic-bezier(0.4, 0, 0.2, 1));
+
+    &:hover {
+      box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+        0 1px 10px 0 rgba(0, 0, 0, 0.12),
+        0 2px 4px -1px rgba(0, 0, 0, 0.4);
+    }
+
+    /deep/ div, /deep/ img {
+      height: 100%;
+    }
+    /deep/ img {
+      object-fit: cover;
+    }
+  }
+
+  @include bem-element(rest-photo) {
+    max-height: 100%;
+    height: 100%;
+  }
+
+  @include bem-element(more-photos) {
+    background: transparentize(black, .94);
+
+    &.empty {
+      background: white;
+      pointer-events: none;
+
+      > div {
+        opacity: 0;
+        box-shadow: none;
+        cursor: default;
+      }
+    }
+
+    > #{get-bem-element-full(portfolio-item-photos, photo)} {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+      font-size: 2em;
+
+      @include media-query(lt-xs) {
+        font-size: 1.4em;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import "../../../../../styles/helpers/all";
+
+:host {
+  @extend %ab-layer-block;
+}
+
+@include bem(portfolio-item-description) {
+
+  @include bem-element(inner) {
+  }
+
+  @include bem-element(content) {
+    margin-top: 24px;
+  }
+
+  @include bem-element(text) {
+    font-family: merge-fonts-stack('Ubuntu Light', $fonts-stack-text);
+    letter-spacing: .01rem;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 21px;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+    white-space: pre-wrap;
+    text-align: justify;
+
+    @include media-query(lt-xs) {
+      font-size: 18px;
+    }
+  }
+}

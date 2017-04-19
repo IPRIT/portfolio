@@ -1,0 +1,40 @@
+<div class="ab-portfolio-item-photos">
+  <div class="ab-portfolio-item-photos__inner">
+
+    <ab-portfolio-item-card-title [lineColor]="item?.style?.themeColor" i18n>Фотографии</ab-portfolio-item-card-title>
+
+    <div class="ab-portfolio-item-photos__content">
+      <div *ngIf="item && item.photos" class="ab-portfolio-item-photos__photos">
+
+        <div class="ab-portfolio-item-photos__first" *ngIf="item?.photos.length > 0" (click)="openPhoto(0, item?.photos[0])">
+          <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__first-photo" [abImageModel]="item?.photos[0]"></ab-image>
+        </div>
+
+        <div class="ab-portfolio-item-photos__rest">
+          <div class="ab-portfolio-item-photos__photo-block" *ngIf="item?.photos.length > 1">
+            <div class="ab-portfolio-item-photos__photo-wrap" *ngFor="let photoIndex of [1, 2]" (click)="openPhoto(photoIndex, item?.photos[photoIndex])">
+              <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo"
+                        [abImageSrc]="item?.photos[photoIndex].originalSrc"
+                        [abImageThumbnailSrc]="item?.photos[photoIndex].thumbnailSrc"></ab-image>
+            </div>
+          </div>
+
+          <div class="ab-portfolio-item-photos__photo-block" *ngIf="item?.photos.length > 3">
+            <div class="ab-portfolio-item-photos__photo-wrap" *ngFor="let photoIndex of [3]" (click)="openPhoto(photoIndex, item?.photos[photoIndex])">
+              <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo"
+                        [abImageSrc]="item?.photos[photoIndex].originalSrc"
+                        [abImageThumbnailSrc]="item?.photos[photoIndex].thumbnailSrc"></ab-image>
+            </div>
+            <div class="ab-portfolio-item-photos__photo-wrap ab-portfolio-item-photos__more-photos"
+                 [class.empty]="item?.photos.length - 4 <= 0"
+                 (click)="openPhoto(4)">
+              <div class="ab-portfolio-item-photos__photo" [style.color]="item?.style?.themeColor">+{{item?.photos.length - 4}}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
