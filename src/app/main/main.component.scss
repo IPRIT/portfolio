@@ -18,9 +18,6 @@
     @extend %ab-layer-block;
     background: url('#{$images-path}/clouds-no-repeat-v2.png') no-repeat bottom center;
     background-size: contain;
-    overflow-y: auto;
-    padding-bottom: 100px;
-    box-sizing: border-box;
 
     @include media-query(gt-md) {
       background-position: center 110%;

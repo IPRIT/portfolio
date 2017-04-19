@@ -22,16 +22,17 @@ import 'zone.js/dist/zone';
 // and run `npm install import-name-here';
 // Learn more in https://angular.io/docs/ts/latest/guide/browser-support.html
 
+// Date, currency, decimal and percent pipes
+// Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
+import 'intl';
+import 'intl/locale-data/jsonp/en';
+
 // Needed for: IE9
-//import 'classlist.js';
+import 'classlist.js';
 
 // Animations
 // Needed for: All but Chrome and Firefox, Not supported in IE9
-//import 'web-animations-js';
-
-// Date, currency, decimal and percent pipes
-// Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
-//import 'intl';
+import 'web-animations-js';
 
 // NgClass on SVG elements
 // Needed for: IE10, IE11

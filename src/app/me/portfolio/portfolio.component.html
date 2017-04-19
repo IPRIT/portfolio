@@ -7,15 +7,11 @@
     </div>
 
     <div *ngIf="(portfolioItems | async)?.length > 0" class="ab-portfolio__items" ab-grid-listener [abGridItemMin]="320" [abGridItemMax]="320">
-
       <ab-portfolio-item *ngFor="let item of portfolioItems | async" [item]="item"></ab-portfolio-item>
-
     </div>
 
     <div *ngIf="(portfolioItems | async) === null" class="ab-portfolio__items" ab-grid-listener [abGridItemMin]="320" [abGridItemMax]="320">
-
-      <ab-portfolio-item *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8]" [item]="false"></ab-portfolio-item>
-
+      <ab-portfolio-item-mock *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8]"></ab-portfolio-item-mock>
     </div>
 
   </div>

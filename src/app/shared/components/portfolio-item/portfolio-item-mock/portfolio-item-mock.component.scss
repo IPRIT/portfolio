@@ -1,4 +1,4 @@
-@import "../../../../styles/helpers/all";
+@import "../../../../../styles/helpers/all";
 
 :host {
   contain: content;
@@ -30,23 +30,14 @@
   }
 }
 
-@include bem(portfolio-item) {
+@include bem(portfolio-item-mock) {
   @extend %ab-layer-block;
   position: relative;
 
   @include bem-element(inner) {
     @extend %ab-layer-block;
+    overflow: hidden;
     background: white;
-  }
-
-  @include bem-element(background-protector) {
-    @extend %ab-layer-absolute-fill;
-    opacity: 0;
-    @include transition-only-for(1s, (opacity));
-
-    &.loaded {
-      opacity: 1;
-    }
   }
 
   @include bem-element(text-layout) {
@@ -58,7 +49,6 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
 
     @include media-query(lt-xs) {
       width: calc(100% - 20px);
@@ -67,93 +57,25 @@
 
   @include bem-element(title) {
     display: inline-block;
-    font-size: $portfolio-item-title-font-size;
-    color: inherit;
-    font-weight: 500;
-    padding-bottom: 6px;
-    line-height: 1.1em;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  @include bem-element(subtitle) {
-    font-size: $portfolio-item-subtitle-font-size;
-    color: inherit;
-    opacity: .9;
-    padding: 0 0 10px 2px;
-    font-style: italic;
-  }
-
-  @include bem-element(title-delimiter) {
-    width: 90px;
-    height: 4px;
-    min-height: 4px;
-    background: white;
-  }
-
-  @include bem-element(short-description) {
-    font-size: $portfolio-item-short-description-font-size;
-    opacity: .9;
-    margin-top: 10px;
-  }
-
-  @include bem-element(image) {
-    height: 100%;
-    /deep/ {
-      div, img {
-        height: 100%;
-      }
-      img {
-        object-fit: cover;
-      }
-    }
-  }
-
-  /* Mock Item */
-  @include bem-element(mock-inner) {
-    @extend %ab-layer-block;
-    overflow: hidden;
-    background: white;
-  }
-
-  @include bem-element(mock-text-layout) {
-    @extend %ab-layer-absolute-fill;
-    width: calc(100% - 88px);
-    padding: 24px 0 24px 24px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-
-    @include media-query(lt-xs) {
-      width: calc(100% - 20px);
-    }
-  }
-
-  @include bem-element(mock-title) {
-    display: inline-block;
     margin-bottom: 26px;
     line-height: 1.1em;
 
     @include mock-text($portfolio-mock-item-color, $portfolio-item-title-font-size / 1.1, 40%);
   }
 
-  @include bem-element(mock-subtitle) {
+  @include bem-element(subtitle) {
     margin: 0 0 20px;
     @include mock-text($portfolio-mock-item-color, $portfolio-item-subtitle-font-size / 1.2, 70%);
   }
 
-  @include bem-element(mock-title-delimiter) {
+  @include bem-element(title-delimiter) {
     width: 90px;
     height: 4px;
     min-height: 4px;
     background: $portfolio-mock-item-color;
   }
 
-  @include bem-element(mock-short-description) {
+  @include bem-element(short-description) {
     margin-top: 10px;
     @include mock-text($portfolio-mock-item-color, $portfolio-item-short-description-font-size / 2);
 
@@ -169,7 +91,7 @@
     }
   }
 
-  @include bem-element(mock-animation-mask) {
+  @include bem-element(animation-mask) {
     @extend %ab-layer-absolute-fill;
     z-index: 101;
     background-image: linear-gradient(to right, rgba(255, 255, 255, .0) 0%, rgba(255, 255, 255, .4) 20%, rgba(255, 255, 255, .6) 40%, rgba(255, 255, 255, .0) 100%);
@@ -181,7 +103,7 @@
 
     @keyframes placeHolderShimmer {
       0% { transform: translateX(-468px) }
-      100%{ transform:translateX(468px) }
+      100%{ transform: translateX(468px) }
     }
   }
 }

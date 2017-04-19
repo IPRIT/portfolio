@@ -1,20 +1,10 @@
 <div class="ab-portfolio-item">
 
-  <div *ngIf="!item" class="ab-portfolio-item__mock-inner">
-    <div class="ab-portfolio-item__mock-animation-mask"></div>
-    <div class="ab-portfolio-item__mock-text-layout">
-      <div class="ab-portfolio-item__mock-title"></div>
-      <div class="ab-portfolio-item__mock-subtitle"></div>
-      <div class="ab-portfolio-item__mock-title-delimiter"></div>
-      <div class="ab-portfolio-item__mock-short-description"></div>
-      <div class="ab-portfolio-item__mock-short-description"></div>
-      <div class="ab-portfolio-item__mock-short-description"></div>
-    </div>
-  </div>
-
-  <a *ngIf="item" class="ab-portfolio-item__inner" [routerLink]="['/me/portfolio', item.uid]" [style.background-color]="item.style.titleLineColor">
-    <ab-image class="ab-portfolio-item__image" [abImageModel]="item.style.backgroundPhoto" (imageLoaded)="imageLoaded($event)"></ab-image>
-    <div #backgroundProtector class="ab-portfolio-item__background-protector" style="{{item.style.backgroundOverlayGradient}}"></div>
+  <a class="ab-portfolio-item__inner" [routerLink]="['/me/portfolio', item.uid]" [style.background-color]="item.style.titleLineColor">
+    <ab-image class="ab-portfolio-item__image max-height"
+              [abImageModel]="item.style.backgroundPhoto"
+              (imageLoaded)="imageLoaded($event)"></ab-image>
+    <div #backgroundProtector class="ab-portfolio-item__background-protector background-protector" [style.background-image]="item?.style?.backgroundOverlayGradient"></div>
     <div class="ab-portfolio-item__text-layout" [style.color]="item.style.color">
       <div class="ab-portfolio-item__title">{{item.title}}</div>
       <div class="ab-portfolio-item__subtitle">{{item.subTitle}}</div>

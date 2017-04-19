@@ -17,11 +17,15 @@ export class PortfolioItemComponent {
   @ViewChild('backgroundProtector') backgroundProtector: ElementRef;
 
   constructor(
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private elementRef: ElementRef
   ) { }
 
   imageLoaded(image: AbImage) {
-    Observable.of(this.backgroundProtector.nativeElement)
+    /* this code will be executed only in browser context */
+    let backgroundProtector = (this.backgroundProtector && this.backgroundProtector.nativeElement)
+      || (<HTMLElement>this.elementRef.nativeElement).querySelector('.background-protector');
+    Observable.of(backgroundProtector)
       .delay(200)
       .subscribe(element => this.renderer.addClass(element, 'loaded'));
   }

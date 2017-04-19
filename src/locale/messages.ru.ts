@@ -31,6 +31,18 @@ export const TRANSLATION: string = `
         <source>Мои проекты</source>
         <target/>
       </trans-unit>
+      <trans-unit id="ad8e5ed6680f437fe46f04717a8519f96127b960" datatype="html">
+        <source>О проекте</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="9f069c7e5a7462204cb259b34774288b8dfa60e6" datatype="html">
+        <source>Фотографии</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="af28f396966d92a0abb80f528b132e6ddc77eb95" datatype="html">
+        <source>Еще <x id="INTERPOLATION"/> фото</source>
+        <target/>
+      </trans-unit>
       <trans-unit id="4da0a28d9bbab1451dd66cf45f11164cec57f45d" datatype="html">
         <source>Основной логотип</source>
         <target/>

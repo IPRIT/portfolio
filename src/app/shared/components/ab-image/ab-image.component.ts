@@ -1,6 +1,6 @@
 import {
   Component, OnInit, ViewChild, Input, ElementRef, Output, EventEmitter,
-  Renderer2, OnDestroy, PLATFORM_ID, Inject
+  Renderer2, OnDestroy, PLATFORM_ID, Inject, AfterViewInit
 } from '@angular/core';
 import { Subject, Subscription } from "rxjs";
 import { AbImageModel } from "./ab-image.model";
@@ -66,7 +66,7 @@ export class AbImageComponent implements OnInit, OnDestroy {
 
   subscribeEvents(): void {
     this.loadEvent = this.loadedImage.subscribe(_ => {
-      this.renderer.setAttribute(this.image.nativeElement, 'src', _.src);
+      this.renderer.setAttribute(this.image.nativeElement, 'src', this.abImageModel.originalSrc);
 
       setTimeout(() => {
         requestAnimationFrame(() => {

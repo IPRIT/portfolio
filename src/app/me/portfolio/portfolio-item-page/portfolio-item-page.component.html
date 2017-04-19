@@ -8,7 +8,7 @@
            [abImageModel]="item?.style?.backgroundPhotoForPage"
            (imageLoaded)="backgroundImageLoaded($event)"
       ></div>
-      <div #backgroundProtector class="ab-portfolio-item-page__background-protector" [style]="item?.style?.backgroundOverlayGradient"></div>
+      <div #backgroundProtector class="ab-portfolio-item-page__background-protector" [style.background-image]="item?.style?.backgroundOverlayGradient"></div>
       <div class="ab-portfolio-item-page__text-layout" [style.color]="item?.style?.color">
         <div class="ab-portfolio-item-page__title">{{item?.title}}</div>
         <div class="ab-portfolio-item-page__subtitle">{{item?.subTitle}}</div>

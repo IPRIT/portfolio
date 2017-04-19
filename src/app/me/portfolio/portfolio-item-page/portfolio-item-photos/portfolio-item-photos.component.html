@@ -26,9 +26,17 @@
                         [abImageThumbnailSrc]="item?.photos[photoIndex].thumbnailSrc"></ab-image>
             </div>
             <div class="ab-portfolio-item-photos__photo-wrap ab-portfolio-item-photos__more-photos"
-                 [class.empty]="item?.photos.length - 4 <= 0"
-                 (click)="openPhoto(4)">
-              <div class="ab-portfolio-item-photos__photo" [style.color]="item?.style?.themeColor">+{{item?.photos.length - 4}}</div>
+                 [class.empty]="item?.photos.length <= 4"
+                 (click)="openPhoto(4)" *ngIf="item?.photos.length > 5">
+              <div class="ab-portfolio-item-photos__more" i18n>Еще {{item?.photos.length - 4}} фото</div>
+              <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo"
+                        [abImageSrc]="item?.photos[4].thumbnailSrc"
+                        [abImageThumbnailSrc]="item?.photos[4].thumbnailSrc"></ab-image>
+            </div>
+            <div class="ab-portfolio-item-photos__photo-wrap" *ngIf="item?.photos.length === 5" (click)="openPhoto(4, item?.photos[4])">
+              <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo"
+                        [abImageSrc]="item?.photos[4].originalSrc"
+                        [abImageThumbnailSrc]="item?.photos[4].thumbnailSrc"></ab-image>
             </div>
           </div>
         </div>

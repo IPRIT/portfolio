@@ -154,4 +154,8 @@
     max-width: 120px;
     display: block;
   }
+
+  @include bem-element(language-chooser) {
+    padding-bottom: 15px;
+  }
 }

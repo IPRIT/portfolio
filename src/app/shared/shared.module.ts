@@ -13,6 +13,7 @@ import { PhotoViewerComponent } from "./components/photo-viewer/photo-viewer.com
 import { PhotoViewerService } from "./components/photo-viewer/photo-viewer.service";
 import { LanguageChooserComponent } from './components/language-chooser/language-chooser.component';
 import { AbImageService } from "./components/ab-image/ab-image.service";
+import { PortfolioItemMockComponent } from './components/portfolio-item/portfolio-item-mock/portfolio-item-mock.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { AbImageService } from "./components/ab-image/ab-image.service";
     HeaderComponent,
     PortfolioItemComponent,
     PhotoViewerComponent,
-    LanguageChooserComponent
+    LanguageChooserComponent,
+    PortfolioItemMockComponent
   ],
   providers: [
     HeaderLogoService,
@@ -41,6 +43,7 @@ import { AbImageService } from "./components/ab-image/ab-image.service";
     MobileMenuComponent,
     HeaderComponent,
     PortfolioItemComponent,
+    PortfolioItemMockComponent,
     PhotoViewerComponent,
     LanguageChooserComponent
   ],
