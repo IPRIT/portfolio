@@ -60,26 +60,16 @@
   }
 
   @include bem-element(close-button) {
-    color: $header-links-background-color-default;
+    color: map_get($themes-map, $theme-default);
     padding: 8px 12px;
     text-align: center;
     cursor: default;
     user-select: none;
 
-    .portfolio & {
-      color: $header-links-background-color-default;
-    }
-
-    .about & {
-      color: $header-links-background-color-about;
-    }
-
-    .foxy & {
-      color: $header-links-background-color-foxy;
-    }
-
-    .acm & {
-      color: $header-links-background-color-acm;
+    @each $theme-name, $theme-color in $themes-map {
+      #{$theme-name} & {
+        color: map_get($themes-map, $theme-name);
+      }
     }
 
     & > i {
@@ -121,22 +111,12 @@
     }
 
     @include bem-modifier(active) {
-      color: $header-links-background-color-default;
+      color: map_get($themes-map, $theme-default);
 
-      .portfolio & {
-        color: $header-links-background-color-default;
-      }
-
-      .about & {
-        color: $header-links-background-color-about;
-      }
-
-      .foxy & {
-        color: $header-links-background-color-foxy;
-      }
-
-      .acm & {
-        color: $header-links-background-color-acm;
+      @each $theme-name, $theme-color in $themes-map {
+        #{$theme-name} & {
+          color: map_get($themes-map, $theme-name);
+        }
       }
     }
   }

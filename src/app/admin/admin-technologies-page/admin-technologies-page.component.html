@@ -1,0 +1,11 @@
+<div class="ab-admin-technologies">
+  <div class="ab-admin-technologies__tools">
+    <button (click)="createNew()">+Create new project</button>
+  </div>
+  <div class="ab-admin-technologies__items">
+    <ab-admin-technology-item *ngFor="let item of technologyItems | async" [item]="item"
+                             (itemUpdated)="updateItem($event)"
+                             (itemDeleted)="deleteItem($event)"
+    ></ab-admin-technology-item>
+  </div>
+</div>

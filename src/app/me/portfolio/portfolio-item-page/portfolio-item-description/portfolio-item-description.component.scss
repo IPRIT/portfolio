@@ -14,9 +14,9 @@
   }
 
   @include bem-element(text) {
-    font-family: merge-fonts-stack('Ubuntu Light', $fonts-stack-text);
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack-text);
     letter-spacing: .01rem;
-    font-weight: 400;
+    font-weight: 300;
     font-style: normal;
     font-size: 21px;
     line-height: 1.58;

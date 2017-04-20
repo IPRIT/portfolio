@@ -1,4 +1,4 @@
-<div class="ab-portfolio-item-page">
+<div class="ab-portfolio-item-page theme-{{item?.style?.headerClass}}">
   <div class="ab-portfolio-item-page__inner">
 
     <div class="ab-portfolio-item-page__header">
@@ -10,7 +10,14 @@
       ></div>
       <div #backgroundProtector class="ab-portfolio-item-page__background-protector" [style.background-image]="item?.style?.backgroundOverlayGradient"></div>
       <div class="ab-portfolio-item-page__text-layout" [style.color]="item?.style?.color">
-        <div class="ab-portfolio-item-page__title">{{item?.title}}</div>
+        <div class="ab-portfolio-item-page__title">
+          <div class="ab-portfolio-item-page__title-text">{{item?.title}}</div>
+          <div class="ab-portfolio-item-page__live-demo-wrap" *ngIf="item?.demoUrl">
+            <a target="_blank" href="{{ item?.demoUrl }}" class="link ab-portfolio-item-page__live-demo">
+              <ab-live-button class="ab-portfolio-item-page__live-demo-button theme-{{ item?.style.headerClass }}" i18n [style.color]="item?.style.themeColor">Запустить</ab-live-button>
+            </a>
+          </div>
+        </div>
         <div class="ab-portfolio-item-page__subtitle">{{item?.subTitle}}</div>
         <div class="ab-portfolio-item-page__title-delimiter" [style.background-color]="item?.style?.titleLineColor"></div>
         <div class="ab-portfolio-item-page__short-description">{{item?.shortDescription}}</div>
@@ -32,7 +39,7 @@
 
         <div class="ab-portfolio-item-page__block">
           <div class="ab-portfolio-item-page__card">
-            <ab-portfolio-item-description [item]="item"></ab-portfolio-item-description>
+            <ab-portfolio-item-technologies [item]="item"></ab-portfolio-item-technologies>
           </div>
 
           <div class="ab-portfolio-item-page__card">

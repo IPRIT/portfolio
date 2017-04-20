@@ -13,6 +13,8 @@ import { AdminPhotoComponent } from './portfolio/portfolio-item/admin-photo/admi
 import { AdminStyleComponent } from './portfolio/portfolio-item/admin-style/admin-style.component';
 import { AdminSourceLinkComponent } from './portfolio/portfolio-item/admin-source-link/admin-source-link.component';
 import { AdminTechnologyComponent } from './portfolio/portfolio-item/admin-technology/admin-technology.component';
+import { AdminTechnologiesPageComponent } from './admin-technologies-page/admin-technologies-page.component';
+import { AdminTechnologyItemComponent } from './admin-technologies-page/admin-technology-item/admin-technology-item.component';
 
 @NgModule({
   imports: [
@@ -30,7 +32,9 @@ import { AdminTechnologyComponent } from './portfolio/portfolio-item/admin-techn
     AdminPhotoComponent,
     AdminStyleComponent,
     AdminSourceLinkComponent,
-    AdminTechnologyComponent
+    AdminTechnologyComponent,
+    AdminTechnologiesPageComponent,
+    AdminTechnologyItemComponent
   ],
   providers: [
     AuthService

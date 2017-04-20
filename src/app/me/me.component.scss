@@ -4,6 +4,8 @@
   @extend %ab-layer-block;
   background: $page-background-color;
   position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 @include bem(me) {

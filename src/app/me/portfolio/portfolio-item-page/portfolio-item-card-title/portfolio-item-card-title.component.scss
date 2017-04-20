@@ -28,6 +28,15 @@
     width: 90px;
     background: #ccc;
     position: relative;
+
+    @each $theme-name, $theme-color in $themes-map {
+      :host-context(.theme-#{$theme-name}) & {
+        background-color: $theme-color;
+        $second-color: hsl(hue($theme-color) - 10, saturation($theme-color), lightness($theme-color));
+        @include filter-gradient($theme-color, $second-color, horizontal);
+        @include background-image(linear-gradient(to right, $theme-color 0%, $second-color 100%));
+      }
+    }
   }
 
   @include bem-element(line-mask) {

@@ -21,10 +21,11 @@ export interface PortfolioItemPhoto extends AbImage {
 }
 
 export interface Technology {
-  uid: string,
+  uid?: string,
   name?: string,
   description?: string,
   photo?: PortfolioItemPhoto,
+  link?: string,
   [prop: string]: any
 }
 

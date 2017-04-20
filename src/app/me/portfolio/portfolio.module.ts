@@ -8,6 +8,7 @@ import { GridListenerDirective } from "./grid-listener.directive";
 import { PortfolioItemDescriptionComponent } from './portfolio-item-page/portfolio-item-description/portfolio-item-description.component';
 import { PortfolioItemCardTitleComponent } from './portfolio-item-page/portfolio-item-card-title/portfolio-item-card-title.component';
 import { PortfolioItemPhotosComponent } from './portfolio-item-page/portfolio-item-photos/portfolio-item-photos.component';
+import { PortfolioItemTechnologiesComponent } from './portfolio-item-page/portfolio-item-technologies/portfolio-item-technologies.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { PortfolioItemPhotosComponent } from './portfolio-item-page/portfolio-it
     GridListenerDirective,
     PortfolioItemDescriptionComponent,
     PortfolioItemCardTitleComponent,
-    PortfolioItemPhotosComponent
+    PortfolioItemPhotosComponent,
+    PortfolioItemTechnologiesComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

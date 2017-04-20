@@ -37,7 +37,7 @@
     @extend %ab-layer-absolute-fill;
     z-index: 3;
     max-width: 100%;
-    max-width: calc(10% + 400px);
+    max-width: 100%;
     padding: 24px 5%;
     box-sizing: border-box;
     display: flex;
@@ -52,19 +52,38 @@
   }
 
   @include bem-element(title) {
-    display: inline-block;
-    font-size: $portfolio-item-title-font-size;
     color: inherit;
     font-weight: 500;
     padding-bottom: 6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include bem-element(title-text) {
+    color: inherit;
+    font-weight: 500;
+    font-size: $portfolio-item-title-font-size;
     line-height: 1.1em;
+  }
+
+  @include bem-element(live-demo-wrap) {
+    margin-left: 20px;
+  }
+
+  @include bem-element(live-demo) {
+    display: inline-block;
+  }
+
+  @include bem-element(live-demo-button) {
   }
 
   @include bem-element(subtitle) {
     font-size: $portfolio-item-subtitle-font-size;
     color: inherit;
     opacity: .9;
-    padding: 0 0 10px 2px;
+    padding: 0 0 10px;
     font-style: italic;
   }
 
@@ -79,6 +98,7 @@
     font-size: $portfolio-item-short-description-font-size;
     opacity: .9;
     margin-top: 10px;
+    max-width: calc(10% + 300px);
   }
 
   @include bem-element(cards) {

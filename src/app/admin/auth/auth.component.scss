@@ -2,8 +2,8 @@
 
 :host {
   @extend %ab-layer-block;
-  @include filter-gradient($header-links-background-color-default, $header-links-background-color-default, horizontal); // IE6-9
-  @include background-image(linear-gradient(to right, $header-links-background-color-default 0%, darken($header-links-background-color-default, 20%) 100%));
+  @include filter-gradient(map_get($themes-map, $theme-default), darken(map_get($themes-map, $theme-default), 20%), horizontal); // IE6-9
+  @include background-image(linear-gradient(to right, map_get($themes-map, $theme-default) 0%, darken($color: map_get($themes-map, $theme-default), $amount: 20%) 100%));
   height: 50px;
   position: relative;
 }
@@ -21,7 +21,7 @@
     color: white;
     cursor: pointer;
     padding: 6px 15px;
-    background: $header-links-background-color-default;
+    background: map_get($themes-map, $theme-default);
     border: 0;
     box-shadow: 0 1px 3px 0px transparentize(black, .8);
     outline: none;

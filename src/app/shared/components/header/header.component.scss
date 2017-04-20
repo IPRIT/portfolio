@@ -62,7 +62,7 @@
   @include bem-element(link) {
     text-align: center;
     padding: 9px 20px;
-    color: $header-links-color-default;
+    color: map_get($themes-map, $theme-default);
     font-weight: 500;
     text-decoration: none;
     font-size: 1.1em;
@@ -72,85 +72,32 @@
     border-radius: 50px;
     @include transition(all .1s $transitionDefaultTimingFunction, color .2s $transitionDefaultTimingFunction, box-shadow .2s $transitionDefaultTimingFunction);
 
-    .portfolio & {
-      color: $header-links-color-default;
+    @each $theme-name, $theme-color in $themes-map {
+      .#{$theme-name} & {
+        color: map_get($themes-map, $theme-name);
 
-      &:hover, &:focus {
-        color: $header-links-background-color-default;
-      }
+        &:hover, &:focus {
+          color: darken(map_get($themes-map, $theme-name), 5%);
+        }
 
-      &:active:not(#{get-bem-modifier-full(header, link, active)}) {
-        background: $header-links-background-color-default;
-        color: $header-links-color-active-default;
-        border-radius: 50px;
-      }
-    }
-
-    .about & {
-      color: $header-links-color-about;
-
-      &:hover, &:focus {
-        color: $header-links-background-color-about;
-      }
-
-      &:active:not(#{get-bem-modifier-full(header, link, active)}) {
-        background: $header-links-background-color-about;
-        color: $header-links-color-active-about;
-        border-radius: 50px;
-      }
-    }
-
-    .foxy & {
-      color: $header-links-color-foxy;
-
-      &:hover, &:focus {
-        color: $header-links-background-color-foxy;
-      }
-
-      &:active:not(#{get-bem-modifier-full(header, link, active)}) {
-        background: $header-links-background-color-foxy;
-        color: $header-links-color-active-foxy;
-        border-radius: 50px;
-      }
-    }
-
-    .acm & {
-      color: $header-links-color-acm;
-
-      &:hover, &:focus {
-        color: $header-links-background-color-acm;
-      }
-
-      &:active:not(#{get-bem-modifier-full(header, link, active)}) {
-        background: $header-links-background-color-acm;
-        color: $header-links-color-active-acm;
-        border-radius: 50px;
+        &:active:not(#{get-bem-modifier-full(header, link, active)}) {
+          background: map_get($themes-map, $theme-name);
+          color: white;
+          border-radius: 50px;
+        }
       }
     }
 
     @include bem-modifier(active) {
-      box-shadow: inset 0 0 0 2px $header-links-background-color-default;
-      color: $header-links-background-color-default;
+      box-shadow: inset 0 0 0 2px map_get($themes-map, $theme-default);
+      color: map_get($themes-map, $theme-default);
 
-      .portfolio & {
-        box-shadow: inset 0 0 0 2px $header-links-background-color-default;
-        color: $header-links-background-color-default;
+      @each $theme-name, $theme-color in $themes-map {
+        .#{$theme-name} & {
+          box-shadow: inset 0 0 0 2px map_get($themes-map, $theme-name);
+          color: map_get($themes-map, $theme-name);
+        }
       }
-
-      .about & {
-        box-shadow: inset 0 0 0 2px $header-links-background-color-about;
-        color: $header-links-background-color-about;
-      }
-
-      .foxy & {
-        box-shadow: inset 0 0 0 2px $header-links-background-color-foxy;
-        color: $header-links-background-color-foxy;
-      }
-
-      .acm & {
-         box-shadow: inset 0 0 0 2px $header-links-background-color-acm;
-         color: $header-links-background-color-acm;
-       }
     }
 
     @include media-query(lt-sm) {
@@ -172,26 +119,16 @@
   }
 
   @include bem-element(menu-button) {
-    color: $header-links-background-color-default;
+    color: map_get($themes-map, $theme-default);
     padding: 8px 12px;
     text-align: center;
     cursor: default;
     user-select: none;
 
-    .portfolio & {
-      color: $header-links-background-color-default;
-    }
-
-    .about & {
-      color: $header-links-background-color-about;
-    }
-
-    .foxy & {
-      color: $header-links-background-color-foxy;
-    }
-
-    .acm & {
-      color: $header-links-background-color-acm;
+    @each $theme-name, $theme-color in $themes-map {
+      #{$theme-name} & {
+        color: map_get($themes-map, $theme-name);
+      }
     }
 
     & > i {

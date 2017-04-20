@@ -1,0 +1,76 @@
+@import "../../../../../styles/helpers/all";
+
+:host {
+  @extend %ab-layer-block;
+}
+
+@include bem(portfolio-item-technologies) {
+
+  @include bem-element(inner) {
+  }
+
+  @include bem-element(content) {
+    margin-top: 30px;
+  }
+
+  @include bem-element(technologies) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  @include bem-element(technology) {
+    $margin: 0px;
+    padding: 2px 2px 8px;
+    box-sizing: border-box;
+    contain: content;
+    display: inline-block;
+    position: relative;
+    min-height: 40px;
+    margin: $margin $margin 0 0;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+      @each $theme-name, $theme-color in $themes-map {
+        &.theme-#{$theme-name} {
+          background-color: $theme-color;
+          $second-color: hsl(hue($theme-color) - 10, saturation($theme-color), lightness($theme-color));
+          @include filter-gradient($theme-color, $second-color, horizontal);
+          @include background-image(linear-gradient(to right, $theme-color 0%, $second-color 100%));
+        }
+      }
+    }
+
+    @for $i from 1 through 100 {
+      [grid-columns="#{$i}"] & {
+        width: calc((100% - (#{$margin} * (#{$i} - 1))) / #{$i});
+      }
+    }
+
+    @include media-query(lt-xs) {
+      min-height: 200px;
+    }
+  }
+
+  @include bem-element(technology-inner) {
+    padding: 14px;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: white;
+  }
+
+  @include bem-element(technology-photo-wrap) {
+    margin-bottom: 10px;
+  }
+
+  @include bem-element(technology-name) {
+    text-align: center;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+  }
+}

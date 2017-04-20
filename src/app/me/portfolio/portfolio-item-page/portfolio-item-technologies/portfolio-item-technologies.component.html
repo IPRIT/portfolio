@@ -1,0 +1,22 @@
+<div class="ab-portfolio-item-technologies">
+  <div class="ab-portfolio-item-technologies__inner">
+
+    <ab-portfolio-item-card-title [lineColor]="item?.style?.themeColor" i18n>Используемые технологии</ab-portfolio-item-card-title>
+
+    <div class="ab-portfolio-item-technologies__content">
+
+      <div class="ab-portfolio-item-technologies__technologies" ab-grid-listener [abGridItemMax]="130" [abGridItemMin]="130">
+        <a class="ab-portfolio-item-technologies__technology theme-{{ item?.style?.headerClass }}" target="_blank" *ngFor="let technology of item.technologies" href="{{ technology.link }}">
+          <div class="ab-portfolio-item-technologies__technology-inner">
+            <div class="ab-portfolio-item-technologies__technology-photo-wrap">
+              <ab-image [abImageModel]="technology?.photo"></ab-image>
+            </div>
+            <div class="ab-portfolio-item-technologies__technology-name">{{technology.name}}</div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</div>

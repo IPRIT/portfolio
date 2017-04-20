@@ -14,6 +14,7 @@ import { PhotoViewerService } from "./components/photo-viewer/photo-viewer.servi
 import { LanguageChooserComponent } from './components/language-chooser/language-chooser.component';
 import { AbImageService } from "./components/ab-image/ab-image.service";
 import { PortfolioItemMockComponent } from './components/portfolio-item/portfolio-item-mock/portfolio-item-mock.component';
+import { AbLiveButtonComponent } from './components/ab-live-button/ab-live-button.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { PortfolioItemMockComponent } from './components/portfolio-item/portfoli
     PortfolioItemComponent,
     PhotoViewerComponent,
     LanguageChooserComponent,
-    PortfolioItemMockComponent
+    PortfolioItemMockComponent,
+    AbLiveButtonComponent
   ],
   providers: [
     HeaderLogoService,
@@ -45,7 +47,8 @@ import { PortfolioItemMockComponent } from './components/portfolio-item/portfoli
     PortfolioItemComponent,
     PortfolioItemMockComponent,
     PhotoViewerComponent,
-    LanguageChooserComponent
+    LanguageChooserComponent,
+    AbLiveButtonComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

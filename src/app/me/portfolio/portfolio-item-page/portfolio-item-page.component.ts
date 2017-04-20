@@ -2,12 +2,16 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2, OnDestroy } from '
 import { ActivatedRoute, Params, Router, NavigationEnd } from "@angular/router";
 import { routerTransition } from "../../../routing/app.routing.animations";
 import { AbImage } from "../../../shared/components/ab-image/ab-image.model";
-import { PortfolioItem, PortfolioItemPhoto } from "../../../shared/components/portfolio-item/portfolio-item.interface";
+import {
+  PortfolioItem, PortfolioItemPhoto,
+  Technology
+} from "../../../shared/components/portfolio-item/portfolio-item.interface";
 import { AngularFire } from "angularfire2";
 import { LanguageProviderService } from "../../../shared/services/language/language-provider.service";
 import { HeaderStyleService } from "../../../shared/services/header-style/header-style.service";
 import { MetaService } from "../../../shared/services/meta/meta.service";
 import { PhotoViewerService } from "../../../shared/components/photo-viewer/photo-viewer.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'ab-portfolio-item-page',
@@ -24,6 +28,7 @@ export class PortfolioItemPageComponent implements OnInit {
   item: PortfolioItem;
 
   portfolioItemsNs = '/portfolio-items';
+  technologyItemsNs = '/portfolio-technologies';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -40,9 +45,20 @@ export class PortfolioItemPageComponent implements OnInit {
   ngOnInit() {
     let itemSource = this.activatedRoute.params.map(params => {
       return params.id;
-    }).switchMap(id => {
-      return this.angularFire.database.object(this.getItemPath(id))
-    });
+    }).switchMap((id: string) => {
+      return this.angularFire.database.object(this.getPortfolioItemPath(id));
+    }).map((item: any) => {
+      let technologiesObservables = (item.technologies || []).map(technologyUid => {
+        return this.angularFire.database.object(
+          this.getTechnologyItemPath(technologyUid.uid)
+        )
+      });
+      return technologiesObservables.length ?
+        Observable.combineLatest(...technologiesObservables, (...technologies: Technology[]) => {
+          item.technologies = technologies;
+          return item;
+        }) : Observable.of(item);
+    }).switch();
 
     let event = this.router.events
       .filter(event => (event instanceof NavigationEnd))
@@ -70,19 +86,15 @@ export class PortfolioItemPageComponent implements OnInit {
     });
   }
 
-  getItemPath(id: string) {
+  getPortfolioItemPath(id: string) {
     return `${this.portfolioItemsNs}/${this.languageService.obtainContentLanguage()}/${id}`;
+  }
+
+  getTechnologyItemPath(id: string) {
+    return `${this.technologyItemsNs}/${id}`;
   }
 
   backgroundImageLoaded(image: AbImage) {
     this.renderer.addClass(this.backgroundProtector.nativeElement, 'loaded');
-  }
-
-  openPhotos(photos: PortfolioItemPhoto[]) {
-    if (photos) {
-      this.photoViewerService.setPhotos(photos);
-      this.photoViewerService.setPhotoNumber(1);
-      this.photoViewerService.openPhotoViewer();
-    }
   }
 }
