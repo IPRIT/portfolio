@@ -67,7 +67,7 @@
     user-select: none;
 
     @each $theme-name, $theme-color in $themes-map {
-      #{$theme-name} & {
+      .#{$theme-name} & {
         color: map_get($themes-map, $theme-name);
       }
     }
@@ -107,14 +107,14 @@
     @include transition-only-for(.2s, (all));
 
     &:not(:first-of-type) {
-      border-top: 1px solid transparentize(#000, .9);
+      border-top: 1px solid transparentize(black, .9);
     }
 
     @include bem-modifier(active) {
       color: map_get($themes-map, $theme-default);
 
       @each $theme-name, $theme-color in $themes-map {
-        #{$theme-name} & {
+        .#{$theme-name} & {
           color: map_get($themes-map, $theme-name);
         }
       }

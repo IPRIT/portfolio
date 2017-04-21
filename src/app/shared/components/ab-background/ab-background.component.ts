@@ -54,7 +54,7 @@ export class AbBackgroundComponent implements OnInit, OnDestroy {
   }
 
   loadImage(): void {
-    this.abImageService.loadEnqueue( this.renderer, this.abImageModel )
+    this.abImageService.load( this.renderer, this.abImageModel )
       .subscribe((image: HTMLImageElement) => {
         this.loadedImage.next( image );
         this.imageLoaded.emit( this.abImageModel );

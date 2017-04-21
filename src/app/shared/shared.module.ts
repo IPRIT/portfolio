@@ -15,6 +15,7 @@ import { LanguageChooserComponent } from './components/language-chooser/language
 import { AbImageService } from "./components/ab-image/ab-image.service";
 import { PortfolioItemMockComponent } from './components/portfolio-item/portfolio-item-mock/portfolio-item-mock.component';
 import { AbLiveButtonComponent } from './components/ab-live-button/ab-live-button.component';
+import { LogoSwitcherDirective } from './components/header/logo-switcher/logo-switcher.directive';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { AbLiveButtonComponent } from './components/ab-live-button/ab-live-butto
     PhotoViewerComponent,
     LanguageChooserComponent,
     PortfolioItemMockComponent,
-    AbLiveButtonComponent
+    AbLiveButtonComponent,
+    LogoSwitcherDirective
   ],
   providers: [
     HeaderLogoService,
@@ -48,7 +50,8 @@ import { AbLiveButtonComponent } from './components/ab-live-button/ab-live-butto
     PortfolioItemMockComponent,
     PhotoViewerComponent,
     LanguageChooserComponent,
-    AbLiveButtonComponent
+    AbLiveButtonComponent,
+    LogoSwitcherDirective
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

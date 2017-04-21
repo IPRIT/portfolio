@@ -2,7 +2,7 @@
   <div class="ab-header__inner">
 
     <div class="ab-header__section-logo">
-      <a class="ab-header__logo" [style.background-image]="'url(' + (styleService.logoService.logo | async)?.originalSrc + ')'" routerLink="/"></a>
+      <a class="ab-header__logo" ab-logo-switcher routerLink="/">{{title}}</a>
     </div>
 
     <nav class="ab-header__section-links">

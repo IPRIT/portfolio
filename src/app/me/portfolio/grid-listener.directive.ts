@@ -35,6 +35,8 @@ export class GridListenerDirective implements AfterViewInit {
 
     let element: HTMLElement = this.elementRef.nativeElement;
 
+    // We can't take window resize event from the method `Observable.fromEvent`
+    // because we use `renderer` for listening events
     let windowChange: Observable<any> = new Observable<any>((observer: Observer<any>) => {
       this.renderer.listen('window', 'resize', event => observer.next(event));
     });
@@ -61,7 +63,8 @@ export class GridListenerDirective implements AfterViewInit {
     }
   }
 
-  getColumnsNumber(element: HTMLElement) {
+  getColumnsNumber(element: HTMLElement): number {
+    // todo: find out the way to take `offsetWidth` in not-a-browser context
     let parentWidth = this.oldParentWidth = element.offsetWidth;
     let possibleColumns = Math.max(Math.floor(parentWidth / this.maxItemWidth), 1);
     if (parentWidth / this.maxItemWidth > possibleColumns) {

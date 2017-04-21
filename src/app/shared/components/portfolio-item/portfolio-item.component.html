@@ -1,10 +1,10 @@
-<div class="ab-portfolio-item">
+<div class="ab-portfolio-item portfolio-item">
 
   <a class="ab-portfolio-item__inner" [routerLink]="['/me/portfolio', item.uid]" [style.background-color]="item.style.titleLineColor">
     <ab-image class="ab-portfolio-item__image max-height"
               [abImageModel]="item.style.backgroundPhoto"
               (imageLoaded)="imageLoaded($event)"></ab-image>
-    <div #backgroundProtector class="ab-portfolio-item__background-protector background-protector" [style.background-image]="item?.style?.backgroundOverlayGradient"></div>
+    <div class="ab-portfolio-item__background-protector background-protector" [style.background-image]="item?.style?.backgroundOverlayGradient"></div>
     <div class="ab-portfolio-item__text-layout" [style.color]="item.style.color">
       <div class="ab-portfolio-item__title">{{item.title}}</div>
       <div class="ab-portfolio-item__subtitle">{{item.subTitle}}</div>

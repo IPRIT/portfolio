@@ -126,8 +126,10 @@
     user-select: none;
 
     @each $theme-name, $theme-color in $themes-map {
-      #{$theme-name} & {
-        color: map_get($themes-map, $theme-name);
+      .#{$theme-name} & {
+        i {
+          color: map_get($themes-map, $theme-name);
+        }
       }
     }
 

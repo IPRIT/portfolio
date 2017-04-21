@@ -54,7 +54,7 @@ export const TRANSLATION: string = `
       </trans-unit>
       <trans-unit datatype="html" id="af28f396966d92a0abb80f528b132e6ddc77eb95">
         <source>Еще <x id="INTERPOLATION"/> фото</source>
-        <target>View &lt;x id=&quot;INTERPOLATION&quot;/&gt; more</target>
+        <target>View <x id="INTERPOLATION"/> more</target>
         
       </trans-unit>
       <trans-unit datatype="html" id="7625e3e07185d5632c4761dedf9d28bb8443e61d">

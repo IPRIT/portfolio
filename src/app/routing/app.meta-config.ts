@@ -7,7 +7,6 @@ export const metaConfig: MetaConfig = {
     titleSuffix: ' | Alex Belov',
     'description': 'Alex Belov - Frontend Developer',
     'twitter:description': 'Alex Belov - Frontend Developer',
-    'theme-color': '#01579b',
     'og:image': './assets/ui/images/logo-pink.png'
   }
 };

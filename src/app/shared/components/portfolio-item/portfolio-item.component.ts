@@ -12,20 +12,19 @@ import 'rxjs/add/operator/timeout';
   styleUrls: ['./portfolio-item.component.scss']
 })
 export class PortfolioItemComponent {
-
-  @Input() item: PortfolioItem | boolean;
-  @ViewChild('backgroundProtector') backgroundProtector: ElementRef;
+  
+  @Input() item: PortfolioItem;
 
   constructor(
     private renderer: Renderer2,
     private elementRef: ElementRef
   ) { }
 
+
   imageLoaded(image: AbImage) {
     /* this code will be executed only in browser context */
-    let backgroundProtector = (this.backgroundProtector && this.backgroundProtector.nativeElement)
-      || (<HTMLElement>this.elementRef.nativeElement).querySelector('.background-protector');
-    Observable.of(backgroundProtector)
+    let rootElement = <HTMLElement>this.elementRef.nativeElement;
+    Observable.of(rootElement)
       .delay(200)
       .subscribe(element => this.renderer.addClass(element, 'loaded'));
   }
