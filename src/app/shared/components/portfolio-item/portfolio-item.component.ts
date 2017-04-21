@@ -22,7 +22,7 @@ export class PortfolioItemComponent {
 
 
   imageLoaded(image: AbImage) {
-    /* this code will be executed only in browser context */
+    // this code will be executed only in browser context
     let rootElement = <HTMLElement>this.elementRef.nativeElement;
     Observable.of(rootElement)
       .delay(200)

@@ -1,17 +1,17 @@
 import {
-  Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input, Output, EventEmitter,
-  Renderer2
+  Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter,
+  Renderer2, HostListener
 } from '@angular/core';
 import * as Swipe from 'swipejs';
 import { PhotoViewerService } from "./photo-viewer.service";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 
 @Component({
   selector: 'ab-photo-viewer',
   templateUrl: './photo-viewer.component.html',
   styleUrls: ['./photo-viewer.component.scss']
 })
-export class PhotoViewerComponent implements OnInit, AfterViewInit {
+export class PhotoViewerComponent implements OnInit {
 
   @ViewChild('swipeContainer') swipeContainer: ElementRef;
 
@@ -33,7 +33,8 @@ export class PhotoViewerComponent implements OnInit, AfterViewInit {
   constructor(
     public photoViewerService: PhotoViewerService,
     private renderer: Renderer2
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.photoViewerService.photoNumber$.subscribe((photoNumber: number) => {
@@ -98,7 +99,7 @@ export class PhotoViewerComponent implements OnInit, AfterViewInit {
     this._getOrCreateSwipe().next();
   }
 
-  close(evt) {
+  close(evt?) {
     this.photoViewerService.closePhotoViewer();
     this.commentShowing$.next(true);
   }
@@ -109,6 +110,14 @@ export class PhotoViewerComponent implements OnInit, AfterViewInit {
     );
   }
 
-  ngAfterViewInit() {
+  @HostListener('window:popstate', [ '$event' ])
+  onPopState(event: Event) {
+    let subscription = this.photoViewerService.isOpen$
+      .filter((state: boolean) => state)
+      .delay(0)
+      .subscribe(() => {
+        subscription.unsubscribe();
+        this.close();
+      });
   }
 }
