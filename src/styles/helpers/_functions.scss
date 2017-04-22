@@ -73,3 +73,7 @@
   $block: unquote('.')#{$bem-block-prefix}#{$block};
   @return build-modifier($block, $element, $modifier);
 }
+
+@function import-bg-image($image-name, $path: $images-path) {
+  @return unquote('url(#{$path}/#{unquote($image-name)})');
+}

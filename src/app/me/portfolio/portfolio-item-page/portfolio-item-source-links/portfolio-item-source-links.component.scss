@@ -1,0 +1,75 @@
+@import "../../../../../styles/helpers/all";
+
+:host {
+  @extend %ab-layer-block;
+}
+
+@include bem(portfolio-item-source-links) {
+
+  @include bem-element(content) {
+    margin-top: 30px;
+  }
+
+  @include bem-element(link-button) {
+    display: inline-block;
+    position: relative;
+    margin: 0 12px 12px 0;
+  }
+
+  @include bem-element(link-button-inner) {
+    position: relative;
+    width: 190px;
+    height: 50px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 50px;
+  }
+
+  @include bem-element(link-image) {
+    @extend %ab-layer-absolute-fill;
+    z-index: 2;
+    background-position: left center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &.github {
+      background-image: import-bg-image('github-white.png');
+      opacity: .3;
+    }
+  }
+
+  @include bem-element(link-overlay) {
+    @extend %ab-layer-absolute-fill;
+    z-index: 1;
+    border-radius: 50px;
+
+    @each $theme-name, $theme-color in $themes-map {
+      :host-context(.theme-#{$theme-name}) & {
+        background-color: $theme-color;
+        $second-color: hsl(hue($theme-color) - 10, saturation($theme-color), lightness($theme-color));
+        @include filter-gradient($theme-color, $second-color, horizontal);
+        @include background-image(linear-gradient(to right, $theme-color 0%, $second-color 100%));
+      }
+
+      :host-context(.theme-#{$theme-name}) #{get-bem-element-full(portfolio-item-source-links, link-button)}:hover & {
+        @include filter-gradient($theme-color, $theme-color, horizontal);
+        @include background-image(linear-gradient(to right, $theme-color 0%, $theme-color 100%));
+      }
+    }
+  }
+
+  @include bem-element(link-text) {
+    @extend %ab-layer-absolute-fill;
+    z-index: 3;
+    right: 0;
+    text-align: center;
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+    color: transparentize(white, .05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px 0 55px;
+    box-sizing: border-box;
+    line-height: 1em;
+  }
+}

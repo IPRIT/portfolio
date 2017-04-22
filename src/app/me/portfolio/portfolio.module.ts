@@ -9,6 +9,7 @@ import { PortfolioItemDescriptionComponent } from './portfolio-item-page/portfol
 import { PortfolioItemCardTitleComponent } from './portfolio-item-page/portfolio-item-card-title/portfolio-item-card-title.component';
 import { PortfolioItemPhotosComponent } from './portfolio-item-page/portfolio-item-photos/portfolio-item-photos.component';
 import { PortfolioItemTechnologiesComponent } from './portfolio-item-page/portfolio-item-technologies/portfolio-item-technologies.component';
+import { PortfolioItemSourceLinksComponent } from './portfolio-item-page/portfolio-item-source-links/portfolio-item-source-links.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { PortfolioItemTechnologiesComponent } from './portfolio-item-page/portfo
     PortfolioItemDescriptionComponent,
     PortfolioItemCardTitleComponent,
     PortfolioItemPhotosComponent,
-    PortfolioItemTechnologiesComponent
+    PortfolioItemTechnologiesComponent,
+    PortfolioItemSourceLinksComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

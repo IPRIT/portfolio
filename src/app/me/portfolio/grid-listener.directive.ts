@@ -12,8 +12,8 @@ const GRID_CHECK_DEBOUNCE_MS = 200;
 })
 export class GridListenerDirective implements AfterViewInit {
 
-  @Input('abGridItemMin') abGridItemMin: number;
-  @Input('abGridItemMax') abGridItemMax: number;
+  @Input() abGridItemMin: number;
+  @Input() abGridItemMax: number;
 
   oldParentWidth: number = 0;
   minItemWidth: number;
@@ -37,11 +37,11 @@ export class GridListenerDirective implements AfterViewInit {
 
     // We can't take window resize event from the method `Observable.fromEvent`
     // because we use `renderer` for listening events
-    let windowChange: Observable<any> = new Observable<any>((observer: Observer<any>) => {
+    let windowResize = new Observable<any>((observer: Observer<any>) => {
       this.renderer.listen('window', 'resize', event => observer.next(event));
     });
 
-    windowChange
+    windowResize
       .throttleTime(GRID_CHECK_DEBOUNCE_MS)
       .debounceTime(0)
       .subscribe(event => this.recomputeColumnsNumber(element));
@@ -64,7 +64,7 @@ export class GridListenerDirective implements AfterViewInit {
   }
 
   getColumnsNumber(element: HTMLElement): number {
-    // todo: find out the way to take `offsetWidth` in not-a-browser context
+    // todo: find out the way to take `offsetWidth` in a "not-a-browser" context
     let parentWidth = this.oldParentWidth = element.offsetWidth;
     let possibleColumns = Math.max(Math.floor(parentWidth / this.maxItemWidth), 1);
     if (parentWidth / this.maxItemWidth > possibleColumns) {
