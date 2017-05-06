@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Input, ElementRef, Renderer2 } from '@angular/core';
 import { PortfolioItem } from "./portfolio-item.interface";
 import { AbImage } from "../ab-image/ab-image.model";
 import { Observable } from "rxjs";
@@ -33,10 +33,14 @@ export class PortfolioItemComponent {
       .subscribe(element => this.renderer.addClass(element, 'loaded'));
   }
 
-  transitionTo(routeArgs: any[]) {
+  transitionTo(event: Event, routeArgs: any[]) {
+    event.stopPropagation();
+    event.preventDefault();
+
     this.transversalAnimation.startPortfolioItemAnimation( this.elementRef, this.item );
     setTimeout(() => {
       this.router.navigate( routeArgs );
     }, 425);
+    return false;
   }
 }
