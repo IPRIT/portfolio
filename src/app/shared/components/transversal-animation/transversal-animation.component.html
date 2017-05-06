@@ -1,0 +1,4 @@
+<div class="ab-transversal-animation">
+  <div #animationRoot class="ab-transversal-animation__inner"
+       [class.animating]="(animationService.$transitionStarted | async)"></div>
+</div>

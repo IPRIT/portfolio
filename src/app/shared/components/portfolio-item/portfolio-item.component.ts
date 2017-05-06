@@ -5,6 +5,8 @@ import { Observable } from "rxjs";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/let';
 import 'rxjs/add/operator/timeout';
+import { TransversalAnimationService } from "../transversal-animation/transversal-animation.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'ab-portfolio-item',
@@ -16,8 +18,10 @@ export class PortfolioItemComponent {
   @Input() item: PortfolioItem;
 
   constructor(
+    private router: Router,
     private renderer: Renderer2,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private transversalAnimation: TransversalAnimationService
   ) { }
 
 
@@ -27,5 +31,12 @@ export class PortfolioItemComponent {
     Observable.of(rootElement)
       .delay(200)
       .subscribe(element => this.renderer.addClass(element, 'loaded'));
+  }
+
+  transitionTo(routeArgs: any[]) {
+    this.transversalAnimation.startPortfolioItemAnimation( this.elementRef, this.item );
+    setTimeout(() => {
+      this.router.navigate( routeArgs );
+    }, 425);
   }
 }

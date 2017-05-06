@@ -12,6 +12,7 @@ import { HeaderStyleService } from "../../../shared/services/header-style/header
 import { MetaService } from "../../../shared/services/meta/meta.service";
 import { PhotoViewerService } from "../../../shared/components/photo-viewer/photo-viewer.service";
 import { Observable } from "rxjs";
+import { TransversalAnimationService } from "../../../shared/components/transversal-animation/transversal-animation.service";
 
 @Component({
   selector: 'ab-portfolio-item-page',
@@ -38,7 +39,8 @@ export class PortfolioItemPageComponent implements OnInit {
     private renderer: Renderer2,
     private headerStyleProvider: HeaderStyleService,
     private metaProvider: MetaService,
-    public photoViewerService: PhotoViewerService
+    public photoViewerService: PhotoViewerService,
+    private transversalAnimation: TransversalAnimationService
   ) {
   }
 
@@ -74,6 +76,7 @@ export class PortfolioItemPageComponent implements OnInit {
       });
 
     itemSource.subscribe((item: PortfolioItem) => {
+      this.transversalAnimation.$transitionStarted.next(false);
       this.item = item;
       if (item && item.style) {
         if (item.style.headerImage) {

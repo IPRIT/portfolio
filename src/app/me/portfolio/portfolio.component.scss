@@ -3,6 +3,7 @@
 :host {
   @extend %ab-layer-block;
   height: auto;
+  width: 100vw !important;
   position: relative;
 }
 

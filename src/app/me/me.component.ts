@@ -3,6 +3,7 @@ import { routerTransition } from "../routing/app.routing.animations";
 import { PhotoViewerService } from "../shared/components/photo-viewer/photo-viewer.service";
 import { Router, NavigationStart } from "@angular/router";
 import { Subscription } from "rxjs";
+import { TransversalAnimationService } from "../shared/components/transversal-animation/transversal-animation.service";
 
 @Component({
   selector: 'ab-me',
@@ -18,6 +19,7 @@ export class MeComponent implements OnInit, OnDestroy {
 
   constructor(
     public photoViewerService: PhotoViewerService,
+    private transversalAnimation: TransversalAnimationService,
     private router: Router,
     private elementRef: ElementRef,
     private renderer: Renderer2
@@ -27,16 +29,17 @@ export class MeComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.renderer.setProperty(this.elementRef.nativeElement, 'scrollTop', 0);
       });
+    this.transversalAnimation.$noScroll.subscribe(state => {
+      state
+        ? this.renderer.addClass(this.elementRef.nativeElement, 'no-scroll')
+        : this.renderer.removeClass(this.elementRef.nativeElement, 'no-scroll');
+    });
   }
 
   ngOnInit() {
   }
 
-  onMobileMenuClicked(state) {
-    this.isMobileMenuOpen = state;
-  }
-
-  onMobileMenuClosed(state) {
+  setMenuState(state) {
     this.isMobileMenuOpen = state;
   }
 

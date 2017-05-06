@@ -6,8 +6,13 @@
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
+
+  &.no-scroll {
+    overflow-y: hidden;
+  }
 }
 
 @include bem(me) {
   @extend %ab-layer-block;
+  width: 100vw;
 }

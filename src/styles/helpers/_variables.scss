@@ -92,8 +92,11 @@ $portfolio-item-short-description-font-size: .9em;
 $portfolio-mock-item-color: transparentize(black, .9);
 
 /* Mobile Menu */
-$mobile-menu-z-index: 100;
+$mobile-menu-z-index: 300;
 
 /* Photo Viewer */
 $photo-viewer-z-index: 200;
 $photo-viewer-background-color: black;
+
+/* Transversal Animation Layer */
+$transversal-animation-z-index: 150;
