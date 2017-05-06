@@ -1,11 +1,17 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import {
+  Component, OnInit, ViewChild, ElementRef, Renderer2
+} from '@angular/core';
 import { TransversalAnimationService } from "./transversal-animation.service";
 import { PortfolioItem } from "../portfolio-item/portfolio-item.interface";
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'ab-transversal-animation',
   templateUrl: 'transversal-animation.component.html',
-  styleUrls: ['transversal-animation.component.scss']
+  styleUrls: ['transversal-animation.component.scss'],
+  entryComponents: [
+    HeaderComponent
+  ]
 })
 export class TransversalAnimationComponent implements OnInit {
 
@@ -13,7 +19,6 @@ export class TransversalAnimationComponent implements OnInit {
 
   constructor(
     private animationService: TransversalAnimationService,
-    private elementRef: ElementRef,
     private renderer: Renderer2
   ) { }
 
@@ -41,12 +46,22 @@ export class TransversalAnimationComponent implements OnInit {
     this.renderer.addClass(containerY, 'animation-layer-y');
     let containerElement = this.renderer.createElement('div');
     this.renderer.addClass(containerElement, 'animation-layer-element');
-    // create element for header gradient
+    // create element for sub header
+    let containerSubHeader = this.renderer.createElement('div');
+    this.renderer.addClass(containerSubHeader, 'animation-layer-sub-header');
+    // create element for header
     let containerHeader = this.renderer.createElement('div');
     this.renderer.addClass(containerHeader, 'animation-layer-header');
+    let header = <any>document.querySelector('ab-header').cloneNode(true);
+    this.renderer.appendChild(containerHeader, header);
 
-    //set initial style for header
+    // set initial style for header
     this.setStyles(containerHeader, {
+      transform: `translateY(${-Math.min(this.animationService.getRootTopScroll(), 90)}px) translateZ(0)`
+    });
+
+    // set initial style for sub-header
+    this.setStyles(containerSubHeader, {
       width: '20px',
       opacity: 0,
       transform: `translateX(0) translateY(${headerHeight}px) translateZ(0) scaleX(1)`,
@@ -75,12 +90,15 @@ export class TransversalAnimationComponent implements OnInit {
     this.renderer.appendChild(containerY, containerElement);
 
     this.renderer.appendChild(this.animationRoot.nativeElement, containerX);
+    this.renderer.appendChild(this.animationRoot.nativeElement, containerSubHeader);
     this.renderer.appendChild(this.animationRoot.nativeElement, containerHeader);
 
     this.animationService.$noScroll.next(true);
 
     // start animation
     requestAnimationFrame(() => {
+      this.renderer.addClass(containerHeader, 'animation-layer-header_showed');
+
       this.renderer.addClass(containerElement, 'element-animating');
       this.setStyles(containerElement, {
         'background-color': 'white'
@@ -88,29 +106,30 @@ export class TransversalAnimationComponent implements OnInit {
 
       this.setStyles(containerX, {
         transform: `
-          translateX(${0}px) 
-          translateY(${0}px)
-          translateZ(0) 
+          translateX(0px) 
+          translateY(0px)
+          translateZ(0px) 
           scaleX(${animationLayerWidth / elementWidth})
         `
       });
       this.setStyles(containerY, {
         transform: `
-          translateX(${0}px) 
-          translateY(${0}px) 
-          translateZ(0) 
-          scaleY(${(animationLayerHeight) / elementHeight})
+          translateX(0px) 
+          translateY(${headerHeight}px) 
+          translateZ(0px) 
+          scaleY(${(animationLayerHeight - headerHeight) / elementHeight})
         `
       });
-      this.setStyles(containerHeader, {
+      this.setStyles(containerSubHeader, {
         transform: `
           translateX(0)
-          translateY(90px)
+          translateY(${headerHeight}px)
           translateZ(0) 
           scaleX(${animationLayerWidth / 20})
         `,
         opacity: 1
       });
+
       this.animationService.$transitionStarted
         .filter(value => !value)
         .delay(200)
@@ -118,6 +137,7 @@ export class TransversalAnimationComponent implements OnInit {
           this.animationService.$noScroll.next(false);
           setTimeout(() => {
             containerHeader.remove();
+            containerSubHeader.remove();
             containerX.remove();
           }, 1500)
         });
