@@ -23,7 +23,7 @@ export class TransversalAnimationService {
       element = element[0];
     }
     let [ top, left ] = [ 0, 0 ];
-    let elementCssPosition = this.getStyle(element).position;
+    let elementCssPosition = this.getStyle(element).getPropertyValue('position');
     if (elementCssPosition === 'fixed') {
       top += this.getRootTopScroll();
       left += this.getRootLeftScroll();

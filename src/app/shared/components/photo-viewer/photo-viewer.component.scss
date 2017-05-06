@@ -95,6 +95,14 @@
     box-sizing: border-box;
     object-fit: contain;
     user-select: none;
+
+    /deep/ img {
+      object-fit: contain;
+      min-width: initial;
+    }
+    /deep/ #{get-bem-block-full(image)} {
+      background-color: transparent;
+    }
   }
 
   @include bem-element(control) {

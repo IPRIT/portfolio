@@ -34,6 +34,7 @@ export class PortfolioItemPageComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private route: ActivatedRoute,
     private angularFire: AngularFire,
     private languageService: LanguageProviderService,
     private renderer: Renderer2,
@@ -65,6 +66,7 @@ export class PortfolioItemPageComponent implements OnInit {
     let event = this.router.events
       .filter(event => (event instanceof NavigationEnd))
       .combineLatest(itemSource, (source1, source2) => source2)
+      .filter(item => item.uid)
       .delay(200)
       .subscribe((item: PortfolioItem) => {
         event.unsubscribe();
@@ -76,6 +78,10 @@ export class PortfolioItemPageComponent implements OnInit {
       });
 
     itemSource.subscribe((item: PortfolioItem) => {
+      if (!item || !item.uid) {
+        // probably it's language change event and we need to navigate user to the parent component
+        return this.router.navigate(['../'], { relativeTo: this.route });
+      }
       this.transversalAnimation.$transitionStarted.next(false);
       this.item = item;
       if (item && item.style) {

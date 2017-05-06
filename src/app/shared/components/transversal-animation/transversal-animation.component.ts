@@ -28,7 +28,10 @@ export class TransversalAnimationComponent implements OnInit {
     const headerHeight = 90;
 
     let originalElement = elementRef.nativeElement;
-    let originalElementClone: HTMLElement = originalElement.cloneNode(true);
+
+    let animationLayer: HTMLElement = this.animationRoot.nativeElement;
+    const animationLayerWidth = animationLayer.offsetWidth;
+    const animationLayerHeight = animationLayer.offsetHeight;
 
     let topLeftPosition = this.animationService.getCumulativeOffset( originalElement );
 
@@ -44,24 +47,29 @@ export class TransversalAnimationComponent implements OnInit {
 
     //set initial style for header
     this.setStyles(containerHeader, {
-      width: '10px',
+      width: '20px',
       opacity: 0,
-      transform: `translateY(${headerHeight}px) scaleX(1) translateZ(0)`,
+      transform: `translateX(0) translateY(${headerHeight}px) translateZ(0) scaleX(1)`,
       'background-color': elementModel.style.themeColor,
       'background-image': elementModel.style.backgroundOverlayGradient
     });
 
     // set initial offset position to layer X
-    this.renderer.setStyle(containerX, 'transform', `translateX(${topLeftPosition.left}px) scale(1) translateZ(0)`);
+    this.renderer.setStyle(containerX, 'transform',
+      `translateX(${topLeftPosition.left}px) scale(1) translateZ(0)`);
 
     // set initial offset position to layer Y
-    this.renderer.setStyle(containerY, 'transform', `translateY(${topLeftPosition.top - this.animationService.getRootTopScroll()}px) translateZ(0)`);
+    this.renderer.setStyle(containerY, 'transform',
+      `translateY(${topLeftPosition.top - this.animationService.getRootTopScroll()}px) translateZ(0)`);
 
     // set initial style to animation element
     let elementWidth = originalElement.offsetWidth;
     let elementHeight = originalElement.offsetHeight;
-    this.renderer.setStyle(containerElement, 'width', `${elementWidth}px`);
-    this.renderer.setStyle(containerElement, 'height', `${elementHeight}px`);
+    this.setStyles(containerElement, {
+      width: `${elementWidth}px`,
+      height: `${elementHeight}px`,
+      'background-color': elementModel.style.themeColor
+    });
 
     this.renderer.appendChild(containerX, containerY);
     this.renderer.appendChild(containerY, containerElement);
@@ -74,10 +82,9 @@ export class TransversalAnimationComponent implements OnInit {
     // start animation
     requestAnimationFrame(() => {
       this.renderer.addClass(containerElement, 'element-animating');
-
-      let animationLayer: HTMLElement = this.animationRoot.nativeElement;
-      const animationLayerWidth = animationLayer.offsetWidth;
-      const animationLayerHeight = animationLayer.offsetHeight;
+      this.setStyles(containerElement, {
+        'background-color': 'white'
+      });
 
       this.setStyles(containerX, {
         transform: `
@@ -97,9 +104,10 @@ export class TransversalAnimationComponent implements OnInit {
       });
       this.setStyles(containerHeader, {
         transform: `
+          translateX(0)
           translateY(90px)
           translateZ(0) 
-          scaleX(${animationLayerWidth / 10})
+          scaleX(${animationLayerWidth / 20})
         `,
         opacity: 1
       });

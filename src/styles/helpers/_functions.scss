@@ -64,6 +64,11 @@
   }
 }
 
+@function get-bem-block-full($block) {
+  $block: unquote('.')#{$bem-block-prefix}#{$block};
+  @return $block;
+}
+
 @function get-bem-element-full($block, $element) {
   $block: unquote('.')#{$bem-block-prefix}#{$block};
   @return build-element($block, $element);

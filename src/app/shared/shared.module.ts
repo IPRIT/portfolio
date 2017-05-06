@@ -18,6 +18,7 @@ import { AbLiveButtonComponent } from './components/ab-live-button/ab-live-butto
 import { LogoSwitcherDirective } from './components/header/logo-switcher/logo-switcher.directive';
 import { TransversalAnimationComponent } from './components/transversal-animation/transversal-animation.component';
 import { TransversalAnimationService } from "./components/transversal-animation/transversal-animation.service";
+import { PhotoViewerMaxPhotoHeightDirective } from './components/photo-viewer/photo-viewer-max-photo-height.directive';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { TransversalAnimationService } from "./components/transversal-animation/
     PortfolioItemMockComponent,
     AbLiveButtonComponent,
     LogoSwitcherDirective,
-    TransversalAnimationComponent
+    TransversalAnimationComponent,
+    PhotoViewerMaxPhotoHeightDirective
   ],
   providers: [
     HeaderLogoService,

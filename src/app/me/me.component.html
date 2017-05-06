@@ -2,6 +2,6 @@
   <ab-mobile-menu [stateOpen]="isMobileMenuOpen" (onMobileMenuClosed)="setMenuState($event)" [class.closed]="!isMobileMenuOpen"></ab-mobile-menu>
   <ab-header (onMobileMenuClicked)="setMenuState($event)"></ab-header>
   <ab-photo-viewer [class.closed]="!(photoViewerService?.isOpen$ | async)"></ab-photo-viewer>
-  <ab-transversal-animation></ab-transversal-animation>
+  <ab-transversal-animation [class.animating]="transversalAnimation.$transitionStarted | async"></ab-transversal-animation>
   <router-outlet></router-outlet>
 </div>

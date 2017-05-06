@@ -32,7 +32,7 @@
     <div #swipeContainer class="swipe ab-photo-viewer__swipe" [class.comment]="commentShowing$ | async">
       <div class="swipe-wrap ab-photo-viewer__swipe-wrap">
         <div class="ab-photo-viewer__photo-wrap" *ngFor="let photo of photoViewerService?.photos$ | async">
-          <ab-image (dblclick)="photoClicked($event)" class="image ab-photo-viewer__photo" [abImageModel]="photo"></ab-image>
+          <ab-image (dblclick)="photoClicked($event)" ab-max-photo-height class="image ab-photo-viewer__photo" [abImageModel]="photo"></ab-image>
           <div class="ab-photo-viewer__photo-comment">
             <div class="ab-photo-viewer__photo-comment-text">{{photo.title}}</div>
           </div>
