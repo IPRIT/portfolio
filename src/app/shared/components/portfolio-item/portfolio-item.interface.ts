@@ -32,7 +32,8 @@ export interface Technology {
 export interface PortfolioSourceLink {
   title: string,
   description?: string,
-  href: string
+  href: string,
+  linkType: string
 }
 
 export interface PortfolioItemStyle {

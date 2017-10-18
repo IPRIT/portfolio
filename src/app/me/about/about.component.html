@@ -1,15 +1,24 @@
-<p>
-  about works!
-</p>
-<div>
-  <ul>
-    <li *ngFor="let item of items | async">
-      {{item.displayName}}
-    </li>
-  </ul>
-  <ul>
-    <li *ngFor="let item of items | async">
-      {{item.displayName}}
-    </li>
-  </ul>
+<div class="ab-about">
+
+  <div class="ab-about__color-line"></div>
+
+  <div class="ab-about__inner">
+
+    <div class="ab-about__me">
+      <div class="ab-about__photo">
+        <div class="ab-about__photo-inner">
+          <ab-image [abImageSrc]="'/assets/ui/images/me.png'"></ab-image>
+        </div>
+      </div>
+      <div class="ab-about__name">
+        <div class="ab-about__first-name" i18n>Александр</div>
+        <div class="ab-about__last-name" i18n>Белов</div>
+      </div>
+      <div class="ab-about__position">
+        <span>Frontend</span>
+        <span i18n>разработчик</span>
+      </div>
+    </div>
+
+  </div>
 </div>

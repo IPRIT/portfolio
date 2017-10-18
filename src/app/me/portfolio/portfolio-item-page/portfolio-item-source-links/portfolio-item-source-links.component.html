@@ -1,14 +1,18 @@
 <div class="ab-portfolio-item-source-links">
   <div class="ab-portfolio-item-source-links__inner">
 
-    <ab-portfolio-item-card-title [lineColor]="item?.style?.themeColor" i18n>Исходный код</ab-portfolio-item-card-title>
+    <ab-portfolio-item-card-title [lineColor]="item?.style?.themeColor" i18n>Ресурсы</ab-portfolio-item-card-title>
 
     <div class="ab-portfolio-item-source-links__content">
       <a target="_blank" href="{{ link.href }}" class="link ab-portfolio-item-source-links__link-button" *ngFor="let link of item?.sourceLinks" role="button">
         <div class="ab-portfolio-item-source-links__link-button-inner">
-          <div class="ab-portfolio-item-source-links__link-image github"></div>
-          <div class="ab-portfolio-item-source-links__link-overlay"></div>
-          <div class="ab-portfolio-item-source-links__link-text">{{link?.title}}</div>
+          <div class="ab-portfolio-item-source-links__link-image ab-portfolio-item-source-links__link-image_type_{{ link?.linkType }}"></div>
+          <div class="ab-portfolio-item-source-links__link-text">
+            <div class="ab-portfolio-item-source-links__link-text-inner">
+              <span>{{link?.title}}</span>
+              <span>{{link?.description}}</span>
+            </div>
+          </div>
         </div>
       </a>
     </div>

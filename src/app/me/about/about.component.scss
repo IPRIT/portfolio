@@ -1,0 +1,99 @@
+@import "../../../styles/helpers/all";
+
+:host {
+  @extend %ab-layer-block;
+  height: auto;
+  width: 100vw !important;
+  position: relative;
+}
+
+@include bem(about) {
+  @extend %ab-layer-block;
+  height: auto;
+
+  ::selection {
+    background-color: map_get($themes-map, about);
+    color: #fff;
+  }
+
+  @include bem-element(inner) {
+  }
+
+  @include bem-element(color-line) {
+    height: 15px;
+    width: 100%;
+    background-color: map_get($themes-map, about);
+  }
+
+  @include bem-element(me) {
+    @extend %ab-layer-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 0;
+    background-color: white;
+
+    @include media-query(lt-sm) {
+      font-size: .8em;
+    }
+    @include media-query(lt-xs) {
+      font-size: .6em;
+    }
+  }
+
+  @include bem-element(photo) {
+    box-shadow: inset 0px 2px 1px 0px rgba(0, 0, 0, 0.12);
+    background-color: map_get($themes-map, about);
+    border-radius: 50%;
+    padding: 15px;
+    width: 300px;
+    width: 30vw;
+    height: 300px;
+    height: 30vw;
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  @include bem-element(photo-inner) {
+    border: 5px solid white;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 50%;
+    overflow: hidden;
+
+    /deep/ img {
+      border-radius: 50%;
+    }
+  }
+
+  @include bem-element(name) {
+    font-family: merge-fonts-stack('Comfortaa', $fonts-stack);
+    margin-top: 15px;
+    color: #444;
+    text-align: center;
+  }
+
+  @include bem-element(first-name) {
+    font-size: 2.5em;
+    font-weight: 100;
+  }
+
+  @include bem-element(last-name) {
+    font-size: 5em;
+    line-height: 1.1em;
+  }
+
+  @include bem-element(position) {
+    margin-top: 30px;
+    font-size: 2em;
+    text-transform: uppercase;
+    color: map_get($themes-map, about);
+    font-family: merge-fonts-stack('Comfortaa', $fonts-stack);
+
+    > span:first-of-type {
+      font-weight: 500;
+    }
+  }
+}

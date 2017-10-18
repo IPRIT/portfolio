@@ -18,6 +18,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
+
+    @include media-query(gt-md) {
+      flex-direction: row;
+    }
   }
 
   @include bem-element(first) {

@@ -63,7 +63,8 @@ export class PortfolioItemComponent implements OnInit {
     let newSourceLink: PortfolioSourceLink = {
       title: 'GitHub Source',
       description: 'Description',
-      href: 'http://github.com/IPRIT'
+      href: 'http://github.com/IPRIT',
+      linkType: 'github'
     };
     this.item.sourceLinks = (this.item.sourceLinks || []).concat( newSourceLink );
   }

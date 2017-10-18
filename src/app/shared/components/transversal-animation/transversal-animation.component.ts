@@ -31,6 +31,7 @@ export class TransversalAnimationComponent implements OnInit {
 
   private startComponentAnimation(elementRef: ElementRef, elementModel: PortfolioItem) {
     const headerHeight = 90;
+    const animationDuration = 1500;
 
     let originalElement = elementRef.nativeElement;
 
@@ -139,7 +140,7 @@ export class TransversalAnimationComponent implements OnInit {
             containerHeader.remove();
             containerSubHeader.remove();
             containerX.remove();
-          }, 1500)
+          }, animationDuration)
         });
     });
   }

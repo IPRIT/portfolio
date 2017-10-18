@@ -28,7 +28,6 @@ $bem-block-prefix: 'ab-admin-';
     }
 
     @include bem-modifier(active) {
-      color: white;
       border-bottom: 2px solid map_get($themes-map, portfolio);
     }
   }

@@ -82,7 +82,7 @@
     @include transition-only-for(.4s, (all));
 
     @include media-query(lt-xs) {
-      max-height: 100px;
+      max-height: 200px;
       overflow-y: auto;
       overflow-x: hidden;
     }

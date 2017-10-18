@@ -11,6 +11,12 @@ export class AdminSourceLinkComponent implements OnInit {
   @Input() sourceLink: PortfolioSourceLink;
   @Output() sourceLinkDeleted = new EventEmitter();
 
+  linkTypes = [
+    'github',
+    'habrahabr',
+    'external'
+  ];
+
   constructor() { }
 
   ngOnInit() {

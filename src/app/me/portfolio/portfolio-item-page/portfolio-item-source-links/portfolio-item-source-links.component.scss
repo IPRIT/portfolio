@@ -17,31 +17,15 @@
   }
 
   @include bem-element(link-button-inner) {
-    position: relative;
-    width: 190px;
+    @extend %ab-layer-flex;
     height: 50px;
-    box-sizing: border-box;
+    border-radius: 100px;
     overflow: hidden;
-    border-radius: 50px;
-  }
-
-  @include bem-element(link-image) {
-    @extend %ab-layer-absolute-fill;
-    z-index: 2;
-    background-position: left center;
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    &.github {
-      background-image: import-bg-image('github-white.png');
-      opacity: .3;
-    }
-  }
-
-  @include bem-element(link-overlay) {
-    @extend %ab-layer-absolute-fill;
-    z-index: 1;
-    border-radius: 50px;
+    position: relative;
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 
     @each $theme-name, $theme-color in $themes-map {
       :host-context(.theme-#{$theme-name}) & {
@@ -51,25 +35,55 @@
         @include background-image(linear-gradient(to right, $theme-color 0%, $second-color 100%));
       }
 
-      :host-context(.theme-#{$theme-name}) #{get-bem-element-full(portfolio-item-source-links, link-button)}:hover & {
+      :host-context(.theme-#{$theme-name}) &:hover {
         @include filter-gradient($theme-color, $theme-color, horizontal);
         @include background-image(linear-gradient(to right, $theme-color 0%, $theme-color 100%));
       }
     }
   }
 
+  @include bem-element(link-image) {
+    width: 50px;
+    min-width: 50px;
+    height: 100%;
+    background-position: left center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include bem-modifier(type_github) {
+      background-image: import-bg-image('github-white.png');
+      opacity: .3;
+    }
+
+    @include bem-modifier(type_habrahabr) {
+      background-image: import-bg-image('habrahabr-white.png');
+      opacity: .3;
+    }
+  }
+
   @include bem-element(link-text) {
-    @extend %ab-layer-absolute-fill;
-    z-index: 3;
-    right: 0;
-    text-align: center;
-    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
-    color: transparentize(white, .05);
-    display: flex;
+    @extend %ab-layer-flex;
     align-items: center;
     justify-content: center;
-    padding: 0 12px 0 55px;
+    color: transparentize(white, .05);
     box-sizing: border-box;
+    padding: 0 24px 0 12px;
     line-height: 1em;
+  }
+
+  @include bem-element(link-text-inner) {
+    @extend %ab-layer-flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: merge-fonts-stack('Comfortaa', $fonts-stack);
+    font-weight: bold;
+
+    > span:last-of-type {
+      margin-top: 5px;
+      font-size: .6em;
+      display: inline-block;
+      line-height: .8em;
+    }
   }
 }
