@@ -27,6 +27,10 @@ import { PortfolioItemSourceLinksComponent } from './portfolio-item-page/portfol
     PortfolioItemTechnologiesComponent,
     PortfolioItemSourceLinksComponent
   ],
+  exports: [
+    PortfolioItemCardTitleComponent,
+    GridListenerDirective
+  ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class PortfolioModule { }

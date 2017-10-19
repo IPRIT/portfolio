@@ -1,23 +1,120 @@
-<div class="ab-about">
+<div class="ab-about theme-about">
 
   <div class="ab-about__color-line"></div>
 
   <div class="ab-about__inner">
 
     <div class="ab-about__me">
+
       <div class="ab-about__photo">
         <div class="ab-about__photo-inner">
           <ab-image [abImageSrc]="'/assets/ui/images/me.png'"></ab-image>
         </div>
       </div>
-      <div class="ab-about__name">
-        <div class="ab-about__first-name" i18n>Александр</div>
-        <div class="ab-about__last-name" i18n>Белов</div>
+
+      <div class="ab-about__name" i18n>
+        Александр Белов
       </div>
+
       <div class="ab-about__position">
         <span>Frontend</span>
         <span i18n>разработчик</span>
       </div>
+
+      <div class="ab-about__arrow-down">
+        <i class="material-icons md-30">keyboard_arrow_down</i>
+      </div>
+
+    </div>
+
+    <div class="ab-about__cards">
+
+      <div class="ab-about__cards-section">
+        <div class="ab-about__card ab-about__about-me">
+          <ab-portfolio-item-card-title i18n>Обо мне</ab-portfolio-item-card-title>
+          <div class="ab-about__card-content">
+            <div class="ab-about__card-text">
+              МОСКВА, 19 окт — РИА Недвижимость. "Яндекс" ведет переговоры с компанией Бориса Минца О1 Properties о строительстве к 2021 году собственного офисного здания в Москве, сообщила в четверг газета "Коммерсант".
+              <br><br>
+              В 2021 году заканчивается договор аренды "Яндексом" почти 54 тысяч квадратных метров в бизнес-центре "Красная Роза" у станции метро "Парк культуры". Бизнес-центр принадлежит KR Properties. Интернет-компания планирует найти девелопера, который займется строительством офиса, а затем его выкупить, написало издание.
+              Стоимость офиса для "Яндекса" оценивается минимум в 12 миллиардов рублей, говорится в статье.
+              <br><br>
+              Как указывается в ней, у "Яндекса" есть опыт взаимодействия с О1 Properties. Некоторые структуры интернет-холдинга, включая "Яндекс.Вертикали" и часть сотрудников сервиса "Яндекс.Такси" находятся в бизнес-центре "Аврора" у Павелецкого вокзала, которым управляет О1.
+              Три года назад "Яндекс" продлил с KR Properties договор аренды, увеличив арендуемую площадь в "Красной Розе" почти на 40%. Позже холдинг договорился с собственником бизнес-центра о выкупе семи офисных зданий общей площадью 80 тысяч "квадратов", но сделка так и не состоялась. В конце 2016 года "Яндекс" объявил об аренде 10 тысяч квадратных метров в бизнес-центре "Аврора".
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ab-about__cards-section">
+        <div class="ab-about__card ab-about__skills">
+          <ab-portfolio-item-card-title i18n>Навыки</ab-portfolio-item-card-title>
+          <div class="ab-about__card-content">
+
+            <div class="ab-about__skills-category">
+              <div class="ab-about__skills-label ab-about__skills-label_info">
+                <span i18n>JavaScript фреймворки</span>
+                <br>
+                <span i18n>В порядке уровня владения</span>
+              </div>
+              <div class="ab-about__skills-items" ab-grid-listener [abGridItemMax]="130" [abGridItemMin]="130">
+                <a class="ab-about__skill" target="_blank" *ngFor="let skill of frameworks | async" [attr.data-skill-value]="skill?.priority" href="{{ skill?.link }}">
+                  <div class="ab-about__skill-inner">
+                    <div class="ab-about__skill-photo">
+                      <ab-image [abImageModel]="skill?.photo"></ab-image>
+                    </div>
+                    <div class="ab-about__skill-name">{{skill?.name}}</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="ab-about__skills-category">
+              <div class="ab-about__skills-label" i18n>Технологии и библиотеки</div>
+              <div class="ab-about__skills-items" ab-grid-listener [abGridItemMax]="130" [abGridItemMin]="130">
+                <a class="ab-about__skill"  target="_blank" *ngFor="let skill of librariesAndTechnologies | async" [attr.data-skill-value]="skill?.priority" href="{{ skill?.link }}">
+                  <div class="ab-about__skill-inner">
+                    <div class="ab-about__skill-photo">
+                      <ab-image [abImageModel]="skill?.photo"></ab-image>
+                    </div>
+                    <div class="ab-about__skill-name">{{skill?.name}}</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="ab-about__skills-category">
+              <div class="ab-about__skills-label" i18n>Сервисы</div>
+              <div class="ab-about__skills-items" ab-grid-listener [abGridItemMax]="130" [abGridItemMin]="130">
+                <a class="ab-about__skill" target="_blank" *ngFor="let skill of services | async" href="{{ skill?.link }}">
+                  <div class="ab-about__skill-inner">
+                    <div class="ab-about__skill-photo">
+                      <ab-image [abImageModel]="skill?.photo"></ab-image>
+                    </div>
+                    <div class="ab-about__skill-name">{{skill?.name}}</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="ab-about__skills-category">
+              <div class="ab-about__skills-label" i18n>Прочее</div>
+              <div class="ab-about__skills-items" ab-grid-listener [abGridItemMax]="130" [abGridItemMin]="130">
+                <a class="ab-about__skill" target="_blank" *ngFor="let skill of others | async" href="{{ skill?.link }}">
+                  <div class="ab-about__skill-inner">
+                    <div class="ab-about__skill-photo">
+                      <ab-image [abImageModel]="skill?.photo"></ab-image>
+                    </div>
+                    <div class="ab-about__skill-name">{{skill?.name}}</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>

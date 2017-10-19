@@ -12,6 +12,8 @@ export class AdminTechnologyItemComponent implements OnInit {
   @Output() itemUpdated = new EventEmitter<Technology>();
   @Output() itemDeleted = new EventEmitter<Technology>();
 
+  types = [ 'framework', 'tech', 'service', 'other' ];
+
   constructor() { }
 
   ngOnInit() {

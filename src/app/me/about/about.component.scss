@@ -1,5 +1,10 @@
 @import "../../../styles/helpers/all";
 
+::selection {
+  background-color: map_get($themes-map, about);
+  color: #fff;
+}
+
 :host {
   @extend %ab-layer-block;
   height: auto;
@@ -11,38 +16,40 @@
   @extend %ab-layer-block;
   height: auto;
 
-  ::selection {
-    background-color: map_get($themes-map, about);
-    color: #fff;
-  }
-
   @include bem-element(inner) {
   }
 
   @include bem-element(color-line) {
-    height: 15px;
+    height: 6px;
     width: 100%;
-    background-color: map_get($themes-map, about);
+    $theme-color: map_get($themes-map, about);
+    $second-color: hsl(hue($theme-color) - 10, saturation($theme-color), lightness($theme-color));
+    @include filter-gradient(map_get($themes-map, about), $second-color, horizontal); // IE6-9
+    @include background-image(linear-gradient(to right, map_get($themes-map, about) 0%, $second-color 100%));
   }
 
   @include bem-element(me) {
     @extend %ab-layer-flex;
     flex-direction: column;
     align-items: center;
-    padding: 48px 0;
+    padding: 64px 0;
     background-color: white;
 
     @include media-query(lt-sm) {
       font-size: .8em;
+      padding: 48px 0;
     }
     @include media-query(lt-xs) {
-      font-size: .6em;
+      padding: 10vw 0;
     }
   }
 
   @include bem-element(photo) {
+    $theme-color: map_get($themes-map, about);
+    $second-color: hsl(hue($theme-color) - 10, saturation($theme-color), lightness($theme-color));
+    @include filter-gradient(map_get($themes-map, about), $second-color, horizontal); // IE6-9
+    @include background-image(linear-gradient(to right, map_get($themes-map, about) 0%, $second-color 100%));
     box-shadow: inset 0px 2px 1px 0px rgba(0, 0, 0, 0.12);
-    background-color: map_get($themes-map, about);
     border-radius: 50%;
     padding: 15px;
     width: 300px;
@@ -70,30 +77,170 @@
 
   @include bem-element(name) {
     font-family: merge-fonts-stack('Comfortaa', $fonts-stack);
-    margin-top: 15px;
+    text-transform: uppercase;
+    margin-top: 4%;
     color: #444;
     text-align: center;
-  }
-
-  @include bem-element(first-name) {
-    font-size: 2.5em;
-    font-weight: 100;
-  }
-
-  @include bem-element(last-name) {
-    font-size: 5em;
-    line-height: 1.1em;
+    font-size: 3em;
   }
 
   @include bem-element(position) {
-    margin-top: 30px;
     font-size: 2em;
-    text-transform: uppercase;
     color: map_get($themes-map, about);
-    font-family: merge-fonts-stack('Comfortaa', $fonts-stack);
+    font-family: merge-fonts-stack('Poiret One', $fonts-stack);
 
     > span:first-of-type {
       font-weight: 500;
     }
+  }
+
+  @include bem-element(arrow-down) {
+    margin-top: 3%;
+    cursor: default;
+    user-select: none;
+
+    > i {
+      color: rgba(0,0,0,0.7);
+    }
+  }
+
+  @include bem-element(cards) {
+    display: flex;
+    margin-top: 16px;
+    padding: 0 16px 16px;
+    box-sizing: border-box;
+    width: 100%;
+
+    @include media-query(lt-sm) {
+      flex-direction: column;
+    }
+  }
+
+  @include bem-element(cards-section) {
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+
+    &:first-of-type {
+      margin-right: 16px;
+    }
+
+    @include media-query(lt-sm) {
+      &:first-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+
+  @include bem-element(card) {
+    display: inline-block;
+    padding: 24px;
+    box-sizing: border-box;
+    background-color: white;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+
+  @include bem-element(card-content) {
+    margin-top: 30px;
+  }
+
+  @include bem-element(card-text) {
+    font-family: $fonts-stack-text; //merge-fonts-stack('Ubuntu', $fonts-stack-text);
+    letter-spacing: .01rem;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 21px;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+    text-align: justify;
+  }
+
+  @include bem-element(skills-category) {
+    &:not(:first-of-type) {
+      margin-top: 24px;
+
+      @include media-query(lt-xs) {
+        margin-top: 12px;
+      }
+    }
+  }
+
+  @include bem-element(skills-label) {
+    $theme-color: $theme-about;
+    $second-color: hsl(hue($theme-color) - 10, saturation($theme-color), lightness($theme-color));
+    background-color: $second-color;
+    position: relative;
+    display: inline-block;
+    padding: 4px 10px;
+    color: white;
+
+    > span:last-of-type {
+      font-size: .6em;
+    }
+
+    @include bem-modifier(info) {
+      line-height: 1em;
+    }
+  }
+
+  @include bem-element(skills-items) {
+    padding: 8px 0 0;
+  }
+
+  @include bem-element(skill) {
+    $margin: 0px;
+    padding: 2px 2px 8px;
+    box-sizing: border-box;
+    contain: content;
+    display: inline-block;
+    position: relative;
+    min-height: 40px;
+    margin: $margin $margin 0 0;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+      $theme-color: map_get($themes-map, about);
+      $second-color: hsl(hue($theme-color) - 10, saturation($theme-color), lightness($theme-color));
+      @include filter-gradient(map_get($themes-map, about), $second-color, horizontal); // IE6-9
+      @include background-image(linear-gradient(to right, map_get($themes-map, about) 0%, $second-color 100%));
+    }
+
+    @for $i from 1 through 100 {
+      [grid-columns="#{$i}"] & {
+        width: calc((100% - (#{$margin} * (#{$i} - 1))) / #{$i});
+      }
+
+      &[data-skill-value="#{$i}"]:hover {
+        $first-color: hsl($i, 100%, 50%);
+        $second-color: hsl(hue($first-color) + 10, saturation($first-color), lightness($first-color));
+        @include filter-gradient($first-color, $second-color, horizontal);
+        @include background-image(linear-gradient(to right, $first-color 0%, $second-color 100%));
+      }
+    }
+
+    @include media-query(lt-xs) {
+      min-height: 200px;
+    }
+  }
+
+  @include bem-element(skill-inner) {
+    padding: 14px;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: white;
+  }
+
+  @include bem-element(skill-photo) {
+    margin-bottom: 10px;
+  }
+
+  @include bem-element(skill-name) {
+    text-align: center;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
   }
 }

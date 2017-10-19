@@ -4,6 +4,8 @@ import { AbImageModel } from "../../shared/components/ab-image/ab-image.model";
 import { FirebaseListObservable, AngularFire } from "angularfire2";
 import { HeaderStyleService, HeaderStyleClass } from "../../shared/services/header-style/header-style.service";
 import { HeaderLogos } from "../../shared/services/header-logo/header-logo.service";
+import { Technology } from "../../shared/components/portfolio-item/portfolio-item.interface";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'ab-about',
@@ -14,8 +16,13 @@ import { HeaderLogos } from "../../shared/services/header-logo/header-logo.servi
 })
 export class AboutComponent implements OnInit {
 
-  items: FirebaseListObservable<any[]>;
-  mockImageInstances: AbImageModel[];
+  skills: FirebaseListObservable<Technology[]>;
+
+  skillsOrdered: Observable<Technology[]>;
+  frameworks: Observable<Technology[]>;
+  librariesAndTechnologies: Observable<Technology[]>;
+  services: Observable<Technology[]>;
+  others: Observable<Technology[]>;
 
   constructor(
     private angularFire: AngularFire,
@@ -24,23 +31,26 @@ export class AboutComponent implements OnInit {
     headerStyle.logoService.setLogoUrl(HeaderLogos.blue);
     headerStyle.setClass(HeaderStyleClass.about);
 
-    this.items = angularFire.database.list('/users', {
+    this.skills = angularFire.database.list('/portfolio-technologies', {
       query: {
-        orderByChild: 'displayName'
+        orderByChild: 'priority'
       }
     });
 
-    this.mockImageInstances = [
-      new AbImageModel(
-        '/assets/test1.png',
-        '/assets/test1_thumbnail.png',
-        'My image'
-      ),
-      new AbImageModel(
-        '/assets/test2.png',
-        '/assets/test2_thumbnail.png'
-      )
-    ];
+    this.skillsOrdered = this.skills.map((skills: Technology[]) => skills.sort((a, b) => a.priority - b.priority));
+
+    this.frameworks = this.skillsOrdered.map((skills: Technology[]) => {
+      return skills.filter(skill => skill.type === 'framework');
+    });
+    this.librariesAndTechnologies = this.skillsOrdered.map((skills: Technology[]) => {
+      return skills.filter(skill => skill.type === 'tech');
+    });
+    this.services = this.skillsOrdered.map((skills: Technology[]) => {
+      return skills.filter(skill => skill.type === 'service');
+    });
+    this.others = this.skillsOrdered.map((skills: Technology[]) => {
+      return skills.filter(skill => skill.type === 'other');
+    });
   }
 
   ngOnInit() {
