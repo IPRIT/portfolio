@@ -26,6 +26,8 @@ export class AdminTechnologiesPageComponent implements OnInit {
       name: '',
       description: '',
       link: '',
+      type: 'framework',
+      priority: 1,
       photo: {
         originalSrc: '',
         thumbnailSrc: '',

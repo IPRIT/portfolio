@@ -23,8 +23,8 @@ export interface PortfolioItemPhoto extends AbImage {
 export interface Technology {
   uid?: string,
   name?: string,
-  type: string,
-  priority: number,
+  type?: string,
+  priority?: number,
   description?: string,
   photo?: PortfolioItemPhoto,
   link?: string,
