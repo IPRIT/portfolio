@@ -71,12 +71,14 @@ export class TransversalAnimationComponent implements OnInit {
     });
 
     // set initial offset position to layer X
-    this.renderer.setStyle(containerX, 'transform',
-      `translateX(${topLeftPosition.left}px) scale(1) translateZ(0)`);
+    this.setStyles(containerX, {
+      transform: `translateX(${topLeftPosition.left}px) scale(1) translateZ(0)`
+    });
 
     // set initial offset position to layer Y
-    this.renderer.setStyle(containerY, 'transform',
-      `translateY(${topLeftPosition.top - this.animationService.getRootTopScroll()}px) translateZ(0)`);
+    this.setStyles(containerY, {
+      transform: `translateY(${topLeftPosition.top - this.animationService.getRootTopScroll()}px) translateZ(0)`
+    });
 
     // set initial style to animation element
     let elementWidth = originalElement.offsetWidth;
@@ -97,7 +99,7 @@ export class TransversalAnimationComponent implements OnInit {
     this.animationService.$noScroll.next(true);
 
     // start animation
-    requestAnimationFrame(() => {
+    setTimeout(() => {
       this.renderer.addClass(containerHeader, 'animation-layer-header_showed');
 
       this.renderer.addClass(containerElement, 'element-animating');
@@ -142,7 +144,7 @@ export class TransversalAnimationComponent implements OnInit {
             containerX.remove();
           }, animationDuration)
         });
-    });
+    }, 20);
   }
 
   private setStyles(element: HTMLElement, styles = {}) {

@@ -11,7 +11,7 @@ export class TransversalAnimationService {
 
   constructor() { }
 
-  startPortfolioItemAnimation(elementRef: ElementRef, elementModel: PortfolioItem) {
+  startPortfolioItemAnimation(elementRef: ElementRef, elementModel: PortfolioItem | any) {
     this.$transitionStarted.next(true);
     this.portfolioItemAnimation.next({
       elementRef, elementModel

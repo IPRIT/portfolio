@@ -5,11 +5,30 @@
   color: #fff;
 }
 
+/deep/ ::selection {
+  background-color: map_get($themes-map, about);
+  color: #fff;
+}
+
 :host {
   @extend %ab-layer-block;
   height: auto;
   width: 100vw !important;
   position: relative;
+
+  a.link {
+    $theme-color: $theme-about;
+    $second-color: hsl(hue($theme-color) - 10, saturation($theme-color), lightness($theme-color));
+    color: $second-color;
+
+    &:hover {
+      color: $theme-color;
+    }
+
+    &:active {
+      color: $second-color;
+    }
+  }
 }
 
 @include bem(about) {
@@ -147,7 +166,6 @@
 
   @include bem-element(card-text) {
     font-family: $fonts-stack-text; //merge-fonts-stack('Ubuntu', $fonts-stack-text);
-    letter-spacing: .01rem;
     font-weight: 300;
     font-style: normal;
     font-size: 21px;
@@ -242,5 +260,180 @@
     text-overflow: ellipsis;
     overflow: hidden;
     font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+  }
+
+  /**
+   * Job experience
+   */
+  @include bem-element(job-list) {
+    margin: 0;
+    padding: 0;
+  }
+
+  @include bem-element(job-item) {
+    list-style: none;
+    margin-left: 40px;
+    position: relative;
+
+    &:not(:last-of-type) {
+      margin-bottom: 48px;
+    }
+
+    @include media-query(lt-xs) {
+      margin-left: 20px;
+    }
+  }
+
+  @include bem-element(job-period) {
+    $theme-color: $theme-about;
+    $second-color: hsl(hue($theme-color) - 10, saturation($theme-color), lightness($theme-color));
+    position: relative;
+    left: -40px;
+    background-color: $second-color;
+    display: inline-block;
+    padding: 4px 10px 6px;
+    color: white;
+
+    @include media-query(lt-xs) {
+      left: -20px;
+    }
+
+    > span {
+      display: block;
+
+      &:last-of-type {
+        font-size: .6em;
+      }
+    }
+  }
+
+  @include bem-element(job-info) {
+    margin-top: 8px;
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack-text);
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.58;
+  }
+
+  @include bem-element(job-company-name) {
+    font-weight: 500;
+    font-size: 1.3em;
+  }
+
+  @include bem-element(job-site) {
+    margin-bottom: 4px;
+  }
+
+  @include bem-element(job-position) {
+    font-weight: 400;
+    font-size: 1.1em;
+  }
+
+  @include bem-element(job-role) {
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack-text);
+    font-size: 1em;
+    line-height: 1.58;
+    word-break: keep-all;
+    margin-top: 3px;
+
+    @include media-query(lt-xs) {
+      font-size: .9em;
+      line-height: 1.45;
+    }
+  }
+
+  @include bem-element(job-role-list) {
+    margin: 0 0 0 40px;
+    padding: 0;
+    position: relative;
+  }
+
+  @include bem-element(job-role-list-item) {
+    list-style: none;
+
+    &:not(:last-of-type) {
+      margin-bottom: 3px;
+    }
+  }
+
+  @include bem-element(job-role-list-style) {
+    position: absolute;
+    left: -40px;
+    user-select: none;
+
+    > i {
+      $theme-color: $theme-about;
+      $second-color: hsl(hue($theme-color) - 10, saturation($theme-color), lightness($theme-color));
+      color: $second-color;
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  /**
+  * Education history
+   */
+  @include bem-element(education-list) {
+    margin: 0;
+    padding: 0;
+  }
+
+  @include bem-element(education-item) {
+    list-style: none;
+    margin-left: 40px;
+    position: relative;
+
+    &:not(:last-of-type) {
+      margin-bottom: 48px;
+    }
+
+    @include media-query(lt-xs) {
+      margin-left: 20px;
+    }
+  }
+
+  @include bem-element(education-period) {
+    $theme-color: $theme-about;
+    $second-color: hsl(hue($theme-color) - 10, saturation($theme-color), lightness($theme-color));
+    position: relative;
+    left: -40px;
+    background-color: $second-color;
+    display: inline-block;
+    padding: 4px 10px 6px;
+    color: white;
+
+    @include media-query(lt-xs) {
+      left: -20px;
+    }
+
+    > span {
+      display: block;
+
+      &:last-of-type {
+        font-size: .6em;
+      }
+    }
+  }
+
+  @include bem-element(education-info) {
+    margin-top: 8px;
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack-text);
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.58;
+  }
+
+  @include bem-element(education-degree) {
+    font-weight: 500;
+    font-size: 1.3em;
+  }
+
+  @include bem-element(education-faculty) {
+    font-size: .8em;
+  }
+
+  @include bem-element(education-university) {
+    font-weight: 400;
+    font-size: 1.1em;
   }
 }

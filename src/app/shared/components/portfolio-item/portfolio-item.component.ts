@@ -38,9 +38,9 @@ export class PortfolioItemComponent {
     event.preventDefault();
 
     this.transversalAnimation.startPortfolioItemAnimation( this.elementRef, this.item );
-    setTimeout(() => {
-      this.router.navigate( routeArgs );
-    }, 425);
+    Observable.of(this.router)
+      .delay(450)
+      .subscribe(router => router.navigate( routeArgs ));
     return false;
   }
 }

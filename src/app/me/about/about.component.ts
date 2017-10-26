@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, ViewChild } from '@angular/core';
 import { routerTransition } from "../../routing/app.routing.animations";
 import { AbImageModel } from "../../shared/components/ab-image/ab-image.model";
 import { FirebaseListObservable, AngularFire } from "angularfire2";
@@ -6,6 +6,8 @@ import { HeaderStyleService, HeaderStyleClass } from "../../shared/services/head
 import { HeaderLogos } from "../../shared/services/header-logo/header-logo.service";
 import { Technology } from "../../shared/components/portfolio-item/portfolio-item.interface";
 import { Observable } from "rxjs";
+import { Router } from "@angular/router";
+import { TransversalAnimationService } from "../../shared/components/transversal-animation/transversal-animation.service";
 
 @Component({
   selector: 'ab-about',
@@ -24,9 +26,15 @@ export class AboutComponent implements OnInit {
   services: Observable<Technology[]>;
   others: Observable<Technology[]>;
 
+  @ViewChild('misisAcmLink') misisAcmLink: ElementRef;
+
   constructor(
     private angularFire: AngularFire,
-    private headerStyle: HeaderStyleService
+    private headerStyle: HeaderStyleService,
+    private router: Router,
+    private renderer: Renderer2,
+    private elementRef: ElementRef,
+    private transversalAnimation: TransversalAnimationService
   ) {
     headerStyle.logoService.setLogoUrl(HeaderLogos.blue);
     headerStyle.setClass(HeaderStyleClass.about);

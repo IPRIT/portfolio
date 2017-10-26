@@ -72,6 +72,10 @@
     border-radius: 50px;
     @include transition(all .1s $transitionDefaultTimingFunction, color .2s $transitionDefaultTimingFunction, box-shadow .2s $transitionDefaultTimingFunction);
 
+    &:not(:last-of-type) {
+      margin-right: 4px;
+    }
+
     @each $theme-name, $theme-color in $themes-map {
       .#{$theme-name} & {
         color: map_get($themes-map, $theme-name);
