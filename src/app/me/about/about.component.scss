@@ -131,7 +131,7 @@
     width: 100%;
 
     @include media-query(lt-sm) {
-      flex-direction: column;
+      flex-direction: column-reverse;
     }
   }
 

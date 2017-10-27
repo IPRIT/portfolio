@@ -50,6 +50,10 @@ b, strong {
   font-weight: 500;
 }
 
+u {
+  text-decoration-skip: ink;
+}
+
 ::selection {
   background-color: #ff5f57;
   color: #fff;

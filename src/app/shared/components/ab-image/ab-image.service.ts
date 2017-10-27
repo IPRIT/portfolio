@@ -26,7 +26,7 @@ export class AbImageService {
   private autoIncrementId = 1;
   private loadingQueue: LoadingQueueImageElement[] = [];
   private inProcessElements: QueuedImageElement[] = [];
-  private maxQueuedElementsNumber = 3;
+  private maxQueuedElementsNumber = 5;
   private defaultPriority = 1;
 
   load(renderer: Renderer2, imageModel: AbImage, priority?: number): Observable<HTMLImageElement> {

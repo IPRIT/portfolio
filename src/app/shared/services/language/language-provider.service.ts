@@ -53,7 +53,10 @@ export class LanguageProviderService {
   }
 
   private findOutUserLanguage(): AvailableLanguages {
-    if (this.getPlatformType().isBrowser) {
+    // todo: translate en version
+    return 'ru';
+
+    /*if (this.getPlatformType().isBrowser) {
       if (!window || !window.navigator) {
         return <AvailableLanguages>this.defaultLanguageType[0];
       }
@@ -67,7 +70,7 @@ export class LanguageProviderService {
     } else {
       // todo(platform specific): read language from the headers
       throw new Error('Not Implemented');
-    }
+    }*/
   }
 
   private getLanguageType(languageString: string): string[] {

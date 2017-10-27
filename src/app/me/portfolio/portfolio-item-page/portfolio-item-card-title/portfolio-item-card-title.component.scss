@@ -11,14 +11,18 @@
     font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
     font-weight: 500;
     font-size: 1.9em;
-    line-height: 1.04;
     letter-spacing: -.028em;
     margin: 10px 0 0;
-    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     @include media-query(lt-sm) {
       font-size: 1.6em;
       font-weight: 400;
+    }
+
+    @include media-query(lt-xs) {
+      font-size: 1.4em;
     }
   }
 
@@ -28,6 +32,10 @@
     width: 90px;
     background: #ccc;
     position: relative;
+
+    @include media-query(lt-xs) {
+      margin-top: 16px;
+    }
 
     @each $theme-name, $theme-color in $themes-map {
       :host-context(.theme-#{$theme-name}) & {
