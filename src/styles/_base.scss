@@ -45,6 +45,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
 b, strong {
   font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
   font-weight: 500;
@@ -102,6 +103,23 @@ u {
     ::-webkit-scrollbar-track,
     ::-webkit-scrollbar-thumb:window-inactive {
       opacity: 1;
+    }
+  }
+}
+
+@each $theme-name, $theme-color in $themes-map {
+  .theme-#{$theme-name} {
+    /deep/ a.link, a.link {
+      $second-color: hsl(hue($theme-color) - 10, saturation($theme-color), lightness($theme-color));
+      color: $second-color;
+
+      &:hover {
+        color: $theme-color;
+      }
+
+      &:active {
+        color: $second-color;
+      }
     }
   }
 }

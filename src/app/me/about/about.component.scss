@@ -15,20 +15,6 @@
   height: auto;
   width: 100vw !important;
   position: relative;
-
-  a.link {
-    $theme-color: $theme-about;
-    $second-color: hsl(hue($theme-color) - 10, saturation($theme-color), lightness($theme-color));
-    color: $second-color;
-
-    &:hover {
-      color: $theme-color;
-    }
-
-    &:active {
-      color: $second-color;
-    }
-  }
 }
 
 @include bem(about) {
