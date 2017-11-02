@@ -17,6 +17,8 @@ export class PortfolioItemComponent implements OnInit {
   @Output() itemCopied = new EventEmitter<PortfolioItem>();
   @Output() itemCopiedForOtherLanguages = new EventEmitter<PortfolioItem>();
 
+  types = [ 'app', 'lib' ];
+
   constructor() { }
 
   ngOnInit() {

@@ -5,6 +5,7 @@ import { HeaderLogos } from "../../shared/services/header-logo/header-logo.servi
 import { FirebaseListObservable, AngularFire } from "angularfire2";
 import { PortfolioItem } from "../../shared/components/portfolio-item/portfolio-item.interface";
 import { LanguageProviderService } from "../../shared/services/language/language-provider.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'ab-portfolio',
@@ -18,6 +19,9 @@ export class PortfolioComponent implements OnInit {
   public portfolioItems: FirebaseListObservable<PortfolioItem[]>;
   private portfolioItemsNs: string = '/portfolio-items';
 
+  public portfolioAppItems: Observable<PortfolioItem[]>;
+  public portfolioLibItems: Observable<PortfolioItem[]>;
+
   constructor(
     private headerStyle: HeaderStyleService,
     private angularFire: AngularFire,
@@ -28,6 +32,12 @@ export class PortfolioComponent implements OnInit {
 
     this.languageProvider.getLanguage().subscribe(language => {
       this.portfolioItems = angularFire.database.list(`${this.portfolioItemsNs}/${language}`);
+      this.portfolioAppItems = this.portfolioItems.map(items => {
+        return items.filter(item => item.type === 'app');
+      });
+      this.portfolioLibItems = this.portfolioItems.map(items => {
+        return items.filter(item => item.type === 'lib');
+      });
     });
   }
 

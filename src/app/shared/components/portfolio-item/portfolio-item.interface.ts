@@ -2,6 +2,7 @@ import { AbImage } from "../ab-image/ab-image.model";
 
 export interface PortfolioItem {
   uid?: string,
+  type?: string,
   title?: string,
   subTitle?: string,
   shortDescription?: string,
@@ -17,6 +18,7 @@ export interface PortfolioItem {
 
 export interface PortfolioItemPhoto extends AbImage {
   imageName?: string,
+  type?: string,
   [prop: string]: any
 }
 
