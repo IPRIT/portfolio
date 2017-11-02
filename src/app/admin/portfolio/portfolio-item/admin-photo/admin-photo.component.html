@@ -5,8 +5,16 @@
   </div>
 
   <div *ngIf="photo && photo.originalSrc">
-    <img class="ab-admin-photo-uploader__original-photo" src="{{photo.originalSrc}}" [attr.alt]="photo.title">
-    <img class="ab-admin-photo-uploader__thumbnail-photo" src="{{photo.thumbnailSrc}}" [attr.alt]="photo.title">
+
+    <div [ngSwitch]="photo?.type">
+      <div *ngSwitchCase="'video'">
+        <video autoplay muted controls loop class="ab-admin-photo-uploader__original-photo" src="{{ photo?.originalSrc }}"></video>
+      </div>
+      <div *ngSwitchDefault>
+        <img class="ab-admin-photo-uploader__original-photo" src="{{photo.originalSrc}}" [attr.alt]="photo.title">
+        <img class="ab-admin-photo-uploader__thumbnail-photo" src="{{photo.thumbnailSrc}}" [attr.alt]="photo.title">
+      </div>
+    </div>
 
     <div class="form-group">
       <label for="title">Comment:</label>

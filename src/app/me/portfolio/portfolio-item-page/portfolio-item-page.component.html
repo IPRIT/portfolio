@@ -32,7 +32,7 @@
             <ab-portfolio-item-description [item]="item"></ab-portfolio-item-description>
           </div>
 
-          <div class="ab-portfolio-item-page__card">
+          <div class="ab-portfolio-item-page__card" *ngIf="item && item?.photos?.length > 0">
             <ab-portfolio-item-photos [item]="item"></ab-portfolio-item-photos>
           </div>
         </div>

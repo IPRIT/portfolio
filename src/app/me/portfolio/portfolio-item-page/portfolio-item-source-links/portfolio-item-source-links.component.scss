@@ -61,6 +61,11 @@
       background-image: import-bg-image('habrahabr-white.png');
       opacity: .3;
     }
+
+    @include bem-modifier(type_external) {
+      background-image: import-bg-image('external-link.png');
+      opacity: .3;
+    }
   }
 
   @include bem-element(link-text) {

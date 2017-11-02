@@ -7,36 +7,71 @@
       <div *ngIf="item && item.photos" class="ab-portfolio-item-photos__photos">
 
         <div class="ab-portfolio-item-photos__first" *ngIf="item?.photos.length > 0" (click)="openPhoto(0, item?.photos[0])">
-          <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__first-photo" [abImageModel]="item?.photos[0]"></ab-image>
+          <div [ngSwitch]="item?.photos[0]?.type">
+            <div *ngSwitchCase="'video'" style="background: #333">
+              <video autoplay loop muted class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__first-photo" src="{{ item?.photos[0]?.originalSrc }}"></video>
+            </div>
+            <div *ngSwitchDefault>
+              <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__first-photo" [abImageModel]="item?.photos[0]"></ab-image>
+            </div>
+          </div>
         </div>
 
         <div class="ab-portfolio-item-photos__rest">
           <div class="ab-portfolio-item-photos__photo-block" *ngIf="item?.photos.length > 1">
             <div class="ab-portfolio-item-photos__photo-wrap" *ngFor="let photoIndex of [1, 2]" (click)="openPhoto(photoIndex, item?.photos[photoIndex])">
-              <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo"
-                        [abImageSrc]="item?.photos[photoIndex].originalSrc"
-                        [abImageThumbnailSrc]="item?.photos[photoIndex].thumbnailSrc"></ab-image>
+              <div [ngSwitch]="item?.photos[photoIndex]?.type">
+                <div *ngSwitchCase="'video'">
+                  <video autoplay loop muted class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo" src="{{ item?.photos[photoIndex].originalSrc }}"></video>
+                </div>
+                <div *ngSwitchDefault>
+                  <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo"
+                            [abImageSrc]="item?.photos[photoIndex].originalSrc"
+                            [abImageThumbnailSrc]="item?.photos[photoIndex].thumbnailSrc"></ab-image>
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="ab-portfolio-item-photos__photo-block" *ngIf="item?.photos.length > 3">
             <div class="ab-portfolio-item-photos__photo-wrap" *ngFor="let photoIndex of [3]" (click)="openPhoto(photoIndex, item?.photos[photoIndex])">
-              <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo"
-                        [abImageSrc]="item?.photos[photoIndex].originalSrc"
-                        [abImageThumbnailSrc]="item?.photos[photoIndex].thumbnailSrc"></ab-image>
+              <div [ngSwitch]="item?.photos[photoIndex]?.type">
+                <div *ngSwitchCase="'video'">
+                  <video autoplay loop muted class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo" src="{{ item?.photos[photoIndex].originalSrc }}"></video>
+                </div>
+                <div *ngSwitchDefault>
+                  <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo"
+                            [abImageSrc]="item?.photos[photoIndex].originalSrc"
+                            [abImageThumbnailSrc]="item?.photos[photoIndex].thumbnailSrc"></ab-image>
+                </div>
+              </div>
             </div>
             <div class="ab-portfolio-item-photos__photo-wrap ab-portfolio-item-photos__more-photos"
                  [class.empty]="item?.photos.length <= 4"
                  (click)="openPhoto(4)" *ngIf="item?.photos.length > 5">
               <div class="ab-portfolio-item-photos__more" i18n>Еще {{item?.photos.length - 4}} фото</div>
-              <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo"
-                        [abImageSrc]="item?.photos[4].thumbnailSrc"
-                        [abImageThumbnailSrc]="item?.photos[4].thumbnailSrc"></ab-image>
+              <div [ngSwitch]="item?.photos[4]?.type">
+                <div *ngSwitchCase="'video'">
+                  <video autoplay loop muted class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo" src="{{ item?.photos[4].originalSrc }}"></video>
+                </div>
+                <div *ngSwitchDefault>
+                  <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo"
+                            [abImageSrc]="item?.photos[4].thumbnailSrc"
+                            [abImageThumbnailSrc]="item?.photos[4].thumbnailSrc"></ab-image>
+                </div>
+              </div>
             </div>
             <div class="ab-portfolio-item-photos__photo-wrap" *ngIf="item?.photos.length === 5" (click)="openPhoto(4, item?.photos[4])">
-              <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo"
-                        [abImageSrc]="item?.photos[4].originalSrc"
-                        [abImageThumbnailSrc]="item?.photos[4].thumbnailSrc"></ab-image>
+              <div [ngSwitch]="item?.photos[4]?.type">
+                <div *ngSwitchCase="'video'">
+                  <video autoplay loop muted class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo" src="{{ item?.photos[4].originalSrc }}"></video>
+                </div>
+                <div *ngSwitchDefault>
+                  <ab-image class="ab-portfolio-item-photos__photo ab-portfolio-item-photos__rest-photo"
+                            [abImageSrc]="item?.photos[4].originalSrc"
+                            [abImageThumbnailSrc]="item?.photos[4].thumbnailSrc"></ab-image>
+                </div>
+              </div>
             </div>
           </div>
         </div>

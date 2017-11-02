@@ -32,7 +32,14 @@
     <div #swipeContainer class="swipe ab-photo-viewer__swipe" [class.comment]="commentShowing$ | async">
       <div class="swipe-wrap ab-photo-viewer__swipe-wrap">
         <div class="ab-photo-viewer__photo-wrap" *ngFor="let photo of photoViewerService?.photos$ | async">
-          <ab-image (dblclick)="photoClicked($event)" ab-max-photo-height class="image ab-photo-viewer__photo" [abImageModel]="photo"></ab-image>
+          <div [ngSwitch]="photo?.type" class="ab-photo-viewer__photo" ab-max-photo-height>
+            <div *ngSwitchCase="'video'">
+              <video autoplay loop muted (dblclick)="photoClicked($event)" class="image ab-photo-viewer__photo" src="{{ photo?.originalSrc }}"></video>
+            </div>
+            <div *ngSwitchDefault class="ab-photo-viewer__photo">
+              <ab-image (dblclick)="photoClicked($event)" class="image ab-photo-viewer__photo" [abImageModel]="photo"></ab-image>
+            </div>
+          </div>
           <div class="ab-photo-viewer__photo-comment" *ngIf="photo.title.length > 0">
             <div class="ab-photo-viewer__photo-comment-text">{{photo.title}}</div>
           </div>
