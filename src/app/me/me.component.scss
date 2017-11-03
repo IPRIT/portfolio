@@ -2,6 +2,7 @@
 
 :host {
   @extend %ab-layer-block;
+  @extend %ab-scroll;
   background: $page-background-color;
   position: relative;
   overflow-y: auto;
