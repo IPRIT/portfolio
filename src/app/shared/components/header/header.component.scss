@@ -24,7 +24,6 @@
   }
 
   @include bem-element(section-logo) {
-    flex: 2;
     display: block;
     margin-left: $header-right-left-margin;
   }
@@ -43,16 +42,11 @@
 
   @include bem-element(section-links) {
     @extend %ab-layer-flex;
-    flex: 1;
     text-align: right;
     margin-right: $header-right-left-margin;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-items: center;
-
-    @include media-query(lt-md) {
-      flex: 2;
-    }
 
     @include media-query(lt-xs) {
       display: none;

@@ -27,6 +27,7 @@ export class PhotoViewerService {
 
   closePhotoViewer() {
     this.isOpen$.next(false);
+    this.photos$.next([]);
   }
 
   openPhotoViewer() {

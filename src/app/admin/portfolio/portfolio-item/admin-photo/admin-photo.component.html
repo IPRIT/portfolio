@@ -8,7 +8,7 @@
 
     <div [ngSwitch]="photo?.type">
       <div *ngSwitchCase="'video'">
-        <video autoplay muted controls loop class="ab-admin-photo-uploader__original-photo" src="{{ photo?.originalSrc }}"></video>
+        <video autoplay muted onloadedmetadata="this.muted = true" controls loop class="ab-admin-photo-uploader__original-photo" src="{{ photo?.originalSrc }}"></video>
       </div>
       <div *ngSwitchDefault>
         <img class="ab-admin-photo-uploader__original-photo" src="{{photo.originalSrc}}" [attr.alt]="photo.title">

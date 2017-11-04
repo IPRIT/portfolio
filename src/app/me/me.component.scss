@@ -11,6 +11,12 @@
   &.no-scroll {
     overflow-y: hidden;
   }
+
+  @include media-query(lt-xs) {
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
 }
 
 @include bem(me) {
