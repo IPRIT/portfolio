@@ -1,0 +1,88 @@
+@import "../../../styles/helpers/all";
+@import "~compass-mixins";
+
+::selection {
+  background-color: darken(map_get($themes-map, contact), 15);
+  color: white;
+}
+
+:host {
+  @extend %ab-layer-block;
+  height: calc(100% - #{$header-height});
+}
+
+@include bem(contact) {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+
+  &:before, &:after {
+    $size: 100vw;
+    @include rotate( 45deg );
+    content: '';
+    position: absolute;
+    width: $size;
+    height: $size;
+    top: -$size / 2;
+  }
+
+  &:before {
+    $size: 100vw;
+    z-index: 2;
+    background-color: $theme-contact;
+    left: -$size / 2;
+  }
+
+  &:after {
+    $size: 100vw;
+    z-index: 1;
+    background-color: hsl(hue($theme-contact), saturation($theme-contact), lightness($theme-contact) - 10);
+    right: -$size / 2;
+  }
+
+  @include bem-element(inner) {
+    @extend %ab-layer-absolute-fill;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include bem-element(links) {
+    @extend %ab-layer-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  @include bem-element(link) {
+    display: block;
+  }
+
+  @include bem-element(link-icon) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 100px;
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 1px 2px 0 transparentize(black, .8);
+
+    i {
+      font-size: 70px;
+      color: $theme-contact;
+    }
+  }
+
+  @include bem-element(link-text) {
+    text-align: center;
+    font-family: merge-fonts-stack('Ubuntu', $fonts-stack);
+    margin-top: 14px;
+    color: white;
+    padding: 6px 10px;
+  }
+}

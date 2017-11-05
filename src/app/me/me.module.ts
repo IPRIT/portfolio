@@ -6,6 +6,7 @@ import { MeRoutingModule } from "./me.routing.module";
 import { PortfolioModule } from "./portfolio/portfolio.module";
 import { RouterModule } from "@angular/router";
 import { SharedModule } from "../shared/shared.module";
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { SharedModule } from "../shared/shared.module";
   ],
   declarations: [
     MeComponent,
-    AboutComponent
+    AboutComponent,
+    ContactComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

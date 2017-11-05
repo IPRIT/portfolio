@@ -13,6 +13,7 @@ export const routes: Routes = [
     data: {
       meta: {
         useTitleSuffix: false,
+        robots: 'all',
         titleSuffix: '',
         'theme-color': '#01579b'
       }

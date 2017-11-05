@@ -5,6 +5,7 @@ import { AbImage } from "../../components/ab-image/ab-image.model";
 export class HeaderLogos {
   static pink = './assets/ui/images/logo-pink.png';
   static blue = './assets/ui/images/logo-blue.png';
+  static yellow = './assets/ui/images/logo-yellow.png';
 }
 
 @Injectable()
