@@ -57,6 +57,10 @@
     align-items: center;
   }
 
+  @include bem-element(link-item) {
+    padding: 10px;
+  }
+
   @include bem-element(link) {
     display: block;
   }
