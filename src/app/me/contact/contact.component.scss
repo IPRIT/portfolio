@@ -14,7 +14,11 @@
 @include bem(contact) {
   position: relative;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+
+  @include media-query(gt-xs) {
+    overflow: hidden;
+  }
 
   &:before, &:after {
     $size: 100vw;
@@ -47,6 +51,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @include media-query(lt-xs) {
+      padding: 20px 0;
+    }
   }
 
   @include bem-element(links) {
@@ -58,6 +66,9 @@
   }
 
   @include bem-element(link-item) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 10px;
   }
 
@@ -76,6 +87,11 @@
     height: 200px;
     box-shadow: 0 1px 2px 0 transparentize(black, .8);
     user-select: none;
+
+    @include media-query(lt-xs) {
+      width: 150px;
+      height: 150px;
+    }
 
     i {
       font-size: 70px;
